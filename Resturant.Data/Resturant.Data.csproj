@@ -21,4 +21,7 @@
 		<Folder Include="DbModels\BusinessSchema\" />
 		<Folder Include="DbModels\LookupSchema\" />
 	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Resturant.Core\Resturant.Core.csproj" />
+	</ItemGroup>
 </Project>

@@ -9,6 +9,11 @@
 	<ItemGroup>
 		<Folder Include="Business\" />
 		<Folder Include="Lookup\" />
+		<Folder Include="Security\User\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Resturant.Core\Resturant.Core.csproj" />
 	</ItemGroup>
 
 </Project>

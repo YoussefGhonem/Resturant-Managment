@@ -5,10 +5,7 @@ namespace Resturant.Core.Enums
     public enum ApplicationRolesEnum
     {
         Administrative = 1,
-        Sales = 2,
-        Customs = 3,
-        Financial = 4,
-        Standard = 5,
+        Customer = 2,
     }
 
     public enum ItemStatusesEnum
