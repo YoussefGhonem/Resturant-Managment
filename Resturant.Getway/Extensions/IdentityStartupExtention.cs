@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Resturant.Data.DataContext;
+using Resturant.Data;
 using Resturant.Data.DbModels.SecuritySchema;
 using Resturant.Getway.Configuration;
 using System;

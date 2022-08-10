@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Resturant.Data.DataContext;
 using Resturant.Data.DbModels.SecuritySchema;
+using System.Reflection;
 
-namespace Resturant.Data.DataContext
+namespace Resturant.Data
 {
     public class AppDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid,
         ApplicationUserClaim, ApplicationUserRole, ApplicationUserLogin,
@@ -19,10 +21,15 @@ namespace Resturant.Data.DataContext
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.UserModelBuilder();
+            base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            foreach (var relationship in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+
         }
 
     }

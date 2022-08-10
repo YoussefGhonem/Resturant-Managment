@@ -14,7 +14,7 @@ namespace Resturant.Data.DataContext
             var config = configBuilder.Build();
 
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionsBuilder.UseSqlServer(config.GetSection("StoreOptions").GetSection("ConnectionString").Value);
+            optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
 
 
             return new AppDbContext(optionsBuilder.Options);

@@ -9,31 +9,18 @@ namespace Resturant.Data.DataContext
 {
     public class DataSeedingIntilization
     {
-        private static AppDbContext _appDbContext;
-        private static UserManager<ApplicationUser> _userManager;
-        private static IServiceProvider _serviceProvider;
-        private static string _rootPath;
-
-        public static void Seed(AppDbContext appDbContext, IServiceProvider serviceProvider, string rootPath)
+        public static async Task SeedDataAsync(AppDbContext databaseContext, UserManager<ApplicationUser> userManager)
         {
-            _appDbContext = appDbContext;
-            _appDbContext.Database.Migrate();
-            _serviceProvider = serviceProvider;
-            _rootPath = rootPath;
-
-            var serviceScope = _serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope();
-            _userManager = serviceScope.ServiceProvider.GetService<UserManager<ApplicationUser>>();
-
-            // call functions
-            SeedApplicationRoles();
-            SeedApplicationAdministrative();
-
-            _appDbContext.SaveChanges();
+            // seed
+            await SeedRoles(databaseContext);
+            await SeedSuperAdmin(databaseContext, userManager);
+            // Save changes
+            await databaseContext.SaveChangesAsync();
         }
 
-        private static void SeedApplicationRoles()
+        private static async Task SeedRoles(AppDbContext databaseContext)
         {
-            var items = _appDbContext.Roles.ToList();
+            var items = databaseContext.Roles.ToList();
             if (items == null || items.Count == 0)
             {
                 string[] names = Enum.GetNames(typeof(ApplicationRolesEnum));
@@ -41,39 +28,46 @@ namespace Resturant.Data.DataContext
 
                 for (int i = 0; i < names.Length; i++)
                 {
-                    _appDbContext.Roles.Add(new ApplicationRole()
+                    databaseContext.Roles.Add(new ApplicationRole()
                     {
+                        Id = Guid.NewGuid(),
                         Name = values[i].GetDescription(),
-                        NormalizedName = names[i].ToUpper()
+                        NormalizedName = names[i].ToUpper(),
+                        DisplayName = values[i].GetDescription()
                     });
                 }
-                _appDbContext.SaveChanges();
+                databaseContext.SaveChanges();
             }
 
+            // Save changes
+            await databaseContext.SaveChangesAsync();
         }
-        private static void SeedApplicationAdministrative()
+
+        private static async Task SeedSuperAdmin(AppDbContext databaseContext, UserManager<ApplicationUser> userManager)
         {
-            var email = "superadmin@gmail.com";
-            var superAdmin = _userManager.FindByNameAsync(email);
-            if (superAdmin.Result == null)
+            const string firstName = "Super";
+            const string lastName = "Admin";
+            const string email = "admin@gmail.com";
+            const string password = "Admin@2010";
+            var user = await userManager.FindByNameAsync(email);
+
+            if (user is not null) return;
+
+            var rolesFromDb = databaseContext.Roles.ToList();
+
+            var newUser = new ApplicationUser()
             {
-                var applicationUser = new ApplicationUser()
-                {
-                    EmailConfirmed = true,
-                    FirstName = "Admin",
-                    LastName = "User",
-                    UserName = email,
-                    Email = email,
-                };
+                FirstName = firstName,
+                LastName = lastName,
+                Email = email
+            };
+            var roleObj = rolesFromDb.FirstOrDefault(x => x.Name == ApplicationRolesEnum.Administrative.ToString());
 
-                var result = _userManager.CreateAsync(applicationUser, "Admin@2010");
-                if (result.Result.Succeeded)
-                {
-                    superAdmin = _userManager.FindByEmailAsync(email);
-                    _appDbContext.UserRoles.Add(new ApplicationUserRole { RoleId = Guid.Parse(ApplicationRolesEnum.Administrative.ToString()), UserId = superAdmin.Result.Id });
-                }
-            }
+            var role = new ApplicationUserRole { RoleId = roleObj.Id, Role = roleObj };
 
+            newUser.UserRoles.Add(role);
+
+            var result = await userManager.CreateAsync(newUser, password);
         }
     }
 }
