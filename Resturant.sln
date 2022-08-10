@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.2.32602.215
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Getway", "Resturant.GetWay\Resturant.Getway.csproj", "{DD5EC483-5AC9-4C5E-85F5-EAC099D413B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.GetWay", "Resturant.GetWay\Resturant.GetWay.csproj", "{DD5EC483-5AC9-4C5E-85F5-EAC099D413B6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Core", "Resturant.Core\Resturant.Core.csproj", "{78E37E4C-F636-4843-A636-F8BE0F1B1C3F}"
 EndProject
@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Internal.Web", "R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Public.Services", "Resturant.Public.Services\Resturant.Public.Services.csproj", "{50FAF5EA-AA92-48DC-BC7F-B61901C0E6CA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Internal.Services", "Resturant.Services\Resturant.Internal.Services.csproj", "{BB733597-B502-4717-B13B-A06693967D92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Internal.Services", "Resturant.Internal.Services\Resturant.Internal.Services.csproj", "{DCF8D4DF-F861-48B8-BFF9-AED31AD53048}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resturant.Public.Web", "Resturant.Public.Web\Resturant.Public.Web.csproj", "{C333B74D-BA71-4579-A34E-1BF058E7ED61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +49,14 @@ Global
 		{50FAF5EA-AA92-48DC-BC7F-B61901C0E6CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50FAF5EA-AA92-48DC-BC7F-B61901C0E6CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50FAF5EA-AA92-48DC-BC7F-B61901C0E6CA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BB733597-B502-4717-B13B-A06693967D92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB733597-B502-4717-B13B-A06693967D92}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB733597-B502-4717-B13B-A06693967D92}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB733597-B502-4717-B13B-A06693967D92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCF8D4DF-F861-48B8-BFF9-AED31AD53048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCF8D4DF-F861-48B8-BFF9-AED31AD53048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCF8D4DF-F861-48B8-BFF9-AED31AD53048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCF8D4DF-F861-48B8-BFF9-AED31AD53048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C333B74D-BA71-4579-A34E-1BF058E7ED61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C333B74D-BA71-4579-A34E-1BF058E7ED61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C333B74D-BA71-4579-A34E-1BF058E7ED61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C333B74D-BA71-4579-A34E-1BF058E7ED61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
