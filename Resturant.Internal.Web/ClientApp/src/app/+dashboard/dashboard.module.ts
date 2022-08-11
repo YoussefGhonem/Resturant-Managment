@@ -1,0 +1,76 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+// Component dashboard
+import { defineLordIconElement } from 'lord-icon-element';
+
+import { CommonModule } from "@angular/common";
+import { EventsRoutingModule } from "app/+events/events-routing.module";
+import { WidgetModule } from "app/shared/widget/widget.module";
+import { SharedModule } from "app/shared/shared.module";
+import { FlatpickrModule } from "angularx-flatpickr";
+import { SwiperModule } from "swiper/angular";
+import { NgApexchartsModule } from "ng-apexcharts";
+import { SimplebarAngularModule } from "simplebar-angular";
+import { NgbDropdownModule, NgbNavModule, NgbProgressbarModule, NgbToastModule } from "@ng-bootstrap/ng-bootstrap";
+import { LeafletModule } from "@asymmetrik/ngx-leaflet";
+import { CountToModule } from "angular-count-to";
+import { FeatherModule } from "angular-feather";
+import { allIcons } from "angular-feather/icons";
+import { CrmComponent } from "app/+dashboard/components/crm/crm.component";
+import { AnalyticsComponent } from "app/+dashboard/components/analytics/analytics.component";
+import { ProjectsComponent } from './components/projects/projects.component';
+import { NftComponent } from './components/nft/nft.component';
+import { DashboardRoutingModule } from "app/+dashboard/dashboard-routing.module";
+import { SWIPER_CONFIG, SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { DashboardComponent } from "app/+dashboard/components/dashboard/dashboard.component";
+import { LightboxModule } from 'ngx-lightbox';
+import lottie from 'lottie-web';
+import { CryptoComponent } from './components/crypto/crypto.component';
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
+
+@NgModule({
+  declarations: [
+    AnalyticsComponent,
+    CrmComponent,
+    CryptoComponent,
+    ProjectsComponent,
+    NftComponent,
+    DashboardComponent,
+
+  ],
+  imports: [
+    CommonModule,
+    NgbToastModule,
+    FeatherModule.pick(allIcons),
+    CountToModule,
+    LeafletModule,
+    NgbDropdownModule,
+    NgbNavModule,
+    SimplebarAngularModule,
+    NgApexchartsModule,
+    SwiperModule,
+    FlatpickrModule.forRoot(),
+    SharedModule,
+    WidgetModule,
+    NgbProgressbarModule,
+    LightboxModule,
+    EventsRoutingModule,
+    DashboardRoutingModule
+  ],
+  providers: [
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    }
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
+})
+export class DashboardModule {
+  constructor() {
+    defineLordIconElement(lottie.loadAnimation);
+  }
+}

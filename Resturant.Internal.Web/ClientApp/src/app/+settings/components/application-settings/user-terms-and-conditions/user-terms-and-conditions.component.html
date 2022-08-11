@@ -1,0 +1,13 @@
+<form [formGroup]="userTermsForm" (submit)="onUserSubmit()">
+  <div class="mb-3 form-group">
+    <label class="form-label">Customer' Terms And Conditions</label>
+    <ckeditor [editor]="UserEditor" [config]="editorConfig"
+              [ngClass]="{'is-invalid': isInvalid('userTerms')}"
+              id="userTerms" formControlName="userTerms" data="">
+    </ckeditor>
+    <arv-validation-messages for="userTerms"></arv-validation-messages>
+  </div>
+  <div class="text-end mb-3">
+    <button [disabled]="userTermsForm.invalid" type="submit" class="btn btn-success w-sm">Save Changes</button>
+  </div>
+</form>

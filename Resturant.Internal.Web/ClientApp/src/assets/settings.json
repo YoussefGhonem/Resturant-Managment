@@ -1,0 +1,9 @@
+{
+  "production": false,
+  "environmentName": "Local",
+  "apiConfig": {
+    "apiUrl": "https://localhost:7028",
+    "apiVersion": 1
+  },
+  "apiUrlIdentity": "https://localhost:7108"
+}

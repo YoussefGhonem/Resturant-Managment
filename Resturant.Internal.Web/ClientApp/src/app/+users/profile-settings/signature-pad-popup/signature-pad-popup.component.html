@@ -1,0 +1,13 @@
+<!-- Order Create Model -->
+<ng-container #content role="document">
+    <div class="modal-header bg-light p-3">
+        <h5 class="modal-title" id="addsignature"> Add Signature </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"
+            (click)="modalService.close()"></button>
+    </div>
+    <div class="text-center mb-3">
+        <ng-signature-pad doneButtonText="Save Signature" format="base64" (done)="saveSignature($event)">
+        </ng-signature-pad>
+    </div>
+</ng-container>
+<!--End Modal -->
