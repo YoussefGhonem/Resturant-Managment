@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Resturant.Core.CurrentUser;
 using Resturant.Data;
 using Resturant.Data.DbModels.SecuritySchema;
 using Resturant.Getway.Configuration;
@@ -82,6 +83,7 @@ namespace Resturant.Getway.Extensions
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseCurrentUser();
 
             return app;
         }

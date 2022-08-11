@@ -8,6 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.8" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.8" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
@@ -20,6 +21,8 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Resturant.Data\Resturant.Data.csproj" />
+		<ProjectReference Include="..\Resturant.Internal.Services\Resturant.Internal.Services.csproj" />
+		<ProjectReference Include="..\Resturant.Public.Services\Resturant.Public.Services.csproj" />
 	</ItemGroup>
 
 </Project>

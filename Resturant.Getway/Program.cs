@@ -1,5 +1,8 @@
-using Resturant.Data.DataContext;
+using Autofac;
+using Microsoft.Extensions.Options;
 using Resturant.Getway.Extensions;
+using Resturant.Internal.Services;
+using Resturant.Public.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDBConfiguration(builder.Configuration);
@@ -9,7 +12,21 @@ builder.Services.AddIdentity(builder.Configuration);
 builder.Services.AddSwagger();
 #endregion
 
+#region .Net services
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddPublicServicesApplication();
+builder.Services.AddInternalServicesApplication();
+
+#endregion
+
 var app = builder.Build();
+
+var options = ((IApplicationBuilder)app).ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>();
+
+app.UseRequestLocalization(options.Value);
 
 if (!app.Environment.IsDevelopment()) // Development
 {
@@ -20,10 +37,13 @@ else // Production
     app.UseExceptionHandler("/Error");
 }
 
+
 #region  Swagger
 app.UseBaseSwagger();
-app.UseIdentity();
 #endregion
+
+app.UseIdentity();
+
 using (var scope = app.Services.CreateScope())
 {
     await scope.MigrateDatabase();
