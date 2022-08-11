@@ -12,7 +12,7 @@ using Resturant.Data;
 namespace Resturant.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220810200548_AddIdentity")]
+    [Migration("20220811165459_AddIdentity")]
     partial class AddIdentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

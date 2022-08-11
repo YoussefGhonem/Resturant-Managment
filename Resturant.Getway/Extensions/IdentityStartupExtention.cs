@@ -18,10 +18,6 @@ namespace Resturant.Getway.Extensions
 
             var config = configuration.GetJwtConfig();
 
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
-             configuration.GetConnectionString("DefaultConnection"),
-             b => b.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
-
             services.AddAuthorization();
             services.AddAuthorization(auth =>
             {
