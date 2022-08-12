@@ -64,7 +64,6 @@ namespace Resturant.Data.DataContext
                     UserName = email,
                     Email = email,
                     LockoutEnabled = false,
-                    CreatedOn = DateTime.Now,
                 };
 
                 var result = _userManager.CreateAsync(applicationUser, "Admin@2010");
