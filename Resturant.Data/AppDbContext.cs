@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Resturant.Data.DataContext;
+using Resturant.Data.DbModels.BusinessSchema;
 using Resturant.Data.DbModels.SecuritySchema;
 using System.Reflection;
 
@@ -27,6 +28,7 @@ namespace Resturant.Data
             builder.UserModelBuilder();
         }
 
+        public DbSet<Press> Press { get; set; }
 
 
     }

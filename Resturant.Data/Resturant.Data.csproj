@@ -22,7 +22,6 @@
 		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
-		<Folder Include="DbModels\BusinessSchema\" />
 		<Folder Include="DbModels\LookupSchema\" />
 	</ItemGroup>
 	<ItemGroup>

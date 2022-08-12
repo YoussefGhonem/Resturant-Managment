@@ -2,7 +2,6 @@ using Microsoft.Extensions.Options;
 using Resturant.Email.SendGrid;
 using Resturant.Getway.Extensions;
 using Resturant.Internal.Services;
-using Resturant.Public.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +11,6 @@ builder.Services.AddDBConfiguration(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddPublicServicesApplication();
 builder.Services.AddInternalServicesApplication();
 builder.Services.AddControllerConfiguration();
 #endregion

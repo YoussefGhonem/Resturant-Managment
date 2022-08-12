@@ -13,17 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.DTO", "Resturant.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Internal.Web", "Resturant.Internal.Web\Resturant.Internal.Web.csproj", "{625AC5AB-DF72-4719-80F2-AF1A2BE7E5F4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Public.Services", "Resturant.Public.Services\Resturant.Public.Services.csproj", "{50FAF5EA-AA92-48DC-BC7F-B61901C0E6CA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Public.Web", "Resturant.Public.Web\Resturant.Public.Web.csproj", "{3B0B75CB-7599-4947-B137-2E5A08EF4352}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Internal.Services", "Resturant.Internal.Services\Resturant.Internal.Services.csproj", "{F6468FF3-BE6C-46E3-83F8-BF119727C35E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resturant.Email", "Resturant.Email", "{302E834B-F7CB-48E4-A0FD-551C68135620}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resturant.Email", "Resturant.Email\Resturant.Email.csproj", "{52019D0E-5EE0-4467-AA2E-B773AA26A3A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Email", "Resturant.Email\Resturant.Email.csproj", "{52019D0E-5EE0-4467-AA2E-B773AA26A3A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resturant.Email.SendGrid", "Resturant.Email.SendGrid\Resturant.Email.SendGrid.csproj", "{16D9F51F-E7E7-480F-9FAF-E748C0893572}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Email.SendGrid", "Resturant.Email.SendGrid\Resturant.Email.SendGrid.csproj", "{16D9F51F-E7E7-480F-9FAF-E748C0893572}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +49,6 @@ Global
 		{625AC5AB-DF72-4719-80F2-AF1A2BE7E5F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{625AC5AB-DF72-4719-80F2-AF1A2BE7E5F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{625AC5AB-DF72-4719-80F2-AF1A2BE7E5F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50FAF5EA-AA92-48DC-BC7F-B61901C0E6CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50FAF5EA-AA92-48DC-BC7F-B61901C0E6CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50FAF5EA-AA92-48DC-BC7F-B61901C0E6CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50FAF5EA-AA92-48DC-BC7F-B61901C0E6CA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3B0B75CB-7599-4947-B137-2E5A08EF4352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3B0B75CB-7599-4947-B137-2E5A08EF4352}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B0B75CB-7599-4947-B137-2E5A08EF4352}.Release|Any CPU.ActiveCfg = Release|Any CPU
