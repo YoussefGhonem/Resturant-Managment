@@ -21,7 +21,11 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Resturant.Data\Resturant.Data.csproj" />
 		<ProjectReference Include="..\Resturant.Internal.Services\Resturant.Internal.Services.csproj" />
-		<ProjectReference Include="..\Resturant.Public.Services\Resturant.Public.Services.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\Uploads\" />
+	  <Folder Include="wwwroot\Uploads\Press\" />
 	</ItemGroup>
 
 </Project>
