@@ -85,6 +85,7 @@ namespace Resturant.Getway.Extensions
             app.UseAuthorization();
             app.UseCurrentUser();
 
+
             return app;
         }
     }

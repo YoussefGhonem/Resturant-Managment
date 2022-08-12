@@ -10,7 +10,7 @@ namespace Resturant.Internal.Services.Identity
         Task<string> Login(LoginDto login);
         Task<IResponseDTO> Register(RegisterDto model);
         Task<IResponseDTO> ResetPassword(ResetPasswordDto options);
-        Task<IResponseDTO> ChangePassword(int userId, ChangePasswordDto options);
+        Task<IResponseDTO> ChangePassword(Guid userId, ChangePasswordDto options);
         Task<IResponseDTO> UpdateUserProfile(int id, UpdateUserProfile options, IFormFile file);
         Task<IResponseDTO> ForgetPassword(string email);
     }

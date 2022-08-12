@@ -15,11 +15,17 @@ namespace Resturant.Internal.Services.Identity.Extensions
                 .Include(user => user.Claims)
                 .FirstOrDefaultAsync();
 
-            return user is not null;
+            if (user == null) return false;
+            return true;
         }
-        public static async Task<bool> BeEmailUnique(UserManager<ApplicationUser> userManager, string email)
+        public static async Task<bool> BeEmailUnique(this UserManager<ApplicationUser> userManager, string email)
         {
-            return await userManager.FindByEmailAsync(email) == null;
+            var emailFound = await userManager.FindByEmailAsync(email.Trim().ToLower());
+            if (emailFound == null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

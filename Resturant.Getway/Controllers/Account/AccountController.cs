@@ -1,18 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Resturant.Core.CurrentUser;
 using Resturant.Core.Interfaces;
 using Resturant.DTO.Security.Identity;
 using Resturant.Internal.Services.Identity;
 
 namespace Resturant.Getway.Controllers.Account
 {
-    [Authorize]
-    [Route("[controller]")]
-
+    [Route("api/account")]
     public class AccountController : BaseController
     {
         private readonly IIdentityServices _accountService;
-
         public AccountController(
            IIdentityServices accountService,
            IResponseDTO response,
@@ -20,18 +18,23 @@ namespace Resturant.Getway.Controllers.Account
         {
             _accountService = accountService;
         }
-
         [AllowAnonymous]
-        [Route("api/login")]
-        [HttpPost]
-        public async Task<string> Login([FromBody] LoginDto login)
+        [HttpPost("login")]
+        public async Task<ActionResult<string>> Login(LoginDto login)
         {
-            return await _accountService.Login(login);
+            return Ok(await _accountService.Login(login));
         }
 
+        [AllowAnonymous]
+        [HttpPost("register")]
+        public async Task<IResponseDTO> Register(RegisterDto registerDto)
+        {
+            _response = await _accountService.Register(registerDto);
+            return _response;
+        }
 
         [AllowAnonymous]
-        [Route("api/reset-password")]
+        [Route("reset-password")]
         [HttpPost]
         public async Task<IResponseDTO> ResetPassword([FromBody] ResetPasswordDto options)
         {
@@ -42,7 +45,7 @@ namespace Resturant.Getway.Controllers.Account
 
 
         [AllowAnonymous]
-        [Route("api/forget-password/{email}")]
+        [Route("forget-password/{email}")]
         [HttpPost]
         public async Task<IResponseDTO> ForgetPassword(string email)
         {
@@ -50,11 +53,11 @@ namespace Resturant.Getway.Controllers.Account
             return _response;
         }
 
-        [Route("api/me/change-password")]
+        [Route("change-password")]
         [HttpPost]
         public async Task<IResponseDTO> ChangePassword([FromBody] ChangePasswordDto options)
         {
-            _response = await _accountService.ChangePassword(LoggedInUserId, options);
+            _response = await _accountService.ChangePassword(CurrentUser.Id.Value, options);
             return _response;
         }
     }

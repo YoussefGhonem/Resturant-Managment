@@ -22,13 +22,15 @@ namespace Resturant.Internal.Services.Identity
         private readonly IResponseDTO _response;
         private readonly ISendingEmailService _sendingEmailService;
 
-        public IdentityServices(AppDbContext context, IConfiguration configuration, IResponseDTO response)
+        public IdentityServices(ISendingEmailService sendingEmailService, AppDbContext context, IConfiguration configuration, IResponseDTO response, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _configuration = configuration;
             _response = response;
+            _sendingEmailService = sendingEmailService;
+            _userManager = userManager;
         }
-        public async Task<IResponseDTO> ChangePassword(int userId, ChangePasswordDto options)
+        public async Task<IResponseDTO> ChangePassword(Guid userId, ChangePasswordDto options)
         {
             var user = await _userManager.FindByIdAsync(userId.ToString());
             var result = await _userManager.ChangePasswordAsync(user, options.CurrentPassword, options.NewPassword);
@@ -57,7 +59,7 @@ namespace Resturant.Internal.Services.Identity
         }
         public async Task<string> Login(LoginDto model)
         {
-            if (await ValidationExtension.BeExistUser(_context, model.Email)) return "Not Found";
+            if (!await ValidationExtension.BeExistUser(_context, model.Email)) return "Not Found";
 
 
             var user = await _context.Users
@@ -71,16 +73,23 @@ namespace Resturant.Internal.Services.Identity
 
             return token;
         }
-        public async Task<IResponseDTO?> Register(RegisterDto request)
+        public async Task<IResponseDTO> Register(RegisterDto request)
         {
-            if (!await ValidationExtension.BeEmailUnique(_userManager, request.Email))
+            var emailFound = await _userManager.FindByEmailAsync(request.Email.Trim().ToLower());
+            if (emailFound != null)
             {
                 _response.IsPassed = false;
                 _response.Errors.Add("This email is Exist");
                 return _response;
             }
 
-            var rolesFromDb = await _context.Roles.ToListAsync();
+            var rolesFromDb = _context.Roles.FirstOrDefault(x => x.Name == ApplicationRolesEnum.Customer.ToString());
+
+            var userRole = new ApplicationUserRole()
+            {
+                Role = rolesFromDb,
+                RoleId = rolesFromDb.Id
+            };
 
             var applicationUser = new ApplicationUser()
             {
@@ -90,15 +99,18 @@ namespace Resturant.Internal.Services.Identity
                 UserName = request.Email,
                 Email = request.Email,
                 LockoutEnabled = false,
+                UserRoles = new List<ApplicationUserRole>() { userRole }
             };
 
-            var result = _userManager.CreateAsync(applicationUser, request.Password);
-            var role = rolesFromDb.FirstOrDefault(x => x.Name == ApplicationRolesEnum.Customer.ToString());
+            var result =await _userManager.CreateAsync(applicationUser, request.Password);
 
-            var customer = await _userManager.FindByEmailAsync(request.Email);
-            _context.UserRoles.Add(new ApplicationUserRole { RoleId = role.Id, UserId = customer.Id });
+            if (result.Succeeded)
+            {
+                _response.IsPassed = true;
+                return _response;
 
-            _response.IsPassed = true;
+            }
+            _response.IsPassed = false;
             return _response;
         }
         public async Task<IResponseDTO> ResetPassword(ResetPasswordDto request)

@@ -8,10 +8,7 @@ using Resturant.Public.Services;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDBConfiguration(builder.Configuration);
 
-#region Swagger
-builder.Services.AddIdentity(builder.Configuration);
-builder.Services.AddSwagger();
-#endregion
+
 
 #region .Net services
 builder.Services.AddEndpointsApiExplorer();
@@ -19,10 +16,16 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddPublicServicesApplication();
 builder.Services.AddInternalServicesApplication();
+builder.Services.AddControllerConfiguration();
 #endregion
 
 #region Email
 builder.Services.AddSendGrid(builder.Configuration);
+#endregion
+
+#region Swagger
+builder.Services.AddIdentity(builder.Configuration);
+builder.Services.AddSwagger();
 #endregion
 
 var app = builder.Build();
@@ -46,6 +49,7 @@ app.UseBaseSwagger();
 #endregion
 
 app.UseIdentity();
+app.UseControllerConfiguration();
 
 using (var scope = app.Services.CreateScope())
 {
