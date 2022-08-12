@@ -6,16 +6,13 @@ using Resturant.Data.DbModels.SecuritySchema;
 
 namespace Resturant.Getway.Extensions;
 
-/// <summary>
-/// Extensions helpers method for database
-/// </summary>
 public static class DatabaseExtension
 {
 
     public static async Task MigrateDatabase(this IServiceScope scope)
     {
-        var vendorDbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-        await vendorDbContext.Database.MigrateAsync();
+        var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        await dbContext.Database.MigrateAsync();
     }
 
     public static async Task SeedDatabase(this IServiceScope scope)

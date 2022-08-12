@@ -101,14 +101,12 @@ namespace Resturant.Internal.Services.Identity
                 LockoutEnabled = false,
                 UserRoles = new List<ApplicationUserRole>() { userRole }
             };
-
-            var result =await _userManager.CreateAsync(applicationUser, request.Password);
+            var result = await _userManager.CreateAsync(applicationUser, request.Password);
 
             if (result.Succeeded)
             {
                 _response.IsPassed = true;
                 return _response;
-
             }
             _response.IsPassed = false;
             return _response;

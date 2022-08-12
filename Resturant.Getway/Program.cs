@@ -5,9 +5,8 @@ using Resturant.Internal.Services;
 using Resturant.Public.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddDBConfiguration(builder.Configuration);
-
-
 
 #region .Net services
 builder.Services.AddEndpointsApiExplorer();
@@ -41,7 +40,6 @@ else // Production
 {
     app.UseExceptionHandler("/Error");
 }
-
 
 #region  Swagger
 app.UseBaseSwagger();
