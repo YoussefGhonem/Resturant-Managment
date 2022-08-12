@@ -3,7 +3,7 @@ using Resturant.Core.Interfaces;
 using Resturant.DTO.Security.Identity;
 using Resturant.DTO.Security.User;
 
-namespace Resturant.Internal.Services.Identity
+namespace Resturant.Services.Identity
 {
     public interface IIdentityServices
     {

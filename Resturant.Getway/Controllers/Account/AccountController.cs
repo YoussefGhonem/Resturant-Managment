@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Resturant.Core.CurrentUser;
 using Resturant.Core.Interfaces;
 using Resturant.DTO.Security.Identity;
-using Resturant.Internal.Services.Identity;
+using Resturant.Services.Identity;
 
 namespace Resturant.Getway.Controllers.Account
 {

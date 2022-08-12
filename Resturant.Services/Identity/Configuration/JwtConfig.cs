@@ -1,4 +1,4 @@
-namespace Resturant.Internal.Services.Identity.Configuration;
+namespace Resturant.Services.Identity.Configuration;
 
 public class JwtConfig
 {

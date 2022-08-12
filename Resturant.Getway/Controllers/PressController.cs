@@ -10,10 +10,10 @@ namespace Resturant.Getway.Controllers
     [Route("api/press")]
     public class PressController : BaseController
     {
-        private readonly IPressService _pressServicee;
+        private readonly ISettingsService _pressServicee;
 
         public PressController(
-           IPressService pressServicee,
+           ISettingsService pressServicee,
            IResponseDTO response,
            IHttpContextAccessor httpContextAccessor) : base(response, httpContextAccessor)
         {

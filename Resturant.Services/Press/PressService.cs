@@ -6,7 +6,7 @@ using Resturant.Core.Interfaces;
 using Resturant.Data;
 using Resturant.Data.DbModels.BusinessSchema;
 using Resturant.DTO.Business.Press;
-using Resturant.Internal.Services.UploadFiles;
+using Resturant.Services.UploadFiles;
 
 namespace Resturant.Internal.Services.Press
 {

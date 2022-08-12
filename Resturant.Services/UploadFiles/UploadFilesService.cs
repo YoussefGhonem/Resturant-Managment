@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Resturant.Core.Interfaces;
 
-namespace Resturant.Internal.Services.UploadFiles
+namespace Resturant.Services.UploadFiles
 {
     public class UploadFilesService : IUploadFilesService
     {

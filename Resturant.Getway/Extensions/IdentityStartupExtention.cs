@@ -6,7 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using Resturant.Core.CurrentUser;
 using Resturant.Data;
 using Resturant.Data.DbModels.SecuritySchema;
-using Resturant.Internal.Services.Identity.Configuration;
+using Resturant.Services.Identity.Configuration;
 using System;
 using System.Security.Claims;
 

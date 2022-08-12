@@ -2,12 +2,12 @@
 using Microsoft.IdentityModel.Tokens;
 using Resturant.Core.CurrentUser;
 using Resturant.Data.DbModels.SecuritySchema;
-using Resturant.Internal.Services.Identity.Configuration;
+using Resturant.Services.Identity.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
 
-namespace Resturant.Internal.Services.Identity.Extensions
+namespace Resturant.Services.Identity.Extensions
 {
     public static class JsonWebTokenGeneration
     {

@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Options;
 using Resturant.Email.SendGrid;
 using Resturant.Getway.Extensions;
-using Resturant.Internal.Services;
+using Resturant.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

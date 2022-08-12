@@ -6,10 +6,10 @@ using Resturant.Data;
 using Resturant.Email.Extensions;
 using Resturant.Email.Interfaces;
 using Resturant.Email.Models;
-using Resturant.Internal.Services.Identity.Configuration;
 using Resturant.Internal.Services.Identity.Extensions;
+using Resturant.Services.Identity.Configuration;
 
-namespace Resturant.Internal.Services.SendingEmail;
+namespace Resturant.Services.SendingEmail;
 
 public class SendingEmailService : ISendingEmailService
 {

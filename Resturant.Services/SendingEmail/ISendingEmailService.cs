@@ -1,4 +1,4 @@
-﻿namespace Resturant.Internal.Services.SendingEmail;
+﻿namespace Resturant.Services.SendingEmail;
 
 public interface ISendingEmailService
 {

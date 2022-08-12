@@ -8,11 +8,11 @@ using Resturant.Data;
 using Resturant.Data.DbModels.SecuritySchema;
 using Resturant.DTO.Security.Identity;
 using Resturant.DTO.Security.User;
-using Resturant.Internal.Services.Identity.Extensions;
-using Resturant.Internal.Services.SendingEmail;
+using Resturant.Services.Identity.Extensions;
+using Resturant.Services.SendingEmail;
 using System.Web;
 
-namespace Resturant.Internal.Services.Identity
+namespace Resturant.Services.Identity
 {
     public class IdentityServices : IIdentityServices
     {

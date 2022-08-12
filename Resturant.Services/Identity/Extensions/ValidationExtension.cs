@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Resturant.Data;
 using Resturant.Data.DbModels.SecuritySchema;
 
-namespace Resturant.Internal.Services.Identity.Extensions
+namespace Resturant.Services.Identity.Extensions
 {
     public static class ValidationExtension
     {
