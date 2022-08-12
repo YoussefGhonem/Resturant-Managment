@@ -48,10 +48,20 @@ namespace Resturant.Data.DataContext
                     .IsRequired();
             });
 
-            // set application user role primary key
-            modelBuilder.Entity<ApplicationUserRole>(b =>
+            // Each Role can have many associated RoleClaims
+            modelBuilder.Entity<ApplicationUserRole>(userRole =>
             {
-                b.HasKey(u => u.Id);
+                userRole.HasKey(ur => new { ur.UserId, ur.RoleId });
+
+                userRole.HasOne(ur => ur.Role)
+                    .WithMany(r => r.UserRoles)
+                    .HasForeignKey(ur => ur.RoleId)
+                    .IsRequired();
+
+                userRole.HasOne(ur => ur.User)
+                    .WithMany(r => r.UserRoles)
+                    .HasForeignKey(ur => ur.UserId)
+                    .IsRequired();
             });
 
             // Update Identity Schema

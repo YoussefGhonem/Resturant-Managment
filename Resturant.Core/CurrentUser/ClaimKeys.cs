@@ -9,5 +9,4 @@ public static class ClaimKeys
     public const string Name = "Name";
     public const string ImageUrl = "ImageUrl";
     public const string Role = "Role";
-    public const string IsVerified = "IsVerified";
 }

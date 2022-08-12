@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Resturant.Getway.Configuration;
+namespace Resturant.Internal.Services.Identity.Configuration;
 
 public static class ConfigurationExtension
 {

@@ -13,7 +13,7 @@ namespace Resturant.Data.DataContext
         private static UserManager<ApplicationUser> _userManager;
         private static IServiceProvider _serviceProvider;
 
-        public static void SeedDataAsync(AppDbContext appDbContext, IServiceProvider serviceProvider)
+        public static async Task SeedDataAsync(AppDbContext appDbContext, IServiceProvider serviceProvider)
         {
             _appDbContext = appDbContext;
             _serviceProvider = serviceProvider;
@@ -23,7 +23,7 @@ namespace Resturant.Data.DataContext
 
             // call functions
             SeedApplicationRoles();
-            SeedApplicationAdministrative();
+            await SeedApplicationAdministrative();
             // save to the database
             _appDbContext.SaveChanges();
         }
@@ -49,12 +49,12 @@ namespace Resturant.Data.DataContext
             }
 
         }
-        private static void SeedApplicationAdministrative()
+        private static async Task SeedApplicationAdministrative()
         {
             var email = "admin@gmail.com";
-            var superAdmin = _userManager.FindByNameAsync(email);
+            var superAdmin = await _userManager.FindByNameAsync(email);
 
-            if (superAdmin.Result == null)
+            if (superAdmin == null)
             {
                 var applicationUser = new ApplicationUser()
                 {
@@ -64,7 +64,6 @@ namespace Resturant.Data.DataContext
                     UserName = email,
                     Email = email,
                     LockoutEnabled = false,
-                    CreatedOn = DateTime.Now,
                 };
 
                 var result = _userManager.CreateAsync(applicationUser, "Admin@2010");
@@ -73,8 +72,8 @@ namespace Resturant.Data.DataContext
 
                 if (result.Result.Succeeded)
                 {
-                    superAdmin = _userManager.FindByEmailAsync(email);
-                    _appDbContext.UserRoles.Add(new ApplicationUserRole { RoleId = role.Id, UserId = superAdmin.Result.Id });
+                    superAdmin = await _userManager.FindByEmailAsync(email);
+                    _appDbContext.UserRoles.Add(new ApplicationUserRole { RoleId = role.Id, UserId = superAdmin.Id });
                 }
             }
 

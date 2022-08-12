@@ -5,14 +5,9 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
-
 	<ItemGroup>
-		<Folder Include="Business\" />
-		<Folder Include="Lookup\" />
+		<PackageReference Include="Ardalis.GuardClauses" Version="4.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+		<PackageReference Include="MimeKit" Version="3.1.1" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\Resturant.Core\Resturant.Core.csproj" />
-	</ItemGroup>
-
 </Project>
