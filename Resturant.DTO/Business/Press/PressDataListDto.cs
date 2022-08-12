@@ -13,8 +13,8 @@ namespace Resturant.DTO.Business.Press
         public string? Description { get; set; }
         public string? HyperLink { get; set; }
         // file info
-        public string? AttachmentName { get; }
-        public string? AttachmentPath { get; }
-        public string? AttachmentExtension { get; }
+        public string? AttachmentName { get; set; }
+        public string? AttachmentPath { get; set; }
+        public string? AttachmentExtension { get; set; }
     }
 }

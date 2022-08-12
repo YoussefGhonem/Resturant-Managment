@@ -23,7 +23,7 @@ namespace Resturant.Getway.Controllers
         [HttpGet]
         public PaginationResult<PressDataListDto> GetAll([FromQuery] BaseFilterDto filterDto)
         {
-            return _pressServicee.GetAll(filterDto);
+            return _pressServicee.GetAll(filterDto, ServerRootPath);
         }
 
         [HttpPost]

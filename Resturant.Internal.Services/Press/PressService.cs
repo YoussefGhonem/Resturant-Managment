@@ -64,11 +64,28 @@ namespace Resturant.Internal.Services.Press
             }
             return _response;
         }
-        public PaginationResult<PressDataListDto> GetAll(BaseFilterDto filterDto)
+        public PaginationResult<PressDataListDto> GetAll(BaseFilterDto filterDto, string serverRootPath)
         {
             var paginationResult = _context.Press.AsNoTracking().Paginate(filterDto.PageSize, filterDto.PageNumber);
 
             var dataList = paginationResult.list.Adapt<List<PressDataListDto>>();
+
+            foreach (var item in dataList)
+            {
+
+                if (item.AttachmentPath != null)
+                {
+                    if (item.AttachmentPath.StartsWith("\\"))
+                    {
+                        if (!string.IsNullOrEmpty(item.AttachmentPath))
+                        {
+
+                            item.AttachmentPath = serverRootPath + item.AttachmentPath.Replace('\\', '/');
+                        }
+
+                    }
+                }
+            }
 
             return new PaginationResult<PressDataListDto>(dataList, paginationResult.total);
         }
@@ -171,6 +188,7 @@ namespace Resturant.Internal.Services.Press
                 // save to the database
                 _context.Press.Attach(press);
                 await _context.SaveChangesAsync();
+                await _uploadFilesService.UploadFile(path, image);
 
             }
             catch (Exception ex)
@@ -188,6 +206,5 @@ namespace Resturant.Internal.Services.Press
             }
             return _response;
         }
-
     }
 }

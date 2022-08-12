@@ -4,6 +4,7 @@ using Resturant.Core.Interfaces;
 using Resturant.Internal.Services.Identity;
 using Resturant.Internal.Services.Press;
 using Resturant.Internal.Services.SendingEmail;
+using Resturant.Internal.Services.UploadFiles;
 
 namespace Resturant.Internal.Services
 {
@@ -15,6 +16,7 @@ namespace Resturant.Internal.Services
             services.AddScoped<IIdentityServices, IdentityServices>();
             services.AddScoped<IResponseDTO, ResponseDTO>();
             services.AddScoped<IPressService, PressService>();
+            services.AddScoped<IUploadFilesService, UploadFilesService>();
             return services;
         }
     }
