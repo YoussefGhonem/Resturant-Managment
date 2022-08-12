@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Resturant.Core.Common
 {
-    public record BaseEntity
+    public class BaseEntity
     {
         public int Id { get; set; }
         public bool IsDeleted { get; set; }

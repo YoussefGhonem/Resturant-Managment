@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Resturant.Data.DbModels.BusinessSchema
 {
     [Table("Press", Schema = "Business")]
-    public record Press : BaseEntity
+    public class Press : BaseEntity
     {
         public Guid Id { get; set; }
         public string Title { get; set; }

@@ -29,6 +29,7 @@ namespace Resturant.Data
         }
 
         public DbSet<Press> Press { get; set; }
+        public DbSet<Settings> Settings { get; set; }
 
 
     }
