@@ -6,6 +6,7 @@ using Resturant.Data;
 using Resturant.Email.Extensions;
 using Resturant.Email.Interfaces;
 using Resturant.Email.Models;
+using Resturant.Internal.Services.Identity.Configuration;
 using Resturant.Internal.Services.Identity.Extensions;
 
 namespace Resturant.Internal.Services.SendingEmail;
@@ -39,7 +40,7 @@ public class SendingEmailService : ISendingEmailService
             LastName = u.Claims.First(c => c.ClaimType == ClaimKeys.LastName).ClaimValue,
             u.Email,
         }).FirstOrDefaultAsync(x => x.Id == userId);
-        var config = _configuration.GetAdminClientConfig();
+        var config = _configuration.GetJwtConfig();
         var webUrl = config.WebUrl;
         var redirectPage = $"{webUrl}/auth/reset-password?email={user?.Email}&token={encodedToken}";
 
@@ -68,7 +69,7 @@ public class SendingEmailService : ISendingEmailService
             LastName = u.Claims.First(c => c.ClaimType == ClaimKeys.LastName).ClaimValue,
             u.Email,
         }).FirstOrDefaultAsync(x => x.Id == userId);
-        var config = _configuration.GetAdminClientConfig();
+        var config = _configuration.GetJwtConfig();
         var webUrl = config.WebUrl;
         var redirectPage = $"{webUrl}/auth/reset-password?email={user?.Email}&token={encodedToken}";
 
@@ -124,7 +125,7 @@ public class SendingEmailService : ISendingEmailService
                 x.Email
             }).FirstOrDefaultAsync(x => x.Id == userId);
 
-        var webUrl = _configuration.GetAdminClientConfig().WebUrl;
+        var webUrl = _configuration.GetJwtConfig().WebUrl;
         const string subject = "Your acount has been unlocked";
         const string templateName = "unlock-user.html";
 

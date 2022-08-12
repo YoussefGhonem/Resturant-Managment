@@ -2,9 +2,9 @@
 using Microsoft.IdentityModel.Tokens;
 using Resturant.Core.CurrentUser;
 using Resturant.Data.DbModels.SecuritySchema;
+using Resturant.Internal.Services.Identity.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text.Json;
 
 
 namespace Resturant.Internal.Services.Identity.Extensions
@@ -13,9 +13,9 @@ namespace Resturant.Internal.Services.Identity.Extensions
     {
         public static string GenerateJwtToken(IConfiguration configuration, ApplicationUser user)
         {
-            var clientConfig = configuration.GetAdminClientConfig();
+            var clientConfig = configuration.GetJwtConfig();
 
-            var signingKey = Convert.FromBase64String(clientConfig.Jwt.Key);
+            var signingKey = Convert.FromBase64String(clientConfig.Key);
 
             #region Add Claims
 
@@ -32,11 +32,11 @@ namespace Resturant.Internal.Services.Identity.Extensions
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Issuer = clientConfig.Jwt.Issuer,
-                Audience = clientConfig.Jwt.Audience,
+                Issuer = clientConfig.Issuer,
+                Audience = clientConfig.Audience,
                 IssuedAt = DateTime.UtcNow,
                 NotBefore = DateTime.UtcNow,
-                Expires = DateTime.UtcNow.AddMinutes(clientConfig.Jwt.ExpiryDuration),
+                Expires = DateTime.UtcNow.AddMinutes(clientConfig.ExpiryDuration),
                 Subject = new ClaimsIdentity(claims),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(signingKey),
                     SecurityAlgorithms.HmacSha256Signature)

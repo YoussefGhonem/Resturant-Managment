@@ -21,6 +21,6 @@ public static class DatabaseExtension
     public static async Task SeedDatabase(this IServiceScope scope)
     {
         var appDbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-        DataSeedingIntilization.SeedDataAsync(appDbContext, scope.ServiceProvider);
+        await DataSeedingIntilization.SeedDataAsync(appDbContext, scope.ServiceProvider);
     }
 }

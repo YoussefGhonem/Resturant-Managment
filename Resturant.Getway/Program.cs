@@ -1,5 +1,6 @@
 using Autofac;
 using Microsoft.Extensions.Options;
+using Resturant.Email.SendGrid;
 using Resturant.Getway.Extensions;
 using Resturant.Internal.Services;
 using Resturant.Public.Services;
@@ -16,10 +17,12 @@ builder.Services.AddSwagger();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddHttpContextAccessor();
-
 builder.Services.AddPublicServicesApplication();
 builder.Services.AddInternalServicesApplication();
+#endregion
 
+#region Email
+builder.Services.AddSendGrid(builder.Configuration);
 #endregion
 
 var app = builder.Build();

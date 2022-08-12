@@ -211,28 +211,18 @@ namespace Resturant.Data.Migrations
 
             modelBuilder.Entity("Resturant.Data.DbModels.SecuritySchema.ApplicationUserRole", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("RoleId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("RoleId1")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
+                    b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
-
-                    b.HasIndex("RoleId1");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("UserRoles", "Security");
                 });
@@ -291,15 +281,9 @@ namespace Resturant.Data.Migrations
 
             modelBuilder.Entity("Resturant.Data.DbModels.SecuritySchema.ApplicationUserRole", b =>
                 {
-                    b.HasOne("Resturant.Data.DbModels.SecuritySchema.ApplicationRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("Resturant.Data.DbModels.SecuritySchema.ApplicationRole", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId1")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -328,6 +312,8 @@ namespace Resturant.Data.Migrations
             modelBuilder.Entity("Resturant.Data.DbModels.SecuritySchema.ApplicationRole", b =>
                 {
                     b.Navigation("RoleClaims");
+
+                    b.Navigation("UserRoles");
                 });
 
             modelBuilder.Entity("Resturant.Data.DbModels.SecuritySchema.ApplicationUser", b =>

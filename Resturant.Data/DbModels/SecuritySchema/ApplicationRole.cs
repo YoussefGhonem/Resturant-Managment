@@ -6,6 +6,7 @@ namespace Resturant.Data.DbModels.SecuritySchema
     {
         public string DisplayName { get; set; }
         public virtual ICollection<ApplicationRoleClaim> RoleClaims { get; set; }
+        public virtual ICollection<ApplicationUserRole> UserRoles { get; set; }
 
     }
 }
