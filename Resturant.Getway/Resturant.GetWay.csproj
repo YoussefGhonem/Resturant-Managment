@@ -20,7 +20,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Resturant.Data\Resturant.Data.csproj" />
-		<ProjectReference Include="..\Resturant.Internal.Services\Resturant.Internal.Services.csproj" />
+		<ProjectReference Include="..\Resturant.Internal.Services\Resturant.Services.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -15,13 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Internal.Web", "R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Public.Web", "Resturant.Public.Web\Resturant.Public.Web.csproj", "{3B0B75CB-7599-4947-B137-2E5A08EF4352}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Internal.Services", "Resturant.Internal.Services\Resturant.Internal.Services.csproj", "{F6468FF3-BE6C-46E3-83F8-BF119727C35E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resturant.Email", "Resturant.Email", "{302E834B-F7CB-48E4-A0FD-551C68135620}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Email", "Resturant.Email\Resturant.Email.csproj", "{52019D0E-5EE0-4467-AA2E-B773AA26A3A9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Email.SendGrid", "Resturant.Email.SendGrid\Resturant.Email.SendGrid.csproj", "{16D9F51F-E7E7-480F-9FAF-E748C0893572}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resturant.Services", "Resturant.Services\Resturant.Services.csproj", "{5E46E318-D0CD-4BB5-B251-40AE47EA1411}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +53,6 @@ Global
 		{3B0B75CB-7599-4947-B137-2E5A08EF4352}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B0B75CB-7599-4947-B137-2E5A08EF4352}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B0B75CB-7599-4947-B137-2E5A08EF4352}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6468FF3-BE6C-46E3-83F8-BF119727C35E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6468FF3-BE6C-46E3-83F8-BF119727C35E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6468FF3-BE6C-46E3-83F8-BF119727C35E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6468FF3-BE6C-46E3-83F8-BF119727C35E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{52019D0E-5EE0-4467-AA2E-B773AA26A3A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{52019D0E-5EE0-4467-AA2E-B773AA26A3A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52019D0E-5EE0-4467-AA2E-B773AA26A3A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -65,6 +61,10 @@ Global
 		{16D9F51F-E7E7-480F-9FAF-E748C0893572}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16D9F51F-E7E7-480F-9FAF-E748C0893572}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16D9F51F-E7E7-480F-9FAF-E748C0893572}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E46E318-D0CD-4BB5-B251-40AE47EA1411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E46E318-D0CD-4BB5-B251-40AE47EA1411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E46E318-D0CD-4BB5-B251-40AE47EA1411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E46E318-D0CD-4BB5-B251-40AE47EA1411}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
