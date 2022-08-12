@@ -1,4 +1,3 @@
-using Autofac;
 using Microsoft.Extensions.Options;
 using Resturant.Email.SendGrid;
 using Resturant.Getway.Extensions;

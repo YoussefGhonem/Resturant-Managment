@@ -1,5 +1,4 @@
-﻿using Autofac;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Resturant.Public.Services
 {
