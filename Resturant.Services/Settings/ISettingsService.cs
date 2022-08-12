@@ -6,6 +6,7 @@ namespace Resturant.Internal.Services.Press
 {
     public interface ISettingsService
     {
+        Task<SettingsDetailsDto> SettingsDetails(string serverRootPath);
         Task<IResponseDTO> UpdateAboutUsSettings(UpdateSettingsDto options);
         Task<IResponseDTO> UpdatePrivateDining(UpdateSettingsDto options);
     }
