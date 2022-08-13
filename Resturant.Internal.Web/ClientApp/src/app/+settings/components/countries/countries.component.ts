@@ -1,8 +1,8 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { SettingsController } from "app/+settings/controllers/SettingsController";
+import { CountriesController } from "app/+settings/controllers/CountriesController";
 import { BaseComponent } from "@shared/base/base.component";
 import { debounceTime, takeUntil } from "rxjs/operators";
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, UntypedFormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-countries',
@@ -22,8 +22,8 @@ export class CountriesComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.breadCrumbItems = [
-      {label: 'Application Settings'},
-      {label: 'Countries List', active: true}
+      { label: 'Application Settings' },
+      { label: 'Countries List', active: true }
     ];
     this.initSearchForm();
     this.loadCountries();
@@ -40,15 +40,14 @@ export class CountriesComponent extends BaseComponent implements OnInit {
     });
 
     this.form.valueChanges
-        .pipe(debounceTime(500))
-        .subscribe(res => {
-          this.form?.controls['pageNumber'].patchValue(1, {emitEvent: false});
-          this.loadCountries();
-        });
+      .pipe(debounceTime(500))
+      .subscribe(res => {
+        this.form?.controls['pageNumber'].patchValue(1, { emitEvent: false });
+        this.loadCountries();
+      });
   }
-
   pageChange(pageNumber: number) {
-    this.form.controls['pageNumber'].patchValue(pageNumber, {emitEvent: false});
+    this.form.controls['pageNumber'].patchValue(pageNumber, { emitEvent: false });
     this.loadCountries();
   }
 
@@ -56,11 +55,11 @@ export class CountriesComponent extends BaseComponent implements OnInit {
     let filters = this.form.getRawValue();
     console.log("filters", filters);
 
-    this.httpService.GET(SettingsController.Countries, filters)
-        .pipe(takeUntil(this.ngUnsubscribe))
-        .subscribe(res => {
-          this.countries = res?.data;
-          this.total = res?.total;
-        });
+    this.httpService.GET(CountriesController.Countries, filters)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(res => {
+        this.countries = res?.data;
+        this.total = res?.total;
+      });
   }
 }

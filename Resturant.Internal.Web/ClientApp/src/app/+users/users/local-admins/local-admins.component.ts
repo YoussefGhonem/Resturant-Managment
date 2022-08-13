@@ -1,10 +1,9 @@
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { takeUntil, debounceTime } from 'rxjs/operators';
 import { Component, Injector, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from '@shared/base/base.component';
 import { UsersController } from 'app/+users/controllers/UsersController';
-
 @Component({
   selector: 'local-admin-list',
   templateUrl: './local-admins.component.html',
@@ -59,7 +58,7 @@ export class LocalAdminsComponent extends BaseComponent implements OnInit {
     let filters = this.form.getRawValue();
     console.log("filters", filters);
 
-    this.httpService.GET(UsersController.LocalAdmins, filters)
+    this.httpService.GET(UsersController.LocalAdmins, filters, true)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(res => {
         this.localAdmins = res?.data;

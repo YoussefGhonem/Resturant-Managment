@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { featuresModel } from './features.model';
+import {featuresModel} from './features.model';
 import { featuresData } from './data';
 
 @Component({
@@ -16,20 +16,19 @@ export class FeaturesComponent implements OnInit {
 
   featuresData!: featuresModel[];
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
     /**
      * fetches data
      */
-    this._fetchData();
+     this._fetchData();
   }
 
   /**
-   * User grid data fetches
-   */
-  private _fetchData() {
+  * User grid data fetches
+  */
+   private _fetchData() {
     this.featuresData = featuresData;
   }
 

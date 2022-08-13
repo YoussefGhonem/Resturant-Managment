@@ -11,30 +11,29 @@ import { Component, OnInit } from '@angular/core';
  */
 export class MarketPlaceComponent implements OnInit {
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
     /**
      * fetches data
      */
-    this.filterredImages = this.list;
+     this.filterredImages = this.list;
   }
 
   /**
    * Portfolio Modern Data
    */
-  filterredImages: { image: string; like?: string; title: string; sub_title: string; highest: string; eth: string; category: string; }[] | undefined;
-  galleryFilter = 'allItems';
-  list = [{
-    image: 'assets/images/nft/img-03.jpg',
-    like: '19.29',
-    title: "Creative Filtered Portrait",
-    sub_title: "Photography",
-    highest: '75.3',
-    eth: '67.36',
-    category: 'artWork'
-  },
+   filterredImages: { image: string; like?: string; title: string; sub_title: string; highest: string; eth: string; category: string;}[] | undefined;
+   galleryFilter = 'allItems';
+   list = [{
+      image: 'assets/images/nft/img-03.jpg',
+      like: '19.29',
+      title: "Creative Filtered Portrait",
+      sub_title: "Photography",
+      highest: '75.3',
+      eth: '67.36',
+      category: 'artWork'
+    },
     {
       image: 'assets/images/nft/img-02.jpg',
       like: '23.63',
@@ -80,12 +79,12 @@ export class MarketPlaceComponent implements OnInit {
       eth: '34.81',
       category: 'artWork'
     },
-  ];
+   ];
 
 
   /***
-   * Active all category selected
-   */
+  * Active all category selected
+  */
   activeCategory(category: string) {
     this.galleryFilter = category;
     if (this.galleryFilter === 'allItems') {

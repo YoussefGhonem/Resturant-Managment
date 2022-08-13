@@ -7,8 +7,7 @@ const USER_KEY = 'currentUser';
   providedIn: 'root'
 })
 export class TokenStorageService {
-  constructor() {
-  }
+  constructor() { }
 
   signOut(): void {
     window.sessionStorage.clear();
@@ -29,7 +28,7 @@ export class TokenStorageService {
   }
 
   public getUser(): any {
-    const user = window.localStorage.getItem(USER_KEY);
+    const user = window.localStorage.getItem(USER_KEY);    
     if (user) {
       return JSON.parse(user);
     }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AnnualPlanModel, MonthlyPlanModel } from './plan.module';
-import { AnnualPlan, MonthlyPlan } from './data';
+import { MonthlyPlanModel, AnnualPlanModel } from './plan.module';
+import { MonthlyPlan, AnnualPlan } from './data';
 
 @Component({
   selector: 'app-plan',
@@ -18,19 +18,18 @@ export class PlanComponent implements OnInit {
   MonthlyPlan!: MonthlyPlanModel[];
   AnnualPlan!: AnnualPlanModel[];
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
     // Chat Data Get Function
     this._fetchData();
-    document.querySelectorAll(".annual").forEach((item) => {
-      item.setAttribute('style', 'display:none')
+    document.querySelectorAll(".annual").forEach((item)=>{
+      item.setAttribute('style','display:none')
     })
   }
 
-  // Chat Data Fetch
-  private _fetchData() {
+   // Chat Data Fetch
+   private _fetchData() {
     this.MonthlyPlan = MonthlyPlan;
     this.AnnualPlan = AnnualPlan;
   }
@@ -39,28 +38,30 @@ export class PlanComponent implements OnInit {
    * Open modal
    * @param content modal content
    */
-
-  check() {
+   
+   check() {
     var checkBox = document.getElementById("plan-switch");
     var month = document.querySelectorAll(".month");
     var annual = document.querySelectorAll(".annual");
 
-
-    annual.forEach((item) => {
-      if (item.getAttribute('style') == 'display:none') {
-        item.setAttribute('style', 'display:block')
-      } else {
-        item.setAttribute('style', 'display:none')
+    
+    annual.forEach((item)=>{
+      if(item.getAttribute('style')=='display:none')
+      {
+        item.setAttribute('style','display:block')
+      }else{
+        item.setAttribute('style','display:none')
       }
     })
-    month.forEach((item) => {
-      if (item.getAttribute('style') == 'display:none') {
-        item.setAttribute('style', 'display:block')
-      } else {
-        item.setAttribute('style', 'display:none')
+    month.forEach((item)=>{
+      if(item.getAttribute('style')=='display:none')
+      {
+        item.setAttribute('style','display:block')
+      }else{
+        item.setAttribute('style','display:none')
       }
     });
-
+    
   }
 
 }

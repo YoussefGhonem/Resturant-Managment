@@ -1,16 +1,6 @@
-import { Component, EventEmitter, OnInit, Output, TemplateRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core';
 import { EventService } from '../../core/services/event.service';
-import {
-  LAYOUT_MODE,
-  LAYOUT_POSITION,
-  LAYOUT_VERTICAL,
-  LAYOUT_WIDTH,
-  SIDEBAR_COLOR,
-  SIDEBAR_IMAGE,
-  SIDEBAR_SIZE,
-  SIDEBAR_VIEW,
-  TOPBAR
-} from '../layout.model';
+import { LAYOUT_VERTICAL,LAYOUT_MODE, LAYOUT_WIDTH, LAYOUT_POSITION, TOPBAR, SIDEBAR_SIZE, SIDEBAR_VIEW, SIDEBAR_COLOR, SIDEBAR_IMAGE } from '../layout.model';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -32,14 +22,13 @@ export class RightsidebarComponent implements OnInit {
   size: string | undefined;
   sidebarView: string | undefined;
   sidebar: string | undefined;
-  attribute: any;
-  sidebarImage: any;
-  grd: any;
+  attribute : any;
+  sidebarImage : any;
+  grd : any;
 
   @Output() settingsButtonClicked = new EventEmitter();
 
-  constructor(private eventService: EventService, private offcanvasService: NgbOffcanvas) {
-  }
+  constructor(private eventService: EventService, private offcanvasService: NgbOffcanvas) { }
 
   ngOnInit(): void {
     this.layout = LAYOUT_VERTICAL;
@@ -55,7 +44,7 @@ export class RightsidebarComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    setTimeout(() => {
+    setTimeout(() => {     
 
       this.attribute = '';
       this.attribute = document.documentElement.getAttribute('data-layout');
@@ -76,7 +65,7 @@ export class RightsidebarComponent implements OnInit {
         if (Twocolumn != null) {
           Twocolumn.setAttribute('checked', 'true');
         }
-      }
+      }      
     }, 0);
   }
 
@@ -84,12 +73,12 @@ export class RightsidebarComponent implements OnInit {
    * Change the layout onclick
    * @param layout Change the layout
    */
-  changeLayout(layout: string) {
+   changeLayout(layout: string) {
     this.eventService.broadcast('changeLayout', layout);
   }
 
   // Add Active Class
-  addActive(grdSidebar: any) {
+  addActive(grdSidebar:any){
     this.grd = grdSidebar;
     document.documentElement.setAttribute('data-sidebar', grdSidebar)
     document.getElementById('collapseBgGradient')?.classList.toggle('show');
@@ -97,7 +86,7 @@ export class RightsidebarComponent implements OnInit {
   }
 
   // Remove Active Class
-  removeActive() {
+  removeActive(){
     this.grd = '';
     document.getElementById('collapseBgGradient1')?.classList.remove('active');
     document.getElementById('collapseBgGradient')?.classList.remove('show');
@@ -111,7 +100,7 @@ export class RightsidebarComponent implements OnInit {
 
   //  Filter Offcanvas Set
   openEnd(content: TemplateRef<any>) {
-    this.offcanvasService.open(content, {position: 'end'});
+    this.offcanvasService.open(content, { position: 'end' });
   }
-
+  
 }

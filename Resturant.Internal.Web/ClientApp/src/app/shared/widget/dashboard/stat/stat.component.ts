@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-stat',
@@ -14,8 +14,7 @@ export class StatComponent implements OnInit {
   @Input() profit: string | undefined;
 
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

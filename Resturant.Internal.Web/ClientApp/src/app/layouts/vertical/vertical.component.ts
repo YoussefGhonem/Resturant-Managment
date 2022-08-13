@@ -8,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class VerticalComponent implements OnInit {
 
   isCondensed = false;
-
-  constructor() {
-  }
+  
+  constructor() { }
 
   ngOnInit(): void {
     document.documentElement.setAttribute('data-layout', 'vertical');
@@ -22,33 +21,35 @@ export class VerticalComponent implements OnInit {
     document.documentElement.setAttribute('data-layout-position', 'fixed');
     document.documentElement.setAttribute('data-sidebar-image', 'none');
 
-    window.addEventListener('resize', function () {
+    window.addEventListener('resize' , function(){
       if (document.documentElement.clientWidth <= 767) {
         document.documentElement.setAttribute('data-sidebar-size', '');
-      } else if (document.documentElement.clientWidth <= 1024) {
+      }
+      else if (document.documentElement.clientWidth <= 1024) {
         document.documentElement.setAttribute('data-sidebar-size', 'sm');
-      } else if (document.documentElement.clientWidth >= 1024) {
+      }
+      else if (document.documentElement.clientWidth >= 1024) {      
         document.documentElement.setAttribute('data-sidebar-size', 'lg');
       }
     })
-
+    
   }
 
   /**
    * On mobile toggle button clicked
    */
-  onToggleMobileMenu() {
-    const currentSIdebarSize = document.documentElement.getAttribute("data-sidebar-size");
-    if (document.documentElement.clientWidth >= 767) {
-      if (currentSIdebarSize == null) {
-        (document.documentElement.getAttribute('data-sidebar-size') == null || document.documentElement.getAttribute('data-sidebar-size') == "lg") ? document.documentElement.setAttribute('data-sidebar-size', 'sm') : document.documentElement.setAttribute('data-sidebar-size', 'lg')
-      } else if (currentSIdebarSize == "md") {
-        (document.documentElement.getAttribute('data-sidebar-size') == "md") ? document.documentElement.setAttribute('data-sidebar-size', 'sm') : document.documentElement.setAttribute('data-sidebar-size', 'md')
-      } else {
-        (document.documentElement.getAttribute('data-sidebar-size') == "sm") ? document.documentElement.setAttribute('data-sidebar-size', 'lg') : document.documentElement.setAttribute('data-sidebar-size', 'sm')
+   onToggleMobileMenu() {
+     const currentSIdebarSize = document.documentElement.getAttribute("data-sidebar-size");
+     if (document.documentElement.clientWidth >= 767) {
+       if (currentSIdebarSize == null) {
+         (document.documentElement.getAttribute('data-sidebar-size') == null || document.documentElement.getAttribute('data-sidebar-size') == "lg") ? document.documentElement.setAttribute('data-sidebar-size', 'sm') : document.documentElement.setAttribute('data-sidebar-size', 'lg')
+        } else if (currentSIdebarSize == "md") {
+          (document.documentElement.getAttribute('data-sidebar-size') == "md") ? document.documentElement.setAttribute('data-sidebar-size', 'sm') : document.documentElement.setAttribute('data-sidebar-size', 'md')
+        } else {
+          (document.documentElement.getAttribute('data-sidebar-size') == "sm") ? document.documentElement.setAttribute('data-sidebar-size', 'lg') : document.documentElement.setAttribute('data-sidebar-size', 'sm')
+        }
       }
-    }
-
+      
     if (document.documentElement.clientWidth <= 767) {
       document.body.classList.toggle('vertical-sidebar-enable');
     }
@@ -58,12 +59,12 @@ export class VerticalComponent implements OnInit {
   /**
    * on settings button clicked from topbar
    */
-  onSettingsButtonClicked() {
+   onSettingsButtonClicked() {
     document.body.classList.toggle('right-bar-enabled');
     const rightBar = document.getElementById('theme-settings-offcanvas');
-    if (rightBar != null) {
+    if(rightBar != null){
       rightBar.classList.toggle('show');
-      rightBar.setAttribute('style', "visibility: visible;");
+      rightBar.setAttribute('style',"visibility: visible;");
 
     }
   }

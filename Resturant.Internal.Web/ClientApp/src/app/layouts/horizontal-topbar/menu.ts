@@ -77,7 +77,7 @@ export const MENU: MenuItem[] = [
             link: '/mailbox',
             parentId: 11
           },
-          {
+          { 
             id: 14,
             label: 'MENUITEMS.APPS.LIST.MAILTEMPLATES',
             parentId: 11,
@@ -858,7 +858,7 @@ export const MENU: MenuItem[] = [
     id: 96,
     label: 'MENUITEMS.COMPONENTS.TEXT',
     isTitle: true
-  },
+  },  
   {
     id: 97,
     label: 'HEADER.MORE.TEXT',
@@ -920,8 +920,7 @@ export const MENU: MenuItem[] = [
           link: '/advance-ui/scrollspy',
           parentId: 121
         }
-      ]
-    },
+      ]},
       {
         id: 131,
         label: 'MENUITEMS.WIDGETS.TEXT',

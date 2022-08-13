@@ -5,7 +5,7 @@ export interface featuredModel {
   title: string;
   category: string;
   highest: string;
-  price?: any;
+  price?:any;
 }
 
 // Recent Model
@@ -16,7 +16,7 @@ export interface recentModel {
   category: string;
   icon: string;
   volume: string;
-  hours?: any;
+  hours?:any;
   creators: string;
   items: string;
 }
@@ -36,3 +36,4 @@ export interface popularModel {
   author: string;
   price: string;
 }
+  

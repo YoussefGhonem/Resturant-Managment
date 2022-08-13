@@ -24,7 +24,7 @@ export class HttpService {
   }
 
   // GET request
-  GET(url: string, queryParameters?: object, isIdentity: boolean = false, showSpinner: boolean = true,): Observable<any> {
+  GET(url: string, queryParameters?: object, showSpinner: boolean = true): Observable<any> {
 
     if (showSpinner) this.spinner.show();
 
@@ -38,10 +38,8 @@ export class HttpService {
   }
 
   // POST request
-  POST(url: string, body: any = {}, queryParameters?: object, isIdentity: boolean = false): Observable<any> {
-
+  POST(url: string, body: any = {}, queryParameters?: object): Observable<any> {
     this.spinner.show();
-
     const httpParams: HttpParams = this.parameterizedUrl(queryParameters);
     return this.http.post(this.getFullUrl(url), body, { observe: 'response', params: httpParams })
       .pipe(
@@ -51,10 +49,8 @@ export class HttpService {
   }
 
   // PUT request
-  PUT(url: string, body: any = {}, queryParameters?: object, isIdentity: boolean = false): Observable<any> {
-
+  PUT(url: string, body: any = {}, queryParameters?: object): Observable<any> {
     this.spinner.show();
-
     const httpParams: HttpParams = this.parameterizedUrl(queryParameters);
     return this.http.put(this.getFullUrl(url), body, { observe: 'response', params: httpParams })
       .pipe(
@@ -66,9 +62,7 @@ export class HttpService {
 
   // PATCH request
   PATCH(url: string, body: any = {}, queryParameters?: object): Observable<any> {
-
     this.spinner.show();
-
     const httpParams: HttpParams = this.parameterizedUrl(queryParameters);
 
     return this.http.patch(this.getFullUrl(url), body, { observe: 'response', params: httpParams })
@@ -128,7 +122,9 @@ export class HttpService {
   //#region Helper Methods
 
   getFullUrl(uri: string): string {
+
     return `${environment.config?.apiConfig?.apiUrl}/api/${uri}`;
+
   }
 
   objectToFormData(obj: any, rootName?: any, ignoreList?: any) {

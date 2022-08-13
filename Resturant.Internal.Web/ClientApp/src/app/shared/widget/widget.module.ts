@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { NgbDropdownModule, NgbProgressbarModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule, NgbProgressbarModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { CountToModule } from 'angular-count-to';
 // Feather Icon
 import { FeatherModule } from 'angular-feather';
@@ -63,5 +63,4 @@ import { NftStatComponent } from './nft/nft-stat/nft-stat.component';
   exports: [BestSellingComponent, TopSellingComponent, RecentOrdersComponent, TopPagesComponent, StatComponent, AnalaticsStatComponent, CrmStatComponent, DealsStatusComponent, UpcomingActivitiesComponent, ClosingDealsComponent, CryptoStatComponent, CurrenciesComponent, TopPerformersComponent, NewsFeedComponent, ProjectsStatComponent, ActiveProjectComponent, MyTaskComponent, TeamMembersComponent,
     NftStatComponent]
 })
-export class WidgetModule {
-}
+export class WidgetModule { }

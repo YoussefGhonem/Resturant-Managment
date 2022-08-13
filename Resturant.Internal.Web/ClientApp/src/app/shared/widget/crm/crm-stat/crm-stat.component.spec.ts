@@ -8,9 +8,9 @@ describe('CrmStatComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CrmStatComponent]
+      declarations: [ CrmStatComponent ]
     })
-        .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

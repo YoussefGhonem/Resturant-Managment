@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-crypto-stat',
@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 
 /**
- * Crypto Stat Component
+ * Crypto Stat Component 
  */
 export class CryptoStatComponent implements OnInit {
 
@@ -17,8 +17,7 @@ export class CryptoStatComponent implements OnInit {
   @Input() persantage: string | undefined;
   @Input() profit: string | undefined;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

@@ -1,73 +1,68 @@
 <!-- Order Create Model -->
 <ng-container #content role="document">
-  <div class="modal-header bg-light p-3">
-    <h5 class="modal-title" id="addModal" *ngIf="role==userRolesEnum.Vendor"> New Vendor</h5>
-    <h5 class="modal-title" id="addModal" *ngIf="role==userRolesEnum.LocalAdmin"> New Local Admin</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"
+    <div class="modal-header bg-light p-3">
+        <h5 class="modal-title" id="addModal">Create New User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"
             (click)="modalService.close()"></button>
-  </div>
-  <form (ngSubmit)="submit()" [formGroup]="form">
-    <div class="modal-body">
-      <div class="row gy-4 mb-3">
-        <div class="col-md-6 form-group">
-          <label for="amount-field" class="form-label">First Name<small style="color : rgb(179, 62, 62);">
-            &nbsp;&nbsp;*</small></label>
-          <input [ngClass]="{ 'is-invalid': isInvalid('firstName') }" type="text" id="customername-field"
-                 class="form-control" placeholder="Enter First Name" formControlName="firstName"/>
-          <arv-validation-messages for="firstName">
-          </arv-validation-messages>
-        </div>
-        <div class="col-md-6 form-group">
-          <label for="Last-field" class="form-label">Last Name<small style="color : rgb(179, 62, 62);">
-            &nbsp;&nbsp;*</small>
-          </label>
-          <input [ngClass]="{ 'is-invalid': isInvalid('lastName') }" type="text" id="customername-field"
-                 class="form-control" placeholder="Enter Last Name" formControlName="lastName"/>
-          <arv-validation-messages for="lastName">
-          </arv-validation-messages>
-        </div>
-        <div class="col-md-6 form-group">
-          <label for="amount-field" class="form-label">Phone Number<small style="color : rgb(179, 62, 62);">
-            &nbsp;&nbsp;*</small></label>
-          <input [ngClass]="{ 'is-invalid': isInvalid('phoneNumber') }" type="text" class="form-control"
-                 id="cleave-phone" placeholder="(xxx)xxx-xxxx" mask="(000)000-0000"
-                 formControlName="phoneNumber">
-          <arv-validation-messages for="phoneNumber">
-          </arv-validation-messages>
+    </div>
+    <form (ngSubmit)="submit()" [formGroup]="form">
+        <div class="modal-body">
+            <div class="row gy-4 mb-3">
+                <div class="col-md-6">
+                    <div>
+                        <label for="amount-field" class="form-label">First Name</label>
+                        <input type="text" id="customername-field" class="form-control" placeholder="Enter First Name"
+                            required formControlName="firstName" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label for="Last-field" class="form-label">Last Name
+                        </label>
+                        <input type="text" id="customername-field" class="form-control" placeholder="Enter Last Name"
+                            required formControlName="lastName" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label for="amount-field" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="cleave-phone" placeholder="(xxx)xxx-xxxx"
+                            mask="(000)000-0000" formControlName="phone">
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label for="Email-field" class="form-label">Email
+                        </label>
+                        <input type="text" id="customername-field" class="form-control" placeholder="Enter Email"
+                            required formControlName="email" />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div>
+                        <label for="Role-field" class="form-label">Role </label>
+                        <select class="form-control" data-trigger name="Role-method" id="payment-field"
+                            formControlName="role">
+                            <option value="" selected hidden>Select Role</option>
+                            <option [value]="userRolesEnum.Vendor">Vendor</option>
+                            <option [value]="userRolesEnum.CommitteeMember">Committee Member</option>
+                            <option [value]="userRolesEnum.LocalAdmin">Local Admin</option>
+                        </select>
+
+                    </div>
+                </div>
+            </div>
 
         </div>
-        <div class="col-md-6 form-group">
-          <label for="Email-field" class="form-label">Email<small style="color : rgb(179, 62, 62);">
-            &nbsp;&nbsp;*</small>
-          </label>
-          <input [ngClass]="{ 'is-invalid': isInvalid('email') }" type="text" id="customername-field"
-                 class="form-control" placeholder="Enter Email" formControlName="email"/>
-          <arv-validation-messages for="email">
-          </arv-validation-messages>
-        </div>
-      </div>
-      <!-- Info Alert -->
-      <div class="alert alert-info alert-top-border alert-dismissible fade show" role="alert">
-        <i class="ri-airplay-line me-3 align-middle fs-16 text-info"></i><strong>Hint</strong>
-        - When you create new user we will send an email to him to reset his password.
-      </div>
-    </div>
-    <div class="modal-footer">
-      <div class="hstack gap-2 justify-content-end">
-        <button type="button" class="btn btn-light" data-bs-dismiss="modal"
-                (click)="modalService.close()">Close
-        </button>
-        <button [disabled]="form.invalid" type="submit" class="btn btn-success"
-                *ngIf="role==userRolesEnum.Vendor" id="add-btn1">Add
-          Vendor
-        </button>
-        <button [disabled]="form.invalid" type="submit" class="btn btn-success"
-                *ngIf="role==userRolesEnum.LocalAdmin" id="add-btn">Add
-          Local Admin
-        </button>
+        <div class="modal-footer">
+            <div class="hstack gap-2 justify-content-end">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal"
+                    (click)="modalService.close()">Close</button>
+                <button type="submit" class="btn btn-success" id="add-btn">Create User</button>
 
-      </div>
-    </div>
-  </form>
+            </div>
+        </div>
+    </form>
 </ng-container>
 <!--End Modal -->

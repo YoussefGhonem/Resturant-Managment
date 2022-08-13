@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Subject } from "rxjs";
 import { AuthService } from "app/+auth/service";
 
 @Component({
@@ -7,10 +8,9 @@ import { AuthService } from "app/+auth/service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'ticket management';
+  title = 'Resturant Management';
 
-  constructor(private _authService: AuthService) {
-  }
+  constructor(private _authService: AuthService) { }
 
   ngOnDestroy(): void {
 

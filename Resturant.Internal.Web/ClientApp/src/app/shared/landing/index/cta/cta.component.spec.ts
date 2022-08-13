@@ -8,9 +8,9 @@ describe('CtaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CtaComponent]
+      declarations: [ CtaComponent ]
     })
-        .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-top-pages',
@@ -18,8 +18,7 @@ export class TopPagesComponent implements OnInit {
     users?: string;
   }> | undefined;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

@@ -8,9 +8,9 @@ describe('TopCreatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TopCreatorComponent]
+      declarations: [ TopCreatorComponent ]
     })
-        .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

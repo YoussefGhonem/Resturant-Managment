@@ -5,8 +5,8 @@ import { circle, latLng, tileLayer } from 'leaflet';
 
 import { SwiperOptions } from 'swiper';
 
-import { featuredData, popularData, recentData, statData, topCollectionData } from './data';
-import { featuredModel, popularModel, recentModel, topCollectionModel } from './nft.model';
+import {statData, featuredData, recentData, topCollectionData, popularData} from './data';
+import {featuredModel, recentModel, topCollectionModel, popularModel} from './nft.model';
 
 @Component({
   selector: 'app-nft',
@@ -22,21 +22,21 @@ export class NftComponent implements OnInit {
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   statData!: any;
-  featuredData!: featuredModel[];
-  recentData!: recentModel[];
-  topCollectionData!: topCollectionModel[];
-  popularData!: popularModel[];
+  featuredData!:featuredModel[];
+  recentData!:recentModel[];
+  topCollectionData!:topCollectionModel[];
+  popularData!:popularModel[];
 
   MarketplaceChart: any;
   popularityChart: any;
   minichart1: any;
   minichart2: any;
-  minichart3: any;
-  minichart4: any;
-  minichart5: any;
-  minichart6: any;
-  minichart7: any;
-  minichart8: any;
+  minichart3:any;
+  minichart4:any;
+  minichart5:any;
+  minichart6:any;
+  minichart7:any;
+  minichart8:any;
 
   // set the current year
   year: number = new Date().getFullYear();
@@ -47,22 +47,21 @@ export class NftComponent implements OnInit {
   _minutes?: number;
   _seconds?: number;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
     /**
      * BreadCrumb
      */
-    this.breadCrumbItems = [
-      {label: 'Dashboards'},
-      {label: 'NFT Dashboard', active: true}
+     this.breadCrumbItems = [
+      { label: 'Dashboards' },
+      { label: 'NFT Dashboard', active: true }
     ];
 
-    /**
+     /**
      * Fetches the data
      */
-    this.fetchData();
+      this.fetchData();
 
     this._marketplaceChart('["--vz-primary","--vz-success", "--vz-gray-300"]');
     this._popularityChart('["--vz-success", "--vz-warning"]');
@@ -76,12 +75,12 @@ export class NftComponent implements OnInit {
      * Count date set
      */
     interval(1000).pipe(map((x) => {
-      this._diff = Date.parse(this._trialEndsAt) - Date.parse(new Date().toString());
+        this._diff = Date.parse(this._trialEndsAt) - Date.parse(new Date().toString());
     })).subscribe((x) => {
-      this._days = this.getDays(this._diff);
-      this._hours = this.getHours(this._diff);
-      this._minutes = this.getMinutes(this._diff);
-      this._seconds = this.getSeconds(this._diff);
+        this._days = this.getDays(this._diff);
+        this._hours = this.getHours(this._diff);
+        this._minutes = this.getMinutes(this._diff);
+        this._seconds = this.getSeconds(this._diff);
     });
 
   }
@@ -89,7 +88,7 @@ export class NftComponent implements OnInit {
   /**
    * Day Set
    */
-  getDays(t: number) {
+   getDays(t: number) {
     return Math.floor(t / (1000 * 60 * 60 * 24));
   }
 
@@ -115,34 +114,34 @@ export class NftComponent implements OnInit {
   }
 
   // Chart Colors Set
-  private getChartColorsArray(colors: any) {
+  private getChartColorsArray(colors:any) {
     colors = JSON.parse(colors);
-    return colors.map(function (value: any) {
+    return colors.map(function (value:any) {
       var newValue = value.replace(" ", "");
       if (newValue.indexOf(",") === -1) {
         var color = getComputedStyle(document.documentElement).getPropertyValue(newValue);
-        if (color) {
-          color = color.replace(" ", "");
-          return color;
-        } else return newValue;
-        ;
-      } else {
-        var val = value.split(',');
-        if (val.length == 2) {
-          var rgbaColor = getComputedStyle(document.documentElement).getPropertyValue(val[0]);
-          rgbaColor = "rgba(" + rgbaColor + "," + val[1] + ")";
-          return rgbaColor;
+            if (color) {
+            color = color.replace(" ", "");
+            return color;
+            }
+            else return newValue;;
         } else {
-          return newValue;
+            var val = value.split(',');
+            if (val.length == 2) {
+                var rgbaColor = getComputedStyle(document.documentElement).getPropertyValue(val[0]);
+                rgbaColor = "rgba(" + rgbaColor + "," + val[1] + ")";
+                return rgbaColor;
+            } else {
+                return newValue;
+            }
         }
-      }
     });
   }
 
   /**
    * Fetches the data
    */
-  private fetchData() {
+   private fetchData() {
     this.statData = statData;
     this.featuredData = featuredData;
     this.recentData = recentData;
@@ -153,17 +152,17 @@ export class NftComponent implements OnInit {
   /**
    * Swiper Responsive setting
    */
-  public Responsive: SwiperOptions = {
+   public Responsive: SwiperOptions = {
     slidesPerView: 1,
     loop: true,
     navigation: true,
     spaceBetween: 25,
-    breakpoints: {
-      768: {
-        slidesPerView: 2,
+    breakpoints:{
+      768:{
+        slidesPerView: 2, 
       },
-      1200: {
-        slidesPerView: 3,
+      1200:{
+        slidesPerView: 3, 
       }
     }
   };
@@ -171,436 +170,436 @@ export class NftComponent implements OnInit {
   /**
    * Top CollectionSwiper Responsive setting
    */
-  public collection: SwiperOptions = {
+   public collection: SwiperOptions = {
     slidesPerView: 1,
     loop: true,
     spaceBetween: 10
   };
 
-  /**
-   * Market Place Chart
-   */
-  private _marketplaceChart(colors: any) {
-    colors = this.getChartColorsArray(colors);
-    this.MarketplaceChart = {
-      series: [{
-        name: "Artwork",
-        data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-      },
-        {
-          name: "Auction",
-          data: [40, 120, 83, 45, 31, 74, 35, 34, 78]
-        },
-        {
-          name: "Creators",
-          data: [95, 35, 20, 130, 64, 22, 43, 45, 31]
-        }],
-      chart: {
+    /**
+    * Market Place Chart
+    */
+    private _marketplaceChart(colors:any) {
+  colors = this.getChartColorsArray(colors);
+  this.MarketplaceChart = {
+    series: [{
+      name: "Artwork",
+      data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+  },
+  {
+      name: "Auction",
+      data: [40, 120, 83, 45, 31, 74, 35, 34, 78]
+  },
+  {
+      name: "Creators",
+      data: [95, 35, 20, 130, 64, 22, 43, 45, 31]
+    }],
+    chart: {
         height: 350,
         type: 'line',
         zoom: {
-          enabled: false
+            enabled: false
         },
         toolbar: {
-          show: false
+            show: false
         }
-      },
-      dataLabels: {
+    },
+    dataLabels: {
         enabled: false
-      },
-      stroke: {
+    },
+    stroke: {
         curve: 'smooth',
         width: 3
-      },
-      colors: colors,
-      xaxis: {
+    },
+    colors: colors,
+    xaxis: {
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-      }
-    };
-  }
+    }
+  };
+    }
 
-  /**
-   * Market Place Chart
-   */
-  private _popularityChart(colors: any) {
-    colors = this.getChartColorsArray(colors);
-    this.popularityChart = {
-      series: [{
-        name: 'Like',
-        data: [12.45, 16.2, 8.9, 11.42, 12.6, 18.1, 18.2, 14.16]
-      }, {
-        name: 'Share',
-        data: [-11.45, -15.42, -7.9, -12.42, -12.6, -18.1, -18.2, -14.16]
-      }],
-      chart: {
-        type: 'bar',
-        height: 260,
-        stacked: true,
-        toolbar: {
-          show: false
+    /**
+    * Market Place Chart
+    */
+    private _popularityChart(colors:any) {
+        colors = this.getChartColorsArray(colors);
+        this.popularityChart = {
+        series: [{
+            name: 'Like',
+            data: [12.45, 16.2, 8.9, 11.42, 12.6, 18.1, 18.2, 14.16]
+        }, {
+            name: 'Share',
+            data: [-11.45, -15.42, -7.9, -12.42, -12.6, -18.1, -18.2, -14.16]
+        }],
+        chart: {
+            type: 'bar',
+            height: 260,
+            stacked: true,
+            toolbar: {
+                show: false
+            },
         },
-      },
-      plotOptions: {
-        bar: {
-          columnWidth: '20%',
-          borderRadius: [4, 4]
+        plotOptions: {
+            bar: {
+                columnWidth: '20%',
+                borderRadius: [4, 4]
+            },
         },
-      },
-      colors: colors,
-      fill: {
-        opacity: 1
-      },
-      dataLabels: {
-        enabled: false,
-        textAnchor: 'top',
-      },
-      yaxis: {
-        labels: {
-          show: false,
-          formatter: function (y: any) {
-            return y.toFixed(0) + "%";
-          }
-        }
-      },
-      legend: {
-        position: 'top',
-        horizontalAlign: 'right',
-      },
-      xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-        labels: {
-          rotate: -90
-        }
-      }
-    };
-  }
-
-  /**
-   * Danger Mini Chart
-   */
-  private _minichart1Chart(colors: any) {
-    colors = this.getChartColorsArray(colors);
-    this.minichart1 = {
-      series: [{
-        data: [25, 66, 41, 89, 63, 25, 44, 12]
-      }],
-      chart: {
-        type: 'line',
-        width: 80,
-        height: 30,
-        sparkline: {
-          enabled: true
-        }
-
-      },
-      colors: colors,
-      stroke: {
-        curve: 'smooth',
-        width: 2.3,
-      },
-      tooltip: {
-        fixed: {
-          enabled: false
+        colors: colors,
+        fill: {
+            opacity: 1
         },
-        x: {
-          show: false
-        },
-        y: {
-          title: {
-            formatter: function (seriesName: any) {
-              return ''
+        dataLabels: {
+            enabled: false,
+            textAnchor: 'top',
+        },  
+        yaxis: {
+            labels: {
+                show: false,
+                formatter: function (y:any) {
+                    return y.toFixed(0) + "%";
+                }
             }
-          }
         },
-        marker: {
-          show: false
-        }
-      }
-    };
-
-    // mini chart 2
-    this.minichart2 = {
-      series: [{
-        data: [50, 15, 35, 62, 23, 56, 44, 12]
-      }],
-      chart: {
-        type: 'line',
-        width: 80,
-        height: 30,
-        sparkline: {
-          enabled: true
-        }
-
-      },
-      colors: colors,
-      stroke: {
-        curve: 'smooth',
-        width: 2.3,
-      },
-      tooltip: {
-        fixed: {
-          enabled: false
+        legend: {
+            position: 'top',
+            horizontalAlign: 'right',
         },
-        x: {
-          show: false
-        },
-        y: {
-          title: {
-            formatter: function (seriesName: any) {
-              return ''
+        xaxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+            labels: {
+                rotate: -90
             }
-          }
-        },
-        marker: {
-          show: false
         }
-      }
-    };
+        };
+    }
 
-    // mini chart 3
-    this.minichart3 = {
-      series: [{
-        data: [25, 35, 35, 89, 63, 25, 44, 12]
-      }],
-      chart: {
-        type: 'line',
-        width: 80,
-        height: 30,
-        sparkline: {
-          enabled: true
-        }
-
-      },
-      colors: colors,
-      stroke: {
-        curve: 'smooth',
-        width: 2.3,
-      },
-      tooltip: {
-        fixed: {
-          enabled: false
-        },
-        x: {
-          show: false
-        },
-        y: {
-          title: {
-            formatter: function (seriesName: any) {
-              return ''
+    /**
+    * Danger Mini Chart
+    */
+     private _minichart1Chart(colors:any) {
+        colors = this.getChartColorsArray(colors);
+        this.minichart1 = {
+            series: [{
+                data: [25, 66, 41, 89, 63, 25, 44, 12]
+            }],
+            chart: {
+                type: 'line',
+                width: 80,
+                height: 30,
+                sparkline: {
+                    enabled: true
+                }
+    
+            },
+            colors: colors,
+            stroke: {
+                curve: 'smooth',
+                width: 2.3,
+            },
+            tooltip: {
+                fixed: {
+                    enabled: false
+                },
+                x: {
+                    show: false
+                },
+                y: {
+                    title: {
+                        formatter: function (seriesName:any) {
+                            return ''
+                        }
+                    }
+                },
+                marker: {
+                    show: false
+                }
             }
-          }
-        },
-        marker: {
-          show: false
-        }
-      }
-    };
+        };
 
-    // mini chart 6
-    this.minichart6 = {
-      series: [{
-        data: [50, 15, 35, 62, 23, 56, 44, 12]
-      }],
-      chart: {
-        type: 'line',
-        width: 80,
-        height: 30,
-        sparkline: {
-          enabled: true
-        }
-
-      },
-      colors: colors,
-      stroke: {
-        curve: 'smooth',
-        width: 2.3,
-      },
-      tooltip: {
-        fixed: {
-          enabled: false
-        },
-        x: {
-          show: false
-        },
-        y: {
-          title: {
-            formatter: function (seriesName: any) {
-              return ''
+        // mini chart 2
+        this.minichart2 = {
+            series: [{
+                data: [50, 15, 35, 62, 23, 56, 44, 12]
+            }],
+            chart: {
+                type: 'line',
+                width: 80,
+                height: 30,
+                sparkline: {
+                    enabled: true
+                }
+    
+            },
+            colors: colors,
+            stroke: {
+                curve: 'smooth',
+                width: 2.3,
+            },
+            tooltip: {
+                fixed: {
+                    enabled: false
+                },
+                x: {
+                    show: false
+                },
+                y: {
+                    title: {
+                        formatter: function (seriesName:any) {
+                            return ''
+                        }
+                    }
+                },
+                marker: {
+                    show: false
+                }
             }
-          }
-        },
-        marker: {
-          show: false
-        }
-      }
-    };
+        };
 
-    // mini chart 8
-    this.minichart8 = {
-      series: [{
-        data: [45, 53, 24, 89, 63, 60, 36, 50]
-      }],
-      chart: {
-        type: 'line',
-        width: 80,
-        height: 30,
-        sparkline: {
-          enabled: true
-        }
-
-      },
-      colors: colors,
-      stroke: {
-        curve: 'smooth',
-        width: 2.3,
-      },
-      tooltip: {
-        fixed: {
-          enabled: false
-        },
-        x: {
-          show: false
-        },
-        y: {
-          title: {
-            formatter: function (seriesName: any) {
-              return ''
+        // mini chart 3
+        this.minichart3 = {
+            series: [{
+                data: [25, 35, 35, 89, 63, 25, 44, 12]
+            }],
+            chart: {
+                type: 'line',
+                width: 80,
+                height: 30,
+                sparkline: {
+                    enabled: true
+                }
+    
+            },
+            colors: colors,
+            stroke: {
+                curve: 'smooth',
+                width: 2.3,
+            },
+            tooltip: {
+                fixed: {
+                    enabled: false
+                },
+                x: {
+                    show: false
+                },
+                y: {
+                    title: {
+                        formatter: function (seriesName:any) {
+                            return ''
+                        }
+                    }
+                },
+                marker: {
+                    show: false
+                }
             }
-          }
-        },
-        marker: {
-          show: false
-        }
-      }
-    };
-  }
+        };
 
-  /**
-   * Success Mini Chart
-   */
-  private _minichartsuccessChart(colors: any) {
-    colors = this.getChartColorsArray(colors);
-    this.minichart4 = {
-      series: [{
-        data: [50, 15, 20, 34, 23, 56, 65, 41]
-      }],
-      chart: {
-        type: 'line',
-        width: 80,
-        height: 30,
-        sparkline: {
-          enabled: true
-        }
-
-      },
-      colors: colors,
-      stroke: {
-        curve: 'smooth',
-        width: 2.3,
-      },
-      tooltip: {
-        fixed: {
-          enabled: false
-        },
-        x: {
-          show: false
-        },
-        y: {
-          title: {
-            formatter: function (seriesName: any) {
-              return ''
+        // mini chart 6
+        this.minichart6 = {
+            series: [{
+                data: [50, 15, 35, 62, 23, 56, 44, 12]
+            }],
+            chart: {
+                type: 'line',
+                width: 80,
+                height: 30,
+                sparkline: {
+                    enabled: true
+                }
+    
+            },
+            colors: colors,
+            stroke: {
+                curve: 'smooth',
+                width: 2.3,
+            },
+            tooltip: {
+                fixed: {
+                    enabled: false
+                },
+                x: {
+                    show: false
+                },
+                y: {
+                    title: {
+                        formatter: function (seriesName:any) {
+                            return ''
+                        }
+                    }
+                },
+                marker: {
+                    show: false
+                }
             }
-          }
-        },
-        marker: {
-          show: false
-        }
-      }
-    };
+        };
 
-    // mini chart 5
-    this.minichart5 = {
-      series: [{
-        data: [45, 53, 24, 89, 63, 60, 36, 50]
-      }],
-      chart: {
-        type: 'line',
-        width: 80,
-        height: 30,
-        sparkline: {
-          enabled: true
-        }
-
-      },
-      colors: colors,
-      stroke: {
-        curve: 'smooth',
-        width: 2.3,
-      },
-      tooltip: {
-        fixed: {
-          enabled: false
-        },
-        x: {
-          show: false
-        },
-        y: {
-          title: {
-            formatter: function (seriesName: any) {
-              return ''
+        // mini chart 8
+        this.minichart8 = {
+            series: [{
+                data: [45, 53, 24, 89, 63, 60, 36, 50]
+            }],
+            chart: {
+                type: 'line',
+                width: 80,
+                height: 30,
+                sparkline: {
+                    enabled: true
+                }
+    
+            },
+            colors: colors,
+            stroke: {
+                curve: 'smooth',
+                width: 2.3,
+            },
+            tooltip: {
+                fixed: {
+                    enabled: false
+                },
+                x: {
+                    show: false
+                },
+                y: {
+                    title: {
+                        formatter: function (seriesName:any) {
+                            return ''
+                        }
+                    }
+                },
+                marker: {
+                    show: false
+                }
             }
-          }
-        },
-        marker: {
-          show: false
-        }
-      }
-    };
+        };
+    }
 
-    // mini chart 7
-    this.minichart7 = {
-      series: [{
-        data: [50, 15, 20, 34, 23, 56, 65, 41]
-      }],
-      chart: {
-        type: 'line',
-        width: 80,
-        height: 30,
-        sparkline: {
-          enabled: true
-        }
-
-      },
-      colors: colors,
-      stroke: {
-        curve: 'smooth',
-        width: 2.3,
-      },
-      tooltip: {
-        fixed: {
-          enabled: false
-        },
-        x: {
-          show: false
-        },
-        y: {
-          title: {
-            formatter: function (seriesName: any) {
-              return ''
+    /**
+    * Success Mini Chart
+    */
+     private _minichartsuccessChart(colors:any) {
+        colors = this.getChartColorsArray(colors);
+        this.minichart4 = {
+            series: [{
+                data: [50, 15, 20, 34, 23, 56, 65, 41]
+            }],
+            chart: {
+                type: 'line',
+                width: 80,
+                height: 30,
+                sparkline: {
+                    enabled: true
+                }
+    
+            },
+            colors: colors,
+            stroke: {
+                curve: 'smooth',
+                width: 2.3,
+            },
+            tooltip: {
+                fixed: {
+                    enabled: false
+                },
+                x: {
+                    show: false
+                },
+                y: {
+                    title: {
+                        formatter: function (seriesName:any) {
+                            return ''
+                        }
+                    }
+                },
+                marker: {
+                    show: false
+                }
             }
-          }
-        },
-        marker: {
-          show: false
-        }
-      }
-    };
-  }
+        };
 
-  /**
+        // mini chart 5 
+        this.minichart5 = {
+            series: [{
+                data: [45, 53, 24, 89, 63, 60, 36, 50]
+            }],
+            chart: {
+                type: 'line',
+                width: 80,
+                height: 30,
+                sparkline: {
+                    enabled: true
+                }
+    
+            },
+            colors: colors,
+            stroke: {
+                curve: 'smooth',
+                width: 2.3,
+            },
+            tooltip: {
+                fixed: {
+                    enabled: false
+                },
+                x: {
+                    show: false
+                },
+                y: {
+                    title: {
+                        formatter: function (seriesName:any) {
+                            return ''
+                        }
+                    }
+                },
+                marker: {
+                    show: false
+                }
+            }
+        };
+
+        // mini chart 7
+        this.minichart7 = {
+            series: [{
+                data: [50, 15, 20, 34, 23, 56, 65, 41]
+            }],
+            chart: {
+                type: 'line',
+                width: 80,
+                height: 30,
+                sparkline: {
+                    enabled: true
+                }
+    
+            },
+            colors: colors,
+            stroke: {
+                curve: 'smooth',
+                width: 2.3,
+            },
+            tooltip: {
+                fixed: {
+                    enabled: false
+                },
+                x: {
+                    show: false
+                },
+                y: {
+                    title: {
+                        formatter: function (seriesName:any) {
+                            return ''
+                        }
+                    }
+                },
+                marker: {
+                    show: false
+                }
+            }
+        };
+    }
+
+     /**
    * Sale Location Map
    */
-  options = {
+   options = {
     layers: [
       tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw", {
         id: "mapbox/light-v9",
@@ -613,30 +612,9 @@ export class NftComponent implements OnInit {
     center: latLng(28, 1.5)
   };
   layers = [
-    circle([41.9, 12.45], {
-      color: "#435fe3",
-      opacity: 0.5,
-      weight: 10,
-      fillColor: "#435fe3",
-      fillOpacity: 1,
-      radius: 400000,
-    }),
-    circle([12.05, -61.75], {
-      color: "#435fe3",
-      opacity: 0.5,
-      weight: 10,
-      fillColor: "#435fe3",
-      fillOpacity: 1,
-      radius: 400000,
-    }),
-    circle([1.3, 103.8], {
-      color: "#435fe3",
-      opacity: 0.5,
-      weight: 10,
-      fillColor: "#435fe3",
-      fillOpacity: 1,
-      radius: 400000,
-    }),
+    circle([41.9, 12.45], { color: "#435fe3", opacity: 0.5, weight: 10, fillColor: "#435fe3", fillOpacity: 1, radius: 400000, }),
+    circle([12.05, -61.75], { color: "#435fe3", opacity: 0.5, weight: 10, fillColor: "#435fe3", fillOpacity: 1, radius: 400000, }),
+    circle([1.3, 103.8], { color: "#435fe3", opacity: 0.5, weight: 10, fillColor: "#435fe3", fillOpacity: 1, radius: 400000, }),
   ];
 
 }

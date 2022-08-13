@@ -1,5 +1,6 @@
 export interface TeamModel {
-  image: string;
-  name: string;
-  position: string;
-}
+    image: string;
+    name: string;
+    position: string;
+  }
+  

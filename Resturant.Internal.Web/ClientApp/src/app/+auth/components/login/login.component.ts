@@ -23,7 +23,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     private _formBuilder: UntypedFormBuilder,
     private _route: ActivatedRoute,
     private _authService: AuthService) {
-    super(injector);
+      super(injector);
 
   }
 

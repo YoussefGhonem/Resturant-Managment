@@ -31,5 +31,6 @@ const discoverData = [
     category: "Long-tailed macaque",
   },
 ];
-
+  
 export { discoverData };
+  

@@ -11,9 +11,7 @@ import { Component, OnInit } from '@angular/core';
  */
 export class TwoColumnComponent implements OnInit {
 
-  constructor() {
-  }
-
+  constructor() { }
   isCondensed = false;
 
   ngOnInit(): void {
@@ -26,11 +24,11 @@ export class TwoColumnComponent implements OnInit {
     document.documentElement.setAttribute('data-layout-width', 'fluid');
     document.documentElement.setAttribute('data-layout-position', 'fixed');
 
-    window.addEventListener('resize', function () {
+    window.addEventListener('resize' , function(){
       if (document.documentElement.clientWidth <= 767) {
         document.documentElement.setAttribute('data-layout', 'vertical');
         document.getElementById('side-bar')?.classList.remove('d-none');
-      } else {
+      }else{
         document.documentElement.setAttribute('data-layout', 'twocolumn');
         document.getElementById('side-bar')?.classList.add('d-none');
       }
@@ -40,19 +38,19 @@ export class TwoColumnComponent implements OnInit {
   /**
    * On mobile toggle button clicked
    */
-  onToggleMobileMenu() {
+   onToggleMobileMenu() {
     document.body.classList.toggle('vertical-sidebar-enable');
   }
 
   /**
    * on settings button clicked from topbar
    */
-  onSettingsButtonClicked() {
+   onSettingsButtonClicked() {
     document.body.classList.toggle('right-bar-enabled');
     const rightBar = document.getElementById('theme-settings-offcanvas');
-    if (rightBar != null) {
+    if(rightBar != null){
       rightBar.classList.toggle('show');
-      rightBar.setAttribute('style', "visibility: visible;");
+      rightBar.setAttribute('style',"visibility: visible;");
     }
   }
 

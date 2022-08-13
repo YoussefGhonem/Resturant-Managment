@@ -11,8 +11,7 @@ import { Component, OnInit } from '@angular/core';
  */
 export class Page500Component implements OnInit {
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

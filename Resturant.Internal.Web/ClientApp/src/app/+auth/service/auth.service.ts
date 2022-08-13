@@ -46,11 +46,11 @@ export class AuthService {
       password: password
     };
 
-    return this._httpService.POST(IdentityController.Login, body, undefined, true)
+    return this._httpService.POST(IdentityController.Login, body)
       .subscribe((res: string) => {
         this.updateToken(res);
         this._notificationService.success('Welcome', 'You have logged in successfully! 🎉');
-        this._router.navigate(['/']);
+        this._router.navigate(['/']).then(x => window.location.reload());
       });
   }
 

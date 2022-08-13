@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-upcoming-activities',
@@ -24,8 +24,7 @@ export class UpcomingActivitiesComponent implements OnInit {
     }>;
   }> | undefined;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

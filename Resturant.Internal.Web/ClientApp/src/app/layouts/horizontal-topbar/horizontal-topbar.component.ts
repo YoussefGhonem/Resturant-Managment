@@ -1,9 +1,10 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 // Menu Pachage
 // import MetisMenu from 'metismenujs';
+
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
 
@@ -31,11 +32,11 @@ export class HorizontalTopbarComponent implements OnInit {
   /***
    * Activate droup down set
    */
-  ngAfterViewInit() {
+   ngAfterViewInit() {
     this.initActiveMenu();
   }
 
-  removeActivation(items: any) {
+  removeActivation(items: any) {   
     items.forEach((item: any) => {
       if (item.classList.contains("menu-link")) {
         if (!item.classList.contains("active")) {
@@ -57,7 +58,7 @@ export class HorizontalTopbarComponent implements OnInit {
   activateParentDropdown(item: any) { // navbar-nav menu add active
     item.classList.add("active");
     let parentCollapseDiv = item.closest(".collapse.menu-dropdown");
-    if (parentCollapseDiv) {
+    if (parentCollapseDiv) {      
       // to set aria expand true remaining
       parentCollapseDiv.classList.add("show");
       parentCollapseDiv.parentElement.children[0].classList.add("active");
@@ -65,7 +66,7 @@ export class HorizontalTopbarComponent implements OnInit {
       if (parentCollapseDiv.parentElement.closest(".collapse.menu-dropdown")) {
         parentCollapseDiv.parentElement.closest(".collapse").classList.add("show");
         if (parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling)
-          parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling.classList.add("active");
+        parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling.classList.add("active");
         parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling.setAttribute("aria-expanded", "true");
       }
       return false;
@@ -75,7 +76,7 @@ export class HorizontalTopbarComponent implements OnInit {
 
   updateActive(event: any) {
     const ul = document.getElementById("navbar-nav");
-
+    
     if (ul) {
       const items = Array.from(ul.querySelectorAll("a.nav-link"));
       this.removeActivation(items);
@@ -86,10 +87,10 @@ export class HorizontalTopbarComponent implements OnInit {
   initActiveMenu() {
     const pathName = window.location.pathname;
     const ul = document.getElementById("navbar-nav");
-
+    
     if (ul) {
       const items = Array.from(ul.querySelectorAll("a.nav-link"));
-      let activeItems = items.filter((x: any) => x.classList.contains("active"));
+      let activeItems = items.filter((x: any) => x.classList.contains("active")); 
       this.removeActivation(activeItems);
       let matchingMenuItem = items.find((x: any) => {
         return x.pathname === pathName;
@@ -101,13 +102,13 @@ export class HorizontalTopbarComponent implements OnInit {
   }
 
   toggleSubItem(event: any) {
-    if (event.target && event.target.nextElementSibling)
+    if(event.target && event.target.nextElementSibling)
       event.target.nextElementSibling.classList.toggle("show");
   };
 
   toggleItem(event: any) {
-    let isCurrentMenuId = event.target.closest('a.nav-link');
-
+    let isCurrentMenuId = event.target.closest('a.nav-link');    
+    
     let isMenu = isCurrentMenuId.nextElementSibling as any;
     let dropDowns = Array.from(document.querySelectorAll('#navbar-nav .show'));
     dropDowns.forEach((node: any) => {
@@ -117,14 +118,14 @@ export class HorizontalTopbarComponent implements OnInit {
     (isMenu) ? isMenu.classList.add('show') : null;
 
     const ul = document.getElementById("navbar-nav");
-    if (ul) {
+    if(ul){
       const iconItems = Array.from(ul.getElementsByTagName("a"));
       let activeIconItems = iconItems.filter((x: any) => x.classList.contains("active"));
       activeIconItems.forEach((item: any) => {
         item.setAttribute('aria-expanded', "false")
         item.classList.remove("active");
       });
-    }
+    } 
     if (isCurrentMenuId) {
       this.activateParentDropdown(isCurrentMenuId);
     }

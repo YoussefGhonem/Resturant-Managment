@@ -2,19 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { SwiperComponent, SwiperDirective } from 'ngx-swiper-wrapper';
 
-import {
-  BinanceChart,
-  BitcoinChart,
-  Currencies,
-  DashChart,
-  EatherreumChart,
-  litecoinChart,
-  NeoChart,
-  NewsFeed,
-  statData,
-  TetherChart,
-  TopPerformers
-} from './data';
+import { statData, BitcoinChart, litecoinChart, EatherreumChart, BinanceChart, DashChart, TetherChart, NeoChart, Currencies, TopPerformers, NewsFeed } from './data';
 
 @Component({
   selector: 'app-crypto',
@@ -23,7 +11,7 @@ import {
 })
 
 /**
- * Crypto Component
+ * Crypto Component 
  */
 export class CryptoComponent implements OnInit {
 
@@ -44,24 +32,23 @@ export class CryptoComponent implements OnInit {
   NewsFeed: any;
 
   @ViewChild(SwiperDirective) directiveRef?: SwiperDirective;
-  @ViewChild(SwiperComponent, {static: false}) componentRef?: SwiperComponent;
+  @ViewChild(SwiperComponent, { static: false }) componentRef?: SwiperComponent;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
     /**
      * BreadCrumb
      */
-    this.breadCrumbItems = [
-      {label: 'Dashboards'},
-      {label: 'Crypto', active: true}
+     this.breadCrumbItems = [
+      { label: 'Dashboards' },
+      { label: 'Crypto', active: true }
     ];
 
     /**
      * Fetches the data
      */
-    this.fetchData();
+     this.fetchData();
 
     // Chart Color Data Get Function
     this._portfolioChart('["--vz-primary", "--vz-info", "--vz-warning", "--vz-success"]');
@@ -69,108 +56,108 @@ export class CryptoComponent implements OnInit {
   }
 
   // Chart Colors Set
-  private getChartColorsArray(colors: any) {
+  private getChartColorsArray(colors:any) {
     colors = JSON.parse(colors);
-    return colors.map(function (value: any) {
+    return colors.map(function (value:any) {
       var newValue = value.replace(" ", "");
       if (newValue.indexOf(",") === -1) {
         var color = getComputedStyle(document.documentElement).getPropertyValue(newValue);
-        if (color) {
-          color = color.replace(" ", "");
-          return color;
-        } else return newValue;
-        ;
-      } else {
-        var val = value.split(',');
-        if (val.length == 2) {
-          var rgbaColor = getComputedStyle(document.documentElement).getPropertyValue(val[0]);
-          rgbaColor = "rgba(" + rgbaColor + "," + val[1] + ")";
-          return rgbaColor;
+            if (color) {
+            color = color.replace(" ", "");
+            return color;
+            }
+            else return newValue;;
         } else {
-          return newValue;
+            var val = value.split(',');
+            if (val.length == 2) {
+                var rgbaColor = getComputedStyle(document.documentElement).getPropertyValue(val[0]);
+                rgbaColor = "rgba(" + rgbaColor + "," + val[1] + ")";
+                return rgbaColor;
+            } else {
+                return newValue;
+            }
         }
-      }
     });
   }
 
   /**
-   * My Portfolio Chart
-   */
-  private _portfolioChart(colors: any) {
+ * My Portfolio Chart
+ */
+  private _portfolioChart(colors:any) {
     colors = this.getChartColorsArray(colors);
     this.portfolioChart = {
       series: [19405, 40552, 15824, 30635],
       labels: ["Bitcoin", "Ethereum", "Litecoin", "Dash"],
       chart: {
-        type: "donut",
-        height: 210,
+          type: "donut",
+          height: 210,
       },
       plotOptions: {
-        pie: {
-          offsetX: 0,
-          offsetY: 0,
-          donut: {
-            size: "70%",
-            labels: {
-              show: true,
-              name: {
-                show: true,
-                fontSize: '18px',
-                offsetY: -5,
+          pie: {
+              offsetX: 0,
+              offsetY: 0,
+              donut: {
+                  size: "70%",
+                  labels: {
+                      show: true,
+                      name: {
+                          show: true,
+                          fontSize: '18px',
+                          offsetY: -5,
+                      },
+                      value: {
+                          show: true,
+                          fontSize: '20px',
+                          color: '#343a40',
+                          fontWeight: 500,
+                          offsetY: 5,
+                          formatter: function (val:any) {
+                              return "$" + val
+                          }
+                      },
+                      total: {
+                          show: true,
+                          fontSize: '13px',
+                          label: 'Total value',
+                          color: '#9599ad',
+                          fontWeight: 500,
+                      }
+                  }
               },
-              value: {
-                show: true,
-                fontSize: '20px',
-                color: '#343a40',
-                fontWeight: 500,
-                offsetY: 5,
-                formatter: function (val: any) {
-                  return "$" + val
-                }
-              },
-              total: {
-                show: true,
-                fontSize: '13px',
-                label: 'Total value',
-                color: '#9599ad',
-                fontWeight: 500,
-              }
-            }
           },
-        },
       },
       dataLabels: {
-        enabled: false,
+          enabled: false,
       },
       legend: {
-        show: false,
+          show: false,
       },
       yaxis: {
-        labels: {
-          formatter: function (value: any) {
-            return "$" + value;
+          labels: {
+              formatter: function (value:any) {
+                  return "$" + value ;
+              }
           }
-        }
       },
       stroke: {
-        lineCap: "round",
-        width: 2
+          lineCap: "round",
+          width: 2
       },
       colors: colors
     };
   }
 
   /**
-   * Market Graph Chart
-   */
-  private _marketGraphChart(colors: any) {
+ * Market Graph Chart
+ */
+   private _marketGraphChart(colors:any) {
     colors = this.getChartColorsArray(colors);
     this.marketGraphChart = {
       series: [{
-        data: [{
-          x: new Date(1538778600000),
-          y: [6629.81, 6650.5, 6623.04, 6633.33]
-        },
+          data: [{
+            x: new Date(1538778600000),
+            y: [6629.81, 6650.5, 6623.04, 6633.33]
+          },
           {
             x: new Date(1538780400000),
             y: [6632.01, 6643.59, 6620, 6630.11]
@@ -407,46 +394,46 @@ export class CryptoComponent implements OnInit {
             x: new Date(1538884800000),
             y: [6604.98, 6606, 6604.07, 6606]
           },
-        ]
-      }],
-      chart: {
-        type: 'candlestick',
-        height: 350,
-        toolbar: {
-          show: false,
-        }
-      },
-      plotOptions: {
-        candlestick: {
-          colors: {
-            upward: colors[0],
-            downward: colors[1]
+          ]
+        }],
+        chart: {
+          type: 'candlestick',
+          height: 350,
+          toolbar: {
+            show: false,
+          }
+        },
+        plotOptions: {
+          candlestick: {
+            colors: {
+              upward: colors[0],
+              downward: colors[1]
+            }
+          }
+        },
+        title: {
+          text: 'CandleStick Chart',
+          align: 'left',
+          style: {
+            fontWeight: 600,
+          },
+        },
+        xaxis: {
+          type: 'datetime'
+        },
+        yaxis: {
+          tooltip: {
+            enabled: true
           }
         }
-      },
-      title: {
-        text: 'CandleStick Chart',
-        align: 'left',
-        style: {
-          fontWeight: 600,
-        },
-      },
-      xaxis: {
-        type: 'datetime'
-      },
-      yaxis: {
-        tooltip: {
-          enabled: true
-        }
-      }
     };
   }
 
   /**
    * Fetches the data
    */
-  private fetchData() {
-    this.statData = statData;
+   private fetchData() {
+     this.statData = statData;
     this.BitcoinChart = BitcoinChart;
     this.litecoinChart = litecoinChart;
     this.EatherreumChart = EatherreumChart;
@@ -462,16 +449,16 @@ export class CryptoComponent implements OnInit {
   /**
    * Swiper setting
    */
-  config = {
+   config = {
     initialSlide: 0,
     slidesPerView: 1,
     spaceBetween: 25,
-    breakpoints: {
-      768: {
-        slidesPerView: 2,
+    breakpoints:{
+      768:{
+        slidesPerView: 2, 
       },
-      1200: {
-        slidesPerView: 5,
+      1200:{
+        slidesPerView: 5, 
       }
     }
   };

@@ -1,5 +1,5 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 import { MENU } from './menu';
@@ -28,8 +28,8 @@ export class TwoColumnSidebarComponent implements OnInit {
   }
 
   /***
-   * Activate drop down set
-   */
+  * Activate drop down set
+  */
   ngAfterViewInit() {
     this.initActiveMenu();
   }
@@ -44,10 +44,10 @@ export class TwoColumnSidebarComponent implements OnInit {
 
     let subDropDowns = Array.from(document.querySelectorAll('.menu-dropdown .nav-link'));
     subDropDowns.forEach((submenu: any) => {
-      submenu.setAttribute('aria-expanded', "false");
+      submenu.setAttribute('aria-expanded',"false");
     });
-
-    if (event.target && event.target.nextElementSibling) {
+    
+    if (event.target && event.target.nextElementSibling){
       isCurrentMenuId.setAttribute("aria-expanded", "true");
       event.target.nextElementSibling.classList.toggle("show");
     }
@@ -63,10 +63,10 @@ export class TwoColumnSidebarComponent implements OnInit {
 
     let subDropDowns = Array.from(document.querySelectorAll('.menu-dropdown .nav-link'));
     subDropDowns.forEach((submenu: any) => {
-      submenu.setAttribute('aria-expanded', "false");
+      submenu.setAttribute('aria-expanded',"false");
     });
-
-    if (event.target && event.target.nextElementSibling) {
+    
+    if (event.target && event.target.nextElementSibling){
       isCurrentMenuId.setAttribute("aria-expanded", "true");
       event.target.nextElementSibling.classList.toggle("show");
     }

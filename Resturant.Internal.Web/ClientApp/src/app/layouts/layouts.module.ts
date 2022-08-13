@@ -18,7 +18,7 @@ import { HorizontalComponent } from './horizontal/horizontal.component';
 import { HorizontalTopbarComponent } from './horizontal-topbar/horizontal-topbar.component';
 import { TwoColumnComponent } from './two-column/two-column.component';
 import { TwoColumnSidebarComponent } from './two-column-sidebar/two-column-sidebar.component';
-import { NgxPermissionsModule } from 'ngx-permissions';
+
 
 
 @NgModule({
@@ -41,9 +41,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     NgbNavModule,
     SimplebarAngularModule,
     TranslateModule,
-    NgxPermissionsModule.forChild()
   ],
   providers: [LanguageService]
 })
-export class LayoutsModule {
-}
+export class LayoutsModule { }

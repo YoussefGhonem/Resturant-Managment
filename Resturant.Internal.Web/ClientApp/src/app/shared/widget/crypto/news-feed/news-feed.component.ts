@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-news-feed',
@@ -11,16 +11,15 @@ import { Component, Input, OnInit } from '@angular/core';
  */
 export class NewsFeedComponent implements OnInit {
 
-  // News Feed
-  @Input() NewsFeed: Array<{
+   // News Feed
+   @Input() NewsFeed: Array<{
     image?: string;
     content?: string;
     date?: string;
     time?: string;
   }> | undefined;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

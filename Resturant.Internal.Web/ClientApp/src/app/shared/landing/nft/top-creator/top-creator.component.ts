@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { creatorModel } from './top-creator.model';
+import {creatorModel} from './top-creator.model';
 import { creatorData } from './data';
 
 @Component({
@@ -16,8 +16,7 @@ export class TopCreatorComponent implements OnInit {
 
   creatorData!: creatorModel[];
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
     this.creatorData = creatorData;

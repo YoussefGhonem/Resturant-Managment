@@ -8,9 +8,9 @@ describe('NewsFeedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NewsFeedComponent]
+      declarations: [ NewsFeedComponent ]
     })
-        .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

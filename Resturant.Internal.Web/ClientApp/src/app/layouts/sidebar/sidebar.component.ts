@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -62,10 +62,10 @@ export class SidebarComponent implements OnInit {
 
     let subDropDowns = Array.from(document.querySelectorAll('.menu-dropdown .nav-link'));
     subDropDowns.forEach((submenu: any) => {
-      submenu.setAttribute('aria-expanded', "false");
+      submenu.setAttribute('aria-expanded',"false");
     });
-
-    if (event.target && event.target.nextElementSibling) {
+    
+    if (event.target && event.target.nextElementSibling){
       isCurrentMenuId.setAttribute("aria-expanded", "true");
       event.target.nextElementSibling.classList.toggle("show");
     }
@@ -81,10 +81,10 @@ export class SidebarComponent implements OnInit {
 
     let subDropDowns = Array.from(document.querySelectorAll('.menu-dropdown .nav-link'));
     subDropDowns.forEach((submenu: any) => {
-      submenu.setAttribute('aria-expanded', "false");
+      submenu.setAttribute('aria-expanded',"false");
     });
-
-    if (event.target && event.target.nextElementSibling) {
+    
+    if (event.target && event.target.nextElementSibling){
       isCurrentMenuId.setAttribute("aria-expanded", "true");
       event.target.nextElementSibling.classList.toggle("show");
     }
@@ -117,26 +117,26 @@ export class SidebarComponent implements OnInit {
       }
     }
   }
-
-  activateParentDropdown(item: any) {
+  
+  activateParentDropdown(item:any) {
     item.classList.add("active");
     let parentCollapseDiv = item.closest(".collapse.menu-dropdown");
 
     if (parentCollapseDiv) {
-      // to set aria expand true remaining
-      parentCollapseDiv.classList.add("show");
-      parentCollapseDiv.parentElement.children[0].classList.add("active");
-      parentCollapseDiv.parentElement.children[0].setAttribute("aria-expanded", "true");
-      if (parentCollapseDiv.parentElement.closest(".collapse.menu-dropdown")) {
-        parentCollapseDiv.parentElement.closest(".collapse").classList.add("show");
-        if (parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling)
-          parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling.classList.add("active");
-        if (parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling.closest(".collapse")) {
-          parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling.closest(".collapse").classList.add("show");
-          parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling.closest(".collapse").previousElementSibling.classList.add("active");
+        // to set aria expand true remaining
+        parentCollapseDiv.classList.add("show");
+        parentCollapseDiv.parentElement.children[0].classList.add("active");
+        parentCollapseDiv.parentElement.children[0].setAttribute("aria-expanded", "true");
+        if (parentCollapseDiv.parentElement.closest(".collapse.menu-dropdown")) {
+            parentCollapseDiv.parentElement.closest(".collapse").classList.add("show");
+            if (parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling)
+                parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling.classList.add("active");
+            if (parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling.closest(".collapse")) {
+                parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling.closest(".collapse").classList.add("show");
+                parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling.closest(".collapse").previousElementSibling.classList.add("active");
+            }
         }
-      }
-      return false;
+        return false;
     }
     return false;
   }
@@ -165,7 +165,7 @@ export class SidebarComponent implements OnInit {
         this.activateParentDropdown(matchingMenuItem);
       }
     }
-  }
+  } 
 
   /**
    * Returns true or false if given menu item has child or not
@@ -191,7 +191,7 @@ export class SidebarComponent implements OnInit {
    * SidebarHide modal
    * @param content modal content
    */
-  SidebarHide() {
+   SidebarHide() {
     document.body.classList.remove('vertical-sidebar-enable');
   }
 

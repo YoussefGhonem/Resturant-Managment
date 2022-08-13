@@ -18,10 +18,10 @@ export class ProfileSettingsComponent extends BaseComponent implements OnInit {
   activeId: number;
   completionPercentage: number = 0;
   constructor
-  (
+    (
       public override injector: Injector,
       private _router: Router
-  ) {
+    ) {
     super(injector);
   }
 
@@ -31,22 +31,19 @@ export class ProfileSettingsComponent extends BaseComponent implements OnInit {
   }
 
   getCompletionPercentage() {
-    this.httpService.GET(UsersController.getCompletionPercentage, undefined, false)
-    .subscribe((cp) => {
-      this.completionPercentage = cp;
-    });
+
   }
 
   checkActiveTab() {
-    if(this._router.url == '/users/profile-settings'){
+    if (this._router.url == '/users/profile-settings') {
       this.activeId = 1;
       console.log(this.activeId);
     }
-    else if(this._router.url == '/users/profile-settings/change-password'){
+    else if (this._router.url == '/users/profile-settings/change-password') {
       this.activeId = 2;
       console.log(this.activeId);
     }
-    else{
+    else {
       this.activeId = 3;
       console.log(this.activeId);
     }

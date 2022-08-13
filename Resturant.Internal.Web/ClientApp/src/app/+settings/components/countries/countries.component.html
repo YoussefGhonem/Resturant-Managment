@@ -14,7 +14,7 @@
             <div class="col-xxl-2 col-sm-4">
               <div>
                 <select class="form-control" data-choices data-choices-search-false name="choices-single-default"
-                        id="idStatus" formControlName="isActive">
+                  id="idStatus" formControlName="isActive">
                   <option value="" hidden selected>Status</option>
                   <option value="">All</option>
                   <option [value]="true">Activate</option>
@@ -28,39 +28,42 @@
       <div class="card-body pt-0 mt-3">
         <table class="table align-middle table-nowrap mb-0">
           <thead class="table-light">
-          <tr>
-            <th scope="col">Flag</th>
-            <th scope="col">Name</th>
-            <th scope="col">Language</th>
-            <th scope="col">Currency</th>
-            <th scope="col">Native Name</th>
-            <th scope="col">Status</th>
-          </tr>
+            <tr>
+              <th scope="col">Flag</th>
+              <th scope="col">Name</th>
+              <th scope="col">Language</th>
+              <th scope="col">Currency</th>
+              <th scope="col">Native Name</th>
+              <th scope="col">Status</th>
+            </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let item of countries">
-            <td>
-              <div class="d-flex gap-2 align-items-center">
-                <div class="flex-shrink-0">
-                  <img src="{{item.flag}}" default-image alt="" class="avatar-xs rounded-circle"/>
+            <tr *ngFor="let item of countries">
+              <th scope="row">
+                <div class="d-flex gap-2 align-items-center">
+                  <div class="flex-shrink-0">
+                    <img src="{{item.flag}}" default-image alt="" class="avatar-xs rounded-circle" />
+                  </div>
                 </div>
-              </div>
-            </td>
-            <td [ngbTooltip]="item.name" container="body">{{item.name| truncate :
-                10 : '...'}}</td>
-            <td [ngbTooltip]="item.language" container="body">{{item.language |
+              </th>
+              <th scope="row" [ngbTooltip]="item.name" container="body">{{item.name| truncate :
+                10 : '...'}}</th>
+              <th scope="row" [ngbTooltip]="item.language" container="body">{{item.language |
                 truncate : 10 :
                 '...'}}
-            </td>
-            <td>{{item.currency}}</td>
-            <td>{{item.nativeName}}</td>
-            <td><span activeStatusBadge [value]="item?.isActive"></span>
-          </tr>
+              </th>
+              <th scope="row">{{item.currency}}</th>
+              <th scope="row">{{item.nativeName}}</th>
+              <td><span activeStatusBadge [value]="item?.isActive"></span></td>
+            </tr>
           </tbody>
         </table>
+        <!-- Pagination -->
         <app-pagination (pageChange)="pageChange($event)" [pageNumber]="form.getRawValue().pageNumber"
-                        [pageSize]="form.getRawValue().pageSize" [total]="total"></app-pagination>
+          [pageSize]="form.getRawValue().pageSize" [total]="total"></app-pagination>
+        <!-- End Pagination -->
       </div>
     </div>
+    <!--end col-->
   </div>
-</div>
+  <!--end row-->

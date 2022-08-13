@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-active-project',
@@ -24,8 +24,7 @@ export class ActiveProjectComponent implements OnInit {
     date?: string;
   }> | undefined;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

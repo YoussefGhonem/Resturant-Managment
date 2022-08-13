@@ -18,13 +18,10 @@ export class JwtInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const apiUrl = environment.config?.apiConfig?.apiUrl || '';
-    const apiUrlIdentity = environment.config?.apiUrlIdentity || '';
-
-    const isApiUrlIdentity = request.url.startsWith(apiUrlIdentity);
     const isApiUrl = request.url.startsWith(apiUrl);
-
     const token = localStorage.getItem(LocalStorageKeys.AuthToken);
-    if (token && (isApiUrl || isApiUrlIdentity)) {
+
+    if (token && isApiUrl) {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,
