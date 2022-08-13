@@ -32,6 +32,7 @@ namespace Resturant.Data
         public DbSet<Press> Press { get; set; }
         public DbSet<Settings> Settings { get; set; }
         public DbSet<PrivateDining> PrivateDining { get; set; }
+        public DbSet<PrivateDiningImage> PrivateDiningImages { get; set; }
         public DbSet<EventType> EventTypes { get; set; }
 
 

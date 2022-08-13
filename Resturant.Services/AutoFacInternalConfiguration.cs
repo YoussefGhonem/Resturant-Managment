@@ -4,6 +4,7 @@ using Resturant.Core.Interfaces;
 using Resturant.Services.EventType;
 using Resturant.Services.Identity;
 using Resturant.Services.PrivateDining;
+using Resturant.Services.PrivateDiningImage;
 using Resturant.Services.SendingEmail;
 using Resturant.Services.Settings;
 using Resturant.Services.UploadFiles;
@@ -21,6 +22,7 @@ namespace Resturant.Services
             services.AddScoped<IUploadFilesService, UploadFilesService>();
             services.AddScoped<IEventTypeService, EventTypeService>();
             services.AddScoped<IPrivateDiningService, PrivateDiningService>();
+            services.AddScoped<IPrivateDiningImageService, PrivateDiningImageService>();
             return services;
         }
     }
