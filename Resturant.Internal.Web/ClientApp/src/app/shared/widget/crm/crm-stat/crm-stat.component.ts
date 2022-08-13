@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-crm-stat',
@@ -16,8 +16,7 @@ export class CrmStatComponent implements OnInit {
   @Input() icon: string | undefined;
   @Input() profit: string | undefined;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-projects-stat',
@@ -18,8 +18,7 @@ export class ProjectsStatComponent implements OnInit {
   @Input() profit: string | undefined;
   @Input() month: string | undefined;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

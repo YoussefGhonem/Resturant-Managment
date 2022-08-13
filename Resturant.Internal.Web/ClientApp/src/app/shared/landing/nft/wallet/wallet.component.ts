@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { walletModel } from './wallet.model';
+import {walletModel} from './wallet.model';
 import { walletData } from './data';
 
 @Component({
@@ -16,20 +16,19 @@ export class WalletComponent implements OnInit {
 
   walletData!: walletModel[];
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
     /**
      * fetches data
      */
-    this._fetchData();
+     this._fetchData();
   }
 
   /**
-   * User grid data fetches
-   */
-  private _fetchData() {
+  * User grid data fetches
+  */
+   private _fetchData() {
     this.walletData = walletData;
   }
 

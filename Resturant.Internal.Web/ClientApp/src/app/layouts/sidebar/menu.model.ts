@@ -7,6 +7,5 @@ export interface MenuItem {
   isTitle?: boolean;
   badge?: any;
   parentId?: number;
-  roles?: Array<string>;
   isLayout?: boolean;
 }

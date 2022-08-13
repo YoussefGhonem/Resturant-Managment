@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 // Swiper Slider
+import { SwiperComponent, SwiperDirective } from 'ngx-swiper-wrapper';
 import { SwiperOptions } from 'swiper';
 
-import { clientLogoModel } from './client-logo.module';
+import {clientLogoModel} from './client-logo.module';
 import { ClientLogo } from './data';
 
 @Component({
@@ -17,8 +18,7 @@ import { ClientLogo } from './data';
  */
 export class ClientLogoComponent implements OnInit {
 
-  constructor() {
-  }
+  constructor() { }
 
   ClientLogo!: clientLogoModel[];
 
@@ -26,29 +26,29 @@ export class ClientLogoComponent implements OnInit {
     /**
      * fetches data
      */
-    this._fetchData();
+     this._fetchData();
   }
 
   /**
-   * User grid data fetches
-   */
-  private _fetchData() {
+ * User grid data fetches
+ */
+   private _fetchData() {
     this.ClientLogo = ClientLogo;
   }
 
   /**
    * Swiper Responsive setting
    */
-  public Responsive: SwiperOptions = {
+   public Responsive: SwiperOptions = {
     slidesPerView: 1,
     pagination: true,
     mousewheel: true,
-    breakpoints: {
-      768: {
-        slidesPerView: 2,
+    breakpoints:{
+      768:{
+        slidesPerView: 2, 
       },
-      1200: {
-        slidesPerView: 4,
+      1200:{
+        slidesPerView: 4, 
       }
     }
   };

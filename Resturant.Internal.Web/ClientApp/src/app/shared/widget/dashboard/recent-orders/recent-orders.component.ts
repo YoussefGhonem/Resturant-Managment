@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-recent-orders',
@@ -7,8 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RecentOrdersComponent implements OnInit {
 
-  // Recent Orders data
-  @Input() RecentSelling: Array<{
+   // Recent Orders data
+   @Input() RecentSelling: Array<{
     id?: string;
     image?: string;
     customer?: string;
@@ -20,8 +20,7 @@ export class RecentOrdersComponent implements OnInit {
     average?: string;
   }> | undefined;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

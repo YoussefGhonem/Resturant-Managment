@@ -1,7 +1,9 @@
+import { ToastService } from './../../app/+dashboard/components/dashboard/toast-service';
 import { Component, Injector, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { HttpService, NotificationService } from '@shared/services';
+import { HttpService } from '@shared/services';
+import { NotificationService } from '@shared/services';
 import { User } from "app/+auth/models";
 import { takeUntil } from "rxjs/operators";
 import { AuthService } from "app/+auth/service";
@@ -24,7 +26,6 @@ export class BaseComponent implements OnDestroy {
   public httpService: HttpService;
   public notificationService: NotificationService;
   public authService: AuthService;
-
   //#endregion
 
   constructor(public injector: Injector) {

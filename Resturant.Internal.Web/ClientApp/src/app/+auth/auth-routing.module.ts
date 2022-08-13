@@ -1,9 +1,10 @@
 import { NgModule } from "@angular/core";
 
 import { RouterModule, Routes } from "@angular/router";
-import { LoginComponent } from "app/+auth/components/login/login.component";
-import { ForgotPasswordComponent } from "app/+auth/components/forgot-password/forgot-password.component";
-import { ResetPasswordComponent } from "app/+auth/components/reset-password/reset-password.component";
+import {LoginComponent} from "app/+auth/components/login/login.component";
+import {ForgotPasswordComponent} from "app/+auth/components/forgot-password/forgot-password.component";
+import {ResetPasswordComponent} from "app/+auth/components/reset-password/reset-password.component";
+import {SignupComponent} from "app/+auth/components/signup/signup.component";
 
 //#region Errors
 import { Page401Component } from './errors/page401/page401.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: "reset-password",
     component: ResetPasswordComponent,
+  },
+  {
+    path: "signup",
+    component: SignupComponent,
   },
   {
     path: "not-found",

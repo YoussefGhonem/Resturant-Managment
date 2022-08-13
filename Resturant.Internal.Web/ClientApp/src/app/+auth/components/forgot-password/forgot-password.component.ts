@@ -1,9 +1,8 @@
 import { BaseComponent } from '@shared/base/base.component';
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'app/+auth/service';
 import { IdentityController } from 'app/+auth/controllers/IdentityController';
-
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
@@ -22,13 +21,14 @@ export class ForgotPasswordComponent extends BaseComponent implements OnInit {
   year: number = new Date().getFullYear();
 
   constructor(
-      public override injector: Injector,
-      private _formBuilder: UntypedFormBuilder,
-      private _authService: AuthService) {
-    super(injector);
-    this.displayForm = true;
-    this.displaySuccess = false;
-  }
+    public override injector: Injector,
+    private _formBuilder: UntypedFormBuilder,
+    private _authService: AuthService)
+     {
+      super(injector);
+      this.displayForm = true;
+      this.displaySuccess = false;
+      }
 
   ngOnInit(): void {
     this.passresetForm = this._formBuilder.group({
@@ -37,9 +37,7 @@ export class ForgotPasswordComponent extends BaseComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() {
-    return this.passresetForm.controls;
-  }
+  get f() { return this.passresetForm.controls; }
 
   /**
    * Form submit
@@ -53,10 +51,10 @@ export class ForgotPasswordComponent extends BaseComponent implements OnInit {
 
     let body = this.passresetForm.getRawValue();
     this.httpService.POST(IdentityController.ForgetPassword(body.email), {}, undefined, true)
-        .subscribe(() => {
-          this.displayForm = false;
-          this.displaySuccess = true;
-        });
+    .subscribe(() => {
+      this.displayForm = false;
+      this.displaySuccess = true;
+    });
   }
 
 }

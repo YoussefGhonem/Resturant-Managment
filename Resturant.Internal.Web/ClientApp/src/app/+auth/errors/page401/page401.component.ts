@@ -14,8 +14,7 @@ export class Page401Component implements OnInit {
   // set the current year
   year: number = new Date().getFullYear();
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

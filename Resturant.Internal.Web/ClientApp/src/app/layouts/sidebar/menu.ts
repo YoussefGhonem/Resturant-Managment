@@ -1,14 +1,10 @@
-import { RolesEnum } from 'app/+auth/models';
 import { MenuItem } from './menu.model';
 
-
-function role(role: RolesEnum): string {
-  return RolesEnum[role];
-}
 export const MENU: MenuItem[] = [
+
+
   {
     id: 1,
-    roles: [role(RolesEnum.SuperAdmin)],
     label: 'Dashboard',
     icon: 'ri-dashboard-2-line',
     subItems: [
@@ -54,63 +50,55 @@ export const MENU: MenuItem[] = [
       }
     ]
   },
+
   {
     id: 2,
     label: 'Settings',
     isTitle: true,
-    roles: [role(RolesEnum.SuperAdmin)]
 
   },
   {
     id: 3,
     label: 'Settings',
     icon: ' ri-settings-2-line',
-    link: '/settings/application-settings',
-    roles: [role(RolesEnum.SuperAdmin)]
-
+    link: ''
   },
   {
     id: 4,
     label: 'Countries',
     icon: 'ri-map-pin-line',
     link: '/settings/countries',
-    roles: [role(RolesEnum.SuperAdmin)]
-
   },
   {
     id: 5,
     label: 'Event Types',
     icon: 'ri-pushpin-fill',
-    link: '/events/event-types',
-    roles: [role(RolesEnum.SuperAdmin)]
-
+    link: '/events/event-types'
   },
   {
-    id: 6,
-    label: 'Users',
+    id: 3,
+    label: 'Manage Users',
     icon: ' ri-settings-2-line',
-    link: '/users',
-    roles: [role(RolesEnum.SuperAdmin)]
-
+    link: '/users'
   },
 
 
   {
-    id: 7,
+    id: 11,
     label: 'Members',
     icon: 'ri-team-fill',
     link: ''
   },
 
   {
-    id: 8,
+    id: 12,
     label: 'Events',
     icon: 'ri-pushpin-fill',
     link: ''
   },
 
   {
-    id: 9,
+    id: 13,
     label: 'Orders',
     icon: 'ri-money-dollar-circle-line',
     link: ''

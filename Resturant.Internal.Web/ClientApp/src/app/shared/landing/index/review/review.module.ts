@@ -1,5 +1,6 @@
 export interface clientLogoModel {
-  content: string;
-  title: string;
-  subTitle: string;
-}
+    content: string;
+    title: string;
+    subTitle: string;
+  }
+  

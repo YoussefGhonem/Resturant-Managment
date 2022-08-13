@@ -1,13 +1,9 @@
-import { ActivateComponent } from '@shared/components/activate/activate.component';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { takeUntil, debounceTime } from 'rxjs/operators';
 import { Component, Injector, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from '@shared/base/base.component';
-import { CommitteeMembersController } from 'app/+users/controllers/index';
-import { DeleteComponent } from '@shared/components/delete/delete.component';
-import { ngbModalOptions } from '@shared/default-values';
-import { DeactivateComponent } from '@shared/components/deactivate/deactivate.component';
+import { UsersController } from 'app/+users/controllers/UsersController';
 
 @Component({
   selector: 'commitee-members-list',
@@ -21,13 +17,11 @@ export class CommiteeMembersComponent extends BaseComponent implements OnInit {
   @Input('filters') filters!: FormGroup;
 
   constructor(
-    public activeModal: NgbActiveModal,
     public modalService: NgbModal,
     public override injector: Injector,
     private _formBuilder: FormBuilder) {
     super(injector);
   }
-
   ngOnChanges(): void {
     this.filters.valueChanges.pipe(debounceTime(500))
       .subscribe(value => {
@@ -42,7 +36,6 @@ export class CommiteeMembersComponent extends BaseComponent implements OnInit {
     this.initSearchForm();
     this.loadMembers();
   }
-
   private initSearchForm(): void {
     this.form = this._formBuilder.group({
       // Pagination
@@ -54,7 +47,6 @@ export class CommiteeMembersComponent extends BaseComponent implements OnInit {
     });
 
   }
-
   pageChange(pageNumber: number) {
     this.form.controls['pageNumber'].patchValue(pageNumber, { emitEvent: false });
     this.loadMembers();
@@ -64,7 +56,7 @@ export class CommiteeMembersComponent extends BaseComponent implements OnInit {
     let filters = this.form.getRawValue();
     console.log("filters", filters);
 
-    this.httpService.GET(CommitteeMembersController.CommitteeMembers, filters)
+    this.httpService.GET(UsersController.Members, filters)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(res => {
         this.members = res?.data;
@@ -72,45 +64,4 @@ export class CommiteeMembersComponent extends BaseComponent implements OnInit {
       });
   }
 
-  delete(item: any) {
-    const modalRef = this.modalService.open(DeleteComponent, {
-      ...ngbModalOptions,
-      windowClass: 'modal modal-danger'
-    });
-    modalRef.componentInstance.data = item;
-    modalRef.componentInstance.url = CommitteeMembersController.Delete(item.id);
-    modalRef
-      .result
-      .then((actionCompleted: boolean) => !actionCompleted || this.activeModal.close(true) || this.loadMembers())
-      .catch(() => {
-      });
-  }
-
-  activate(item: any) {
-    const modalRef = this.modalService.open(ActivateComponent, {
-      ...ngbModalOptions,
-      windowClass: 'modal modal-success'
-    });
-    modalRef.componentInstance.data = item;
-    modalRef.componentInstance.url = CommitteeMembersController.Activate(item.id);
-    modalRef
-      .result
-      .then((actionCompleted: boolean) => !actionCompleted || this.activeModal.close(true) || this.loadMembers())
-      .catch(() => {
-      });
-  }
-
-  deactivate(item: any) {
-    const modalRef = this.modalService.open(DeactivateComponent, {
-      ...ngbModalOptions,
-      windowClass: 'modal modal-danger'
-    });
-    modalRef.componentInstance.data = item;
-    modalRef.componentInstance.url = CommitteeMembersController.Activate(item.id);
-    modalRef
-      .result
-      .then((actionCompleted: boolean) => !actionCompleted || this.activeModal.close(true) || this.loadMembers())
-      .catch(() => {
-      });
-  }
 }

@@ -8,9 +8,9 @@ describe('AnalaticsStatComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AnalaticsStatComponent]
+      declarations: [ AnalaticsStatComponent ]
     })
-        .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

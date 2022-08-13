@@ -8,9 +8,9 @@ describe('HorizontalTopbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HorizontalTopbarComponent]
+      declarations: [ HorizontalTopbarComponent ]
     })
-        .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

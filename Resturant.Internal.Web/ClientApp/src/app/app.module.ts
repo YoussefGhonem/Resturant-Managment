@@ -24,6 +24,7 @@ import { HeadersInterceptor } from "@shared/interceptors/headers.interceptor";
 import { JwtInterceptor } from "app/+auth/helpers";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxPermissionsModule } from "ngx-permissions";
+import { ToastsContainer } from './+dashboard/components/dashboard/toasts-container.component';
 
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -50,12 +51,11 @@ export function createTranslateLoader(http: HttpClient): any {
     LayoutsModule,
     Ng2SearchPipeModule,
     NgxPermissionsModule.forRoot(),
-    NgxSpinnerModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
   ],
   bootstrap: [AppComponent]

@@ -16,16 +16,16 @@ export class AuthService {
   public currentUser$: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
   constructor(
-    private _router: Router,
-    private _permissionsService: NgxPermissionsService,
-    private _httpService: HttpService,
-    private _notificationService: NotificationService,
+      private _router: Router,
+      private _permissionsService: NgxPermissionsService,
+      private _httpService: HttpService,
+      private _notificationService: NotificationService,
   ) {
     this.currentUser$?.next(this.currentUser);
   }
 
   get currentUser(): User {
-    return JSON.parse(localStorage.getItem(LocalStorageKeys.User)!);
+    return JSON.parse(localStorage.getItem(LocalStorageKeys.User)! );
   }
 
   get token(): string | null {
@@ -46,12 +46,12 @@ export class AuthService {
       password: password
     };
 
-    return this._httpService.POST(IdentityController.Login, body, undefined, true)
-      .subscribe((res: string) => {
-        this.updateToken(res);
-        this._notificationService.success('Welcome', 'You have logged in successfully! 🎉');
-        this._router.navigate(['/']);
-      });
+    return this._httpService.POST(IdentityController.Login, body,undefined,true)
+        .subscribe((res: string) => {
+          this.updateToken(res);
+          this._notificationService.success('Welcome', 'You have logged in successfully! 🎉');
+          this._router.navigate(['/']).then(x => window.location.reload());
+        });
   }
 
   updateToken(token: string): void {

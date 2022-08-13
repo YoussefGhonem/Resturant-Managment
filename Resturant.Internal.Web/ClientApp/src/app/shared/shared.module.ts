@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgbAccordionModule, NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbNavModule, NgbAccordionModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Swiper Slider
-import { SwiperConfigInterface, SwiperModule } from 'ngx-swiper-wrapper';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 // Counter
 import { CountToModule } from 'angular-count-to';
@@ -24,7 +26,7 @@ import { ContactComponent } from './landing/index/contact/contact.component';
 import { FooterComponent } from './landing/index/footer/footer.component';
 import { ScrollspyDirective } from './scrollspy.directive';
 
-// NFT Landing
+// NFT Landing 
 import { MarketPlaceComponent } from './landing/nft/market-place/market-place.component';
 import { WalletComponent } from './landing/nft/wallet/wallet.component';
 import { FeaturesComponent } from './landing/nft/features/features.component';
@@ -72,5 +74,4 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   exports: [BreadcrumbsComponent, ClientLogoComponent, ServicesComponent, CollectionComponent, CtaComponent, DesignedComponent, PlanComponent, FaqsComponent, ReviewComponent, CounterComponent, WorkProcessComponent, TeamComponent, ContactComponent, FooterComponent, ScrollspyDirective,
     WalletComponent, MarketPlaceComponent, FeaturesComponent, CategoriesComponent, DiscoverComponent, TopCreatorComponent]
 })
-export class SharedModule {
-}
+export class SharedModule { }

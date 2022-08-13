@@ -1,8 +1,10 @@
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { EventService } from '../../core/services/event.service';
 
 //Logout
+import { environment } from '../../../environments/environment';
+import { AuthenticationService } from '../../core/services/auth.service';
 import { AuthfakeauthenticationService } from '../../core/services/authfake.service';
 import { TokenStorageService } from '../../core/services/token-storage.service';
 import { Router } from '@angular/router';
@@ -14,7 +16,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { CartModel } from './topbar.model';
 import { cartData } from './data';
-import { AuthService } from "app/+auth/service";
+import {AuthService} from "app/+auth/service";
 
 @Component({
   selector: 'app-topbar',
@@ -29,60 +31,57 @@ export class TopbarComponent implements OnInit {
 
   cartData!: CartModel[];
   total = 0;
-  cart_length: any = 0;
+  cart_length:any = 0;
 
   flagvalue: any;
   valueset: any;
   countryName: any;
   cookieValue: any;
-  userData: any;
+  userData:any;
 
-  constructor(@Inject(DOCUMENT) private document: any, private eventService: EventService, public languageService: LanguageService,
-              public _cookiesService: CookieService, public translate: TranslateService, private authService: AuthService, private authFackservice: AuthfakeauthenticationService,
-              private router: Router, private TokenStorageService: TokenStorageService) {
-  }
+  constructor(@Inject(DOCUMENT) private document: any,private eventService: EventService, public languageService: LanguageService,
+  public _cookiesService: CookieService, public translate: TranslateService, private authService: AuthService, private authFackservice: AuthfakeauthenticationService,
+  private router: Router, private TokenStorageService : TokenStorageService) { }
 
   ngOnInit(): void {
-    this.userData = this.TokenStorageService.getUser();
+    this.userData =  this.TokenStorageService.getUser();
     this.element = document.documentElement;
 
-    // Cookies wise Language set
-    this.cookieValue = this._cookiesService.get('lang');
-    const val = this.listLang.filter(x => x.lang === this.cookieValue);
-    this.countryName = val.map(element => element.text);
-    if (val.length === 0) {
-      if (this.flagvalue === undefined) {
-        this.valueset = 'assets/images/flags/us.svg';
-      }
-    } else {
-      this.flagvalue = val.map(element => element.flag);
-    }
+     // Cookies wise Language set
+     this.cookieValue = this._cookiesService.get('lang');
+     const val = this.listLang.filter(x => x.lang === this.cookieValue);
+     this.countryName = val.map(element => element.text);
+     if (val.length === 0) {
+       if (this.flagvalue === undefined) { this.valueset = 'assets/images/flags/us.svg'; }
+     } else {
+       this.flagvalue = val.map(element => element.flag);
+     }
 
     //  Fetch Data
     this.cartData = cartData;
-    this.cart_length = this.cartData.length;
-    this.cartData.forEach((item) => {
+    this.cart_length = this.cartData.length;    
+    this.cartData.forEach((item)=>{
       var item_price = item.quantity * item.price
       this.total += item_price
-    });
+    }); 
   }
 
   /**
    * Toggle the menu bar when having mobile screen
    */
-  toggleMobileMenu(event: any) {
-    event.preventDefault();
-    this.mobileMenuButtonClicked.emit();
-  }
+     toggleMobileMenu(event: any) {
+      event.preventDefault();
+      this.mobileMenuButtonClicked.emit();
+    }
 
   /**
    * Fullscreen method
    */
-  fullscreen() {
+   fullscreen() {
     document.body.classList.toggle('fullscreen-enable');
     if (
-        !document.fullscreenElement && !this.element.mozFullScreenElement &&
-        !this.element.webkitFullscreenElement) {
+      !document.fullscreenElement && !this.element.mozFullScreenElement &&
+      !this.element.webkitFullscreenElement) {
       if (this.element.requestFullscreen) {
         this.element.requestFullscreen();
       } else if (this.element.mozRequestFullScreen) {
@@ -112,9 +111,9 @@ export class TopbarComponent implements OnInit {
   }
 
   /**
-   * Topbar Light-Dark Mode Change
-   */
-  changeMode(mode: string) {
+  * Topbar Light-Dark Mode Change
+  */
+   changeMode(mode: string) {
     this.mode = mode;
     this.eventService.broadcast('changeMode', mode);
 
@@ -136,20 +135,20 @@ export class TopbarComponent implements OnInit {
   /***
    * Language Listing
    */
-  listLang = [
-    {text: 'English', flag: 'assets/images/flags/us.svg', lang: 'en'},
-    {text: 'Española', flag: 'assets/images/flags/spain.svg', lang: 'es'},
-    {text: 'Deutsche', flag: 'assets/images/flags/germany.svg', lang: 'de'},
-    {text: 'Italiana', flag: 'assets/images/flags/italy.svg', lang: 'it'},
-    {text: 'русский', flag: 'assets/images/flags/russia.svg', lang: 'ru'},
-    {text: '中国人', flag: 'assets/images/flags/china.svg', lang: 'ch'},
-    {text: 'français', flag: 'assets/images/flags/french.svg', lang: 'fr'},
+   listLang = [
+    { text: 'English', flag: 'assets/images/flags/us.svg', lang: 'en' },
+    { text: 'Española', flag: 'assets/images/flags/spain.svg', lang: 'es' },
+    { text: 'Deutsche', flag: 'assets/images/flags/germany.svg', lang: 'de' },
+    { text: 'Italiana', flag: 'assets/images/flags/italy.svg', lang: 'it' },
+    { text: 'русский', flag: 'assets/images/flags/russia.svg', lang: 'ru' },
+    { text: '中国人', flag: 'assets/images/flags/china.svg', lang: 'ch' },
+    { text: 'français', flag: 'assets/images/flags/french.svg', lang: 'fr' },
   ];
 
   /***
    * Language Value Set
    */
-  setLanguage(text: string, lang: string, flag: string) {
+   setLanguage(text: string, lang: string, flag: string) {
     this.countryName = text;
     this.flagvalue = flag;
     this.cookieValue = lang;
@@ -159,7 +158,7 @@ export class TopbarComponent implements OnInit {
   /**
    * Logout the user
    */
-  logout() {
+   logout() {
     this.authService.logout();
     this.router.navigate(['/auth/login']);
   }
@@ -173,13 +172,13 @@ export class TopbarComponent implements OnInit {
   }
 
   // Delete Item
-  deleteItem(event: any, id: any) {
-    var price = event.target.closest('.dropdown-item').querySelector('.item_price').innerHTML;
+  deleteItem(event:any,id:any){
+    var price =  event.target.closest('.dropdown-item').querySelector('.item_price').innerHTML;
     var Total_price = this.total - price;
     this.total = Total_price;
-    this.cart_length = this.cart_length - 1;
-    this.total > 1 ? (document.getElementById("empty-cart") as HTMLElement).style.display = "none" : (document.getElementById("empty-cart") as HTMLElement).style.display = "block";
-    document.getElementById('item_' + id)?.remove();
+    this.cart_length  = this.cart_length - 1;
+    this.total > 1 ? (document.getElementById("empty-cart") as HTMLElement).style.display = "none" : (document.getElementById("empty-cart") as HTMLElement).style.display = "block";     
+    document.getElementById('item_'+id)?.remove();   
   }
 
 }

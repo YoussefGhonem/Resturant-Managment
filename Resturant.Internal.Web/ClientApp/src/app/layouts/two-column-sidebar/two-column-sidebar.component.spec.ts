@@ -8,9 +8,9 @@ describe('TwoColumnSidebarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TwoColumnSidebarComponent]
+      declarations: [ TwoColumnSidebarComponent ]
     })
-        .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

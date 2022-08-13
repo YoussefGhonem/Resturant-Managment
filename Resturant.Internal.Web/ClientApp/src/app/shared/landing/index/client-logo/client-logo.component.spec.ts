@@ -8,9 +8,9 @@ describe('ClientLogoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ClientLogoComponent]
+      declarations: [ ClientLogoComponent ]
     })
-        .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

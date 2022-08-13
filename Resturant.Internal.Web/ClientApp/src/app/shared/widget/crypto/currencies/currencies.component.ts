@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-currencies',
@@ -11,8 +11,8 @@ import { Component, Input, OnInit } from '@angular/core';
  */
 export class CurrenciesComponent implements OnInit {
 
-  // Currencies data
-  @Input() Currencies: Array<{
+   // Currencies data
+   @Input() Currencies: Array<{
     image?: string;
     coinName?: string;
     price?: string;
@@ -23,8 +23,7 @@ export class CurrenciesComponent implements OnInit {
 
   }> | undefined;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

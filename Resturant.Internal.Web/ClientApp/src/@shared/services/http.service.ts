@@ -6,6 +6,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { environment } from 'environments/environment';
 import { NotificationService } from './notification.service';
 import { Observable } from "rxjs";
+import { User } from "app/+auth/models";
 import { LocalStorageKeys } from "@shared/default-values";
 
 @Injectable({
@@ -30,6 +31,13 @@ export class HttpService {
 
     const httpParams: HttpParams = this.parameterizedUrl(queryParameters);
     console.log("httpParams", httpParams);
+    if (isIdentity) {
+      return this.http.get<any>(this.getFullUrl(url, true), { observe: 'response', params: httpParams })
+        .pipe(
+          map(res => res.body),
+          tap(res => this.spinner.hide())
+        );
+    }
     return this.http.get<any>(this.getFullUrl(url), { observe: 'response', params: httpParams })
       .pipe(
         map(res => res.body),
@@ -43,6 +51,13 @@ export class HttpService {
     this.spinner.show();
 
     const httpParams: HttpParams = this.parameterizedUrl(queryParameters);
+    if (isIdentity) {
+      return this.http.post(this.getFullUrl(url, true), body, { observe: 'response', params: httpParams })
+        .pipe(
+          map(res => res.body),
+          tap(res => this.spinner.hide())
+        );
+    }
     return this.http.post(this.getFullUrl(url), body, { observe: 'response', params: httpParams })
       .pipe(
         map(res => res.body),
@@ -51,11 +66,12 @@ export class HttpService {
   }
 
   // PUT request
-  PUT(url: string, body: any = {}, queryParameters?: object, isIdentity: boolean = false): Observable<any> {
+  PUT(url: string, body: any = {}, queryParameters?: object): Observable<any> {
 
     this.spinner.show();
 
     const httpParams: HttpParams = this.parameterizedUrl(queryParameters);
+
     return this.http.put(this.getFullUrl(url), body, { observe: 'response', params: httpParams })
       .pipe(
         map(res => res.body),
@@ -127,8 +143,13 @@ export class HttpService {
 
   //#region Helper Methods
 
-  getFullUrl(uri: string): string {
-    return `${environment.config?.apiConfig?.apiUrl}/api/${uri}`;
+  getFullUrl(uri: string, isIdentity: boolean = false): string {
+    if (isIdentity)
+      return `${environment.config?.apiUrlIdentity}/api/v${environment.config?.apiConfig?.apiVersion}/${uri}`;
+
+    console.log("route")
+    return `${environment.config?.apiConfig?.apiUrl}/api/v${environment.config?.apiConfig?.apiVersion}/${uri}`;
+
   }
 
   objectToFormData(obj: any, rootName?: any, ignoreList?: any) {

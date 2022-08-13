@@ -53,7 +53,7 @@ export class filesService {
 
   isValidExcelExtension(file: File): boolean {
     let allowedExtensions: Array<any> = ['xlsx', 'csv'];
-    let fileExtension = file.name.split(".").pop() || '';
+    let fileExtension = file.name.split(".").pop()  || '';
     if (!allowedExtensions.includes(fileExtension.trim().toLowerCase())) {
       this.notificationService.error('Invalid Excel', 'Please select a valid "Excel" sheet');
       return false;

@@ -8,9 +8,9 @@ describe('TopSellingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TopSellingComponent]
+      declarations: [ TopSellingComponent ]
     })
-        .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {

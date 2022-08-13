@@ -83,7 +83,7 @@ export const MENU: MenuItem[] = [
             link: '/mailbox',
             parentId: 11
           },
-          {
+          { 
             id: 14,
             label: 'MENUITEMS.APPS.LIST.MAILTEMPLATES',
             parentId: 11,

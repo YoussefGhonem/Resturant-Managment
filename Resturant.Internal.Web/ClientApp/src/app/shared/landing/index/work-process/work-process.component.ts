@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ProcessModel } from './work-process.module';
+import {ProcessModel} from './work-process.module';
 import { Process } from './data';
 
 @Component({
@@ -15,21 +15,20 @@ import { Process } from './data';
 export class WorkProcessComponent implements OnInit {
 
   Process!: ProcessModel[];
-
-  constructor() {
-  }
+  
+  constructor() { }
 
   ngOnInit(): void {
     /**
      * fetches data
      */
-    this._fetchData();
+     this._fetchData();
   }
 
   /**
-   * User grid data fetches
-   */
-  private _fetchData() {
+ * User grid data fetches
+ */
+   private _fetchData() {
     this.Process = Process;
   }
 

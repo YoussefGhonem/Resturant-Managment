@@ -7,12 +7,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   NgbAccordionModule,
   NgbActiveModal,
-  NgbDropdownModule,
-  NgbNavModule,
+  NgbDropdownModule, NgbNavModule,
   NgbPaginationModule,
-  NgbRatingModule,
-  NgbToastModule,
-  NgbTooltipModule,
+  NgbRatingModule, NgbToastModule, NgbTooltipModule,
   NgbTypeaheadModule
 } from "@ng-bootstrap/ng-bootstrap";
 import { NgxSliderModule } from "@angular-slider/ngx-slider";
@@ -28,24 +25,13 @@ import { NgxMaskModule } from "ngx-mask";
 import { SharedDirectivesModule } from "@shared/directives/shared-directives.module";
 import { SharedComponentsModule } from '@shared/components/shared-components.module';
 import { SharedPipesModule } from '@shared/pipes/pipes.module';
+import { ToastsContainer } from "app/+dashboard/components/dashboard/toasts-container.component";
 import { UsersRoutingModule } from './users-routing.module';
 import { AllUsersComponent } from './users/all-users/all-users.component';
 import { CommiteeMembersComponent } from './users/commitee-members/commitee-members.component';
 import { LocalAdminsComponent } from './users/local-admins/local-admins.component';
 import { CreateUserComponent } from './users/create-user/create-user.component';
-import { AutocompleteLibModule } from 'angular-ng-autocomplete';
-import { PublicUserComponent } from './users/public-user/public-user.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
-import { ChangePasswordComponent } from './profile-settings/change-password/change-password.component';
-import { UpdateUserProfileComponent } from './profile-settings/update-user-profile/update-user-profile.component';
-import { UpdateProfileImageComponent } from './profile-settings/update-profile-image/update-profile-image.component';
-import { VerificationTabComponent } from './profile-settings/verification-document/verification-document.component';
-import { ReactiveValidationModule } from 'angular-reactive-validation';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { AddSignatureComponent } from './profile-settings/signature-pad-popup/signature-pad-popup.component';
-import { PdfViewerComponent } from './profile-settings/verification-document/pdf-viewer-preview/pdf-viewer-preview.component';
-import { SignaturePadModule } from '@ng-plus/signature-pad'
+
 @NgModule({
   declarations: [
     UsersComponent,
@@ -53,16 +39,7 @@ import { SignaturePadModule } from '@ng-plus/signature-pad'
     AllUsersComponent,
     CommiteeMembersComponent,
     LocalAdminsComponent,
-    CreateUserComponent,
-    PublicUserComponent,
-    ProfileComponent,
-    ProfileSettingsComponent,
-    ChangePasswordComponent,
-    UpdateUserProfileComponent,
-    UpdateProfileImageComponent,
-    VerificationTabComponent,
-    AddSignatureComponent,
-    PdfViewerComponent
+    CreateUserComponent
   ],
   imports: [
     CommonModule,
@@ -78,7 +55,6 @@ import { SignaturePadModule } from '@ng-plus/signature-pad'
     NgbRatingModule,
     NgbTooltipModule,
     NgxSliderModule,
-    ReactiveValidationModule,
     SimplebarAngularModule,
     SwiperModule,
     CKEditorModule,
@@ -91,9 +67,6 @@ import { SignaturePadModule } from '@ng-plus/signature-pad'
     SharedDirectivesModule,
     SharedComponentsModule,
     SharedPipesModule,
-    AutocompleteLibModule,
-    SignaturePadModule,
-    PdfViewerModule
   ],
   providers: [
     NgbActiveModal

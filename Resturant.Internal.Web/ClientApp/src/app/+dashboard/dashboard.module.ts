@@ -1,15 +1,16 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 // Component dashboard
 import { defineLordIconElement } from 'lord-icon-element';
 
 import { CommonModule } from "@angular/common";
+import { EventsRoutingModule } from "app/+events/events-routing.module";
 import { WidgetModule } from "app/shared/widget/widget.module";
 import { SharedModule } from "app/shared/shared.module";
 import { FlatpickrModule } from "angularx-flatpickr";
 import { SwiperModule } from "swiper/angular";
 import { NgApexchartsModule } from "ng-apexcharts";
 import { SimplebarAngularModule } from "simplebar-angular";
-import { NgbDropdownModule, NgbNavModule, NgbProgressbarModule, NgbToastModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbDropdownModule, NgbNavModule, NgbToastModule } from "@ng-bootstrap/ng-bootstrap";
 import { LeafletModule } from "@asymmetrik/ngx-leaflet";
 import { CountToModule } from "angular-count-to";
 import { FeatherModule } from "angular-feather";
@@ -19,11 +20,14 @@ import { AnalyticsComponent } from "app/+dashboard/components/analytics/analytic
 import { ProjectsComponent } from './components/projects/projects.component';
 import { NftComponent } from './components/nft/nft.component';
 import { DashboardRoutingModule } from "app/+dashboard/dashboard-routing.module";
-import { SWIPER_CONFIG, SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { DashboardComponent } from "app/+dashboard/components/dashboard/dashboard.component";
 import { LightboxModule } from 'ngx-lightbox';
+import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 import lottie from 'lottie-web';
 import { CryptoComponent } from './components/crypto/crypto.component';
+import { ToastsContainer } from "app/+dashboard/components/dashboard/toasts-container.component";
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -56,6 +60,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     WidgetModule,
     NgbProgressbarModule,
     LightboxModule,
+    EventsRoutingModule,
     DashboardRoutingModule
   ],
   providers: [
