@@ -84,6 +84,7 @@ namespace Resturant.Getway.Extensions
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseCurrentUser();
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
 
             return app;
