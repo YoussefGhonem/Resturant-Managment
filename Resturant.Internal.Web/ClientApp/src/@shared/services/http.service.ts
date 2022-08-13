@@ -6,7 +6,6 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { environment } from 'environments/environment';
 import { NotificationService } from './notification.service';
 import { Observable } from "rxjs";
-import { User } from "app/+auth/models";
 import { LocalStorageKeys } from "@shared/default-values";
 
 @Injectable({
@@ -25,19 +24,12 @@ export class HttpService {
   }
 
   // GET request
-  GET(url: string, queryParameters?: object, isIdentity: boolean = false, showSpinner: boolean = true,): Observable<any> {
+  GET(url: string, queryParameters?: object, showSpinner: boolean = true): Observable<any> {
 
     if (showSpinner) this.spinner.show();
 
     const httpParams: HttpParams = this.parameterizedUrl(queryParameters);
     console.log("httpParams", httpParams);
-    if (isIdentity) {
-      return this.http.get<any>(this.getFullUrl(url, true), { observe: 'response', params: httpParams })
-        .pipe(
-          map(res => res.body),
-          tap(res => this.spinner.hide())
-        );
-    }
     return this.http.get<any>(this.getFullUrl(url), { observe: 'response', params: httpParams })
       .pipe(
         map(res => res.body),
@@ -46,18 +38,9 @@ export class HttpService {
   }
 
   // POST request
-  POST(url: string, body: any = {}, queryParameters?: object, isIdentity: boolean = false): Observable<any> {
-
+  POST(url: string, body: any = {}, queryParameters?: object): Observable<any> {
     this.spinner.show();
-
     const httpParams: HttpParams = this.parameterizedUrl(queryParameters);
-    if (isIdentity) {
-      return this.http.post(this.getFullUrl(url, true), body, { observe: 'response', params: httpParams })
-        .pipe(
-          map(res => res.body),
-          tap(res => this.spinner.hide())
-        );
-    }
     return this.http.post(this.getFullUrl(url), body, { observe: 'response', params: httpParams })
       .pipe(
         map(res => res.body),
@@ -67,11 +50,8 @@ export class HttpService {
 
   // PUT request
   PUT(url: string, body: any = {}, queryParameters?: object): Observable<any> {
-
     this.spinner.show();
-
     const httpParams: HttpParams = this.parameterizedUrl(queryParameters);
-
     return this.http.put(this.getFullUrl(url), body, { observe: 'response', params: httpParams })
       .pipe(
         map(res => res.body),
@@ -82,9 +62,7 @@ export class HttpService {
 
   // PATCH request
   PATCH(url: string, body: any = {}, queryParameters?: object): Observable<any> {
-
     this.spinner.show();
-
     const httpParams: HttpParams = this.parameterizedUrl(queryParameters);
 
     return this.http.patch(this.getFullUrl(url), body, { observe: 'response', params: httpParams })
@@ -143,12 +121,9 @@ export class HttpService {
 
   //#region Helper Methods
 
-  getFullUrl(uri: string, isIdentity: boolean = false): string {
-    if (isIdentity)
-      return `${environment.config?.apiUrlIdentity}/api/v${environment.config?.apiConfig?.apiVersion}/${uri}`;
+  getFullUrl(uri: string): string {
 
-    console.log("route")
-    return `${environment.config?.apiConfig?.apiUrl}/api/v${environment.config?.apiConfig?.apiVersion}/${uri}`;
+    return `${environment.config?.apiConfig?.apiUrl}/api/${uri}`;
 
   }
 

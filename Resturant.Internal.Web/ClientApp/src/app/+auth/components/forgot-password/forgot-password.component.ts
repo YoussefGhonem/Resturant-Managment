@@ -23,12 +23,11 @@ export class ForgotPasswordComponent extends BaseComponent implements OnInit {
   constructor(
     public override injector: Injector,
     private _formBuilder: UntypedFormBuilder,
-    private _authService: AuthService)
-     {
-      super(injector);
-      this.displayForm = true;
-      this.displaySuccess = false;
-      }
+    private _authService: AuthService) {
+    super(injector);
+    this.displayForm = true;
+    this.displaySuccess = false;
+  }
 
   ngOnInit(): void {
     this.passresetForm = this._formBuilder.group({
@@ -50,11 +49,11 @@ export class ForgotPasswordComponent extends BaseComponent implements OnInit {
     }
 
     let body = this.passresetForm.getRawValue();
-    this.httpService.POST(IdentityController.ForgetPassword(body.email), {}, undefined, true)
-    .subscribe(() => {
-      this.displayForm = false;
-      this.displaySuccess = true;
-    });
+    this.httpService.POST(IdentityController.ForgetPassword(body.email), {})
+      .subscribe(() => {
+        this.displayForm = false;
+        this.displaySuccess = true;
+      });
   }
 
 }

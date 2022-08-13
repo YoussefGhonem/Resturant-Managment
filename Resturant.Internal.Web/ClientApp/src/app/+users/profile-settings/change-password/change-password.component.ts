@@ -18,10 +18,10 @@ export class ChangePasswordComponent extends BaseComponent implements OnInit {
 
 
   constructor
-  (
+    (
       public override injector: Injector,
       private _formBuilder: UntypedFormBuilder
-  ) {
+    ) {
     super(injector);
   }
 
@@ -45,10 +45,10 @@ export class ChangePasswordComponent extends BaseComponent implements OnInit {
       return;
     }
     let body = this.updatePasswordForm.getRawValue();
-    this.httpService.PUT(IdentityController.changePassword, body, undefined, true)
-        .subscribe(() => {
-          this.notificationService.success("Success", "Bingo");
-        })
+    this.httpService.PUT(IdentityController.changePassword, body)
+      .subscribe(() => {
+        this.notificationService.success("Success", "Bingo");
+      })
   }
 
 

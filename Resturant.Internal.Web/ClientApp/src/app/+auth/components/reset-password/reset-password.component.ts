@@ -139,7 +139,7 @@ export class ResetPasswordComponent extends BaseComponent implements OnInit {
       NewPassword: formBody.password,
       ConfirmPassword: formBody.cpassword
     };
-    return this.httpService.POST(IdentityController.ResetPassword(this.email), body, undefined, true)
+    return this.httpService.POST(IdentityController.ResetPassword(this.email), body)
       .subscribe(() => {
         this.displayForm = false;
         this.displaySuccess = true;

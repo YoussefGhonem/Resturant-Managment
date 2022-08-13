@@ -1,8 +1,8 @@
-import {Component, Injector, OnInit} from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {BaseComponent} from "@shared/base/base.component";
-import {ActivatedRoute} from "@angular/router";
-import {AuthService} from "app/+auth/service";
+import { Component, Injector, OnInit } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { BaseComponent } from "@shared/base/base.component";
+import { ActivatedRoute } from "@angular/router";
+import { AuthService } from "app/+auth/service";
 
 @Component({
   selector: 'app-login',
@@ -20,15 +20,16 @@ export class LoginComponent extends BaseComponent implements OnInit {
   year: number = new Date().getFullYear();
 
   constructor(public override injector: Injector,
-              private _formBuilder: UntypedFormBuilder,
-              private _route: ActivatedRoute,
-              private _authService: AuthService) { super(injector);
+    private _formBuilder: UntypedFormBuilder,
+    private _route: ActivatedRoute,
+    private _authService: AuthService) {
+      super(injector);
 
   }
 
   ngOnInit(): void {
     this.loginForm = this._formBuilder.group({
-      email: ['superadmin@gmail.com', [Validators.required, Validators.email]],
+      email: ['admin@gmail.com', [Validators.required, Validators.email]],
       password: ['Admin@2010', Validators.required],
     });
   }
@@ -43,7 +44,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    let body=this.loginForm.getRawValue();
+    let body = this.loginForm.getRawValue();
     this._authService.login(body.email, body.password);
   }
 
