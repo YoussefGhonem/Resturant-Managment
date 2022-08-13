@@ -25,7 +25,6 @@ import { NgxMaskModule } from "ngx-mask";
 import { SharedDirectivesModule } from "@shared/directives/shared-directives.module";
 import { SharedComponentsModule } from '@shared/components/shared-components.module';
 import { SharedPipesModule } from '@shared/pipes/pipes.module';
-import { ToastsContainer } from "app/+dashboard/components/dashboard/toasts-container.component";
 import { UsersRoutingModule } from './users-routing.module';
 import { AllUsersComponent } from './users/all-users/all-users.component';
 import { CommiteeMembersComponent } from './users/commitee-members/commitee-members.component';

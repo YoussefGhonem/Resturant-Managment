@@ -8,8 +8,8 @@ const AUTH_API = GlobalComponent.AUTH_API;
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-  
+};
+
 
 @Injectable({ providedIn: 'root' })
 
@@ -27,14 +27,14 @@ export class AuthenticationService {
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')!));
         // this.currentUser = this.currentUserSubject.asObservable();
-     }
+    }
 
     /**
      * Performs the register
      * @param email email
      * @param password password
      */
-    register(email: string, first_name: string, password: string) {        
+    register(email: string, first_name: string, password: string) {
         // return getFirebaseBackend()!.registerUser(email, password).then((response: any) => {
         //     const user = response;
         //     return user;
@@ -45,7 +45,7 @@ export class AuthenticationService {
             email,
             first_name,
             password,
-          }, httpOptions);
+        }, httpOptions);
     }
 
     /**
@@ -62,7 +62,7 @@ export class AuthenticationService {
         return this.http.post(AUTH_API + 'signin', {
             email,
             password
-          }, httpOptions);
+        }, httpOptions);
     }
 
     public currentUser(): any {
@@ -73,8 +73,8 @@ export class AuthenticationService {
         // logout the user
         // return getFirebaseBackend()!.logout();
 
-        localStorage.removeItem('TicketManagement-User');
-        localStorage.removeItem('TicketManagement-AuthToken');
+        localStorage.removeItem('ResturantManagement-User');
+        localStorage.removeItem('ResturantManagement-AuthToken');
         this.currentUserSubject.next(null!);
     }
 

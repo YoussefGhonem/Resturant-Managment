@@ -7,7 +7,7 @@
 <div class="row">
   <div class="col-xxl-3">
 
-    <update-profile-image [activeId]="activeId" (onImageChangeSend)="saveImageInComponent($event)"></update-profile-image>
+    <!-- <update-profile-image [activeId]="activeId" (onImageChangeSend)="saveImageInComponent($event)"></update-profile-image> -->
 
     <!--end card-->
     <div class="card">
@@ -18,13 +18,12 @@
           </div>
           <div class="flex-shrink-0">
             <a href="/users/profile-settings" class="badge bg-light text-primary fs-12"><i
-                    class="ri-edit-box-line align-bottom me-1"></i> Complete</a>
+                class="ri-edit-box-line align-bottom me-1"></i> Complete</a>
           </div>
         </div>
         <div class="progress animated-progess custom-progress progress-label">
-          <div class="progress-bar bg-danger" role="progressbar" [ngStyle]="{'width': completionPercentage + '%'}"
-              [attr.aria-valuenow]="completionPercentage"
-              aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar bg-danger" role="progressbar" [attr.aria-valuenow]="completionPercentage"
+            aria-valuemin="0" aria-valuemax="100">
             <div class="label">{{completionPercentage}}%</div>
           </div>
         </div>
@@ -32,48 +31,7 @@
     </div>
   </div>
   <!--end col-->
-  <div class="col-xxl-9">
-    <div class="card mt-xxl-n5">
-      <div class="card-header">
-        <ul ngbNav #customNav="ngbNav" [activeId]="activeId" [destroyOnHide]="true"
-            class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0" role="tablist">
-          <li [ngbNavItem]="1" class="nav-item">
-            <a ngbNavLink [routerLink]="['/users/profile-settings']" class="nav-link" data-bs-toggle="tab" role="tab">
-              <i class="fas fa-home"></i>
-              Personal Details
-            </a>
-            <ng-template ngbNavContent>
-              <update-user-profile></update-user-profile>
-            </ng-template>
-          </li>
-          <li [ngbNavItem]="2" class="nav-item">
-            <a ngbNavLink [routerLink]="['/users/profile-settings/change-password']" class="nav-link" data-bs-toggle="tab" role="tab">
-              <i class="far fa-user"></i>
-              Change Password
-            </a>
-            <ng-template ngbNavContent>
-              <change-password></change-password>
-            </ng-template>
-          </li>
 
-          <li [ngbNavItem]="3" class="nab-item">
-            <a ngbNavLink [routerLink]="['/users/profile-settings/sign']" class="nav-link" data-bs-toggle="tab" role="tab">
-              <i class=""></i>
-              Sign & Verify
-            </a>
-            <ng-template ngbNavContent>
-              <verification-document></verification-document>
-            </ng-template>
-          </li>
-        </ul>
-      </div>
-      <div class="card-body p-4">
-        <div class="tab-content">
-          <div [ngbNavOutlet]="customNav"></div>
-        </div>
-      </div>
-    </div>
-  </div>
   <!--end col-->
 </div>
 <!--end row-->
