@@ -3,17 +3,18 @@ using Resturant.Core.Common;
 using Resturant.Core.Interfaces;
 using Resturant.Data.DbModels.BusinessSchema;
 using Resturant.DTO.Business.Press;
-using Resturant.Internal.Services.Press;
+using Resturant.Services.Press;
+using Resturant.Services.Settings;
 
 namespace Resturant.Getway.Controllers
 {
     [Route("api/press")]
     public class PressController : BaseController
     {
-        private readonly ISettingsService _pressServicee;
+        private readonly IPressService _pressServicee;
 
         public PressController(
-           ISettingsService pressServicee,
+           IPressService pressServicee,
            IResponseDTO response,
            IHttpContextAccessor httpContextAccessor) : base(response, httpContextAccessor)
         {

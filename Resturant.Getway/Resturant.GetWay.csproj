@@ -20,13 +20,12 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Resturant.Data\Resturant.Data.csproj" />
-		<ProjectReference Include="..\Resturant.Internal.Services\Resturant.Services.csproj" />
 		<ProjectReference Include="..\Resturant.Services\Resturant.Services.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="wwwroot\Uploads\PrivateDining\" />
-	  <Folder Include="wwwroot\Uploads\Press\" />
+		<Folder Include="wwwroot\Uploads\PrivateDining\" />
+		<Folder Include="wwwroot\Uploads\Press\" />
 	</ItemGroup>
 
 </Project>

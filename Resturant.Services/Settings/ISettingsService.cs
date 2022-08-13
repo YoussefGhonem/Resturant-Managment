@@ -2,7 +2,7 @@
 using Resturant.Core.Interfaces;
 using Resturant.DTO.Business.Settings;
 
-namespace Resturant.Internal.Services.Press
+namespace Resturant.Services.Settings
 {
     public interface ISettingsService
     {

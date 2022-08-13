@@ -4,7 +4,7 @@ using Resturant.Core.Interfaces;
 using Resturant.Data.DbModels.BusinessSchema;
 using Resturant.DTO.Business.Press;
 
-namespace Resturant.Internal.Services.Press
+namespace Resturant.Services.Press
 {
     public interface IPressService
     {

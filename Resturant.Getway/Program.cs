@@ -11,7 +11,7 @@ builder.Services.AddDBConfiguration(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddInternalServicesApplication();
+builder.Services.AddServicesApplication();
 builder.Services.AddControllerConfiguration();
 #endregion
 

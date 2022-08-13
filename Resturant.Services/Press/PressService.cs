@@ -8,7 +8,7 @@ using Resturant.Data.DbModels.BusinessSchema;
 using Resturant.DTO.Business.Press;
 using Resturant.Services.UploadFiles;
 
-namespace Resturant.Internal.Services.Press
+namespace Resturant.Services.Press
 {
     public class PressService : IPressService
     {

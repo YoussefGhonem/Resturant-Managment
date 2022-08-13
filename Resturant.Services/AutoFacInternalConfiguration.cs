@@ -1,16 +1,16 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Resturant.Core.Common;
 using Resturant.Core.Interfaces;
-using Resturant.Internal.Services.Press;
 using Resturant.Services.Identity;
 using Resturant.Services.SendingEmail;
+using Resturant.Services.Settings;
 using Resturant.Services.UploadFiles;
 
 namespace Resturant.Services
 {
     public static class AutoFacInternalConfiguration
     {
-        public static IServiceCollection AddInternalServicesApplication(this IServiceCollection services)
+        public static IServiceCollection AddServicesApplication(this IServiceCollection services)
         {
             services.AddTransient<ISendingEmailService, SendingEmailService>();
             services.AddScoped<IIdentityServices, IdentityServices>();

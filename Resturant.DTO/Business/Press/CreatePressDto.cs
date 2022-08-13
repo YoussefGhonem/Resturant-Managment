@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Resturant.Data.DbModels.BusinessSchema
+namespace Resturant.DTO.Business.Press
 {
     public class CreateUpdatePressDto
     {

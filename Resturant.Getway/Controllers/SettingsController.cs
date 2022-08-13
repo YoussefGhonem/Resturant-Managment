@@ -4,10 +4,9 @@ using Resturant.Core.Interfaces;
 using Resturant.Data.DbModels.BusinessSchema;
 using Resturant.DTO.Business.Press;
 using Resturant.DTO.Business.Settings;
-using Resturant.Getway.Controllers;
-using Resturant.Internal.Services.Press;
+using Resturant.Services.Settings;
 
-namespace Resturant.Getwssay.Controllers
+namespace Resturant.Getway.Controllers
 {
     [Route("api/press")]
     public class SettingsController : BaseController

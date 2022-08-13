@@ -9,7 +9,7 @@ using Resturant.DTO.Business.Press;
 using Resturant.DTO.Business.Settings;
 using Resturant.Services.UploadFiles;
 
-namespace Resturant.Internal.Services.Press
+namespace Resturant.Services.Settings
 {
     public class SettingsService : ISettingsService
     {
