@@ -20,16 +20,16 @@ export class LoginComponent extends BaseComponent implements OnInit {
   year: number = new Date().getFullYear();
 
   constructor(public override injector: Injector,
-              private _formBuilder: UntypedFormBuilder,
-              private _route: ActivatedRoute,
-              private _authService: AuthService) {
+    private _formBuilder: UntypedFormBuilder,
+    private _route: ActivatedRoute,
+    private _authService: AuthService) {
     super(injector);
 
   }
 
   ngOnInit(): void {
     this.loginForm = this._formBuilder.group({
-      email: ['superadmin@gmail.com', [Validators.required, Validators.email]],
+      email: ['admin@gmail.com', [Validators.required, Validators.email]],
       password: ['Admin@2010', Validators.required],
     });
   }

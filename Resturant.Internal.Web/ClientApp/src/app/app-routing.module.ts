@@ -5,7 +5,7 @@ import { AuthGuard } from "app/+auth/helpers";
 
 
 const routes: Routes = [
-  {path: 'auth', loadChildren: () => import('./+auth/auth.module').then(m => m.AuthModule)},
+  { path: 'auth', loadChildren: () => import('./+auth/auth.module').then(m => m.AuthModule) },
   {
     path: 'dashboard',
     canActivate: [AuthGuard],
@@ -23,12 +23,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: LayoutComponent,
     loadChildren: () => import('./+settings/settings.module').then(m => m.SettingsModule)
-  },
-  {
-    path: 'events',
-    canActivate: [AuthGuard],
-    component: LayoutComponent,
-    loadChildren: () => import('./+events/events.module').then(m => m.EventsModule)
   },
   {
     path: '',

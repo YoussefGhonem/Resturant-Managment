@@ -13,9 +13,9 @@ import { LocalStorageKeys } from "@shared/default-values";
 })
 export class HttpService {
   constructor(
-      private notificationService: NotificationService,
-      private http: HttpClient,
-      private spinner: NgxSpinnerService,
+    private notificationService: NotificationService,
+    private http: HttpClient,
+    private spinner: NgxSpinnerService,
   ) {
   }
 
@@ -30,18 +30,11 @@ export class HttpService {
 
     const httpParams: HttpParams = this.parameterizedUrl(queryParameters);
     console.log("httpParams", httpParams);
-    if (isIdentity) {
-      return this.http.get<any>(this.getFullUrl(url, true), {observe: 'response', params: httpParams})
-          .pipe(
-              map(res => res.body),
-              tap(res => this.spinner.hide())
-          );
-    }
-    return this.http.get<any>(this.getFullUrl(url), {observe: 'response', params: httpParams})
-        .pipe(
-            map(res => res.body),
-            tap(res => this.spinner.hide())
-        );
+    return this.http.get<any>(this.getFullUrl(url), { observe: 'response', params: httpParams })
+      .pipe(
+        map(res => res.body),
+        tap(res => this.spinner.hide())
+      );
   }
 
   // POST request
@@ -50,18 +43,11 @@ export class HttpService {
     this.spinner.show();
 
     const httpParams: HttpParams = this.parameterizedUrl(queryParameters);
-    if (isIdentity) {
-      return this.http.post(this.getFullUrl(url, true), body, {observe: 'response', params: httpParams})
-          .pipe(
-              map(res => res.body),
-              tap(res => this.spinner.hide())
-          );
-    }
-    return this.http.post(this.getFullUrl(url), body, {observe: 'response', params: httpParams})
-        .pipe(
-            map(res => res.body),
-            tap(res => this.spinner.hide())
-        );
+    return this.http.post(this.getFullUrl(url), body, { observe: 'response', params: httpParams })
+      .pipe(
+        map(res => res.body),
+        tap(res => this.spinner.hide())
+      );
   }
 
   // PUT request
@@ -70,20 +56,11 @@ export class HttpService {
     this.spinner.show();
 
     const httpParams: HttpParams = this.parameterizedUrl(queryParameters);
-
-    if (isIdentity) {
-      return this.http.put(this.getFullUrl(url, true), body, {observe: 'response', params: httpParams})
-          .pipe(
-              map(res => res.body),
-              tap(res => this.spinner.hide())
-          );
-    }
-
-    return this.http.put(this.getFullUrl(url), body, {observe: 'response', params: httpParams})
-        .pipe(
-            map(res => res.body),
-            tap(res => this.spinner.hide())
-        );
+    return this.http.put(this.getFullUrl(url), body, { observe: 'response', params: httpParams })
+      .pipe(
+        map(res => res.body),
+        tap(res => this.spinner.hide())
+      );
 
   }
 
@@ -94,11 +71,11 @@ export class HttpService {
 
     const httpParams: HttpParams = this.parameterizedUrl(queryParameters);
 
-    return this.http.patch(this.getFullUrl(url), body, {observe: 'response', params: httpParams})
-        .pipe(
-            map(res => res.body),
-            tap(res => this.spinner.hide())
-        );
+    return this.http.patch(this.getFullUrl(url), body, { observe: 'response', params: httpParams })
+      .pipe(
+        map(res => res.body),
+        tap(res => this.spinner.hide())
+      );
 
   }
 
@@ -109,11 +86,11 @@ export class HttpService {
 
     const httpParams: HttpParams = this.parameterizedUrl(queryParameters);
 
-    return this.http.delete(this.getFullUrl(url), {observe: 'response', params: httpParams, body: {}})
-        .pipe(
-            map(res => res.body),
-            tap(res => this.spinner.hide())
-        );
+    return this.http.delete(this.getFullUrl(url), { observe: 'response', params: httpParams, body: {} })
+      .pipe(
+        map(res => res.body),
+        tap(res => this.spinner.hide())
+      );
 
   }
 
@@ -128,10 +105,10 @@ export class HttpService {
       params: httpParams,
       responseType: 'blob'
     })
-        .pipe(
-            map(res => res.body),
-            tap(res => this.spinner.hide())
-        );
+      .pipe(
+        map(res => res.body),
+        tap(res => this.spinner.hide())
+      );
   }
 
   Download(url: string): Observable<any> {
@@ -142,21 +119,16 @@ export class HttpService {
       observe: 'response',
       responseType: 'blob'
     })
-        .pipe(
-            map(res => res.body),
-            tap(res => this.spinner.hide())
-        );
+      .pipe(
+        map(res => res.body),
+        tap(res => this.spinner.hide())
+      );
   }
 
   //#region Helper Methods
 
-  getFullUrl(uri: string, isIdentity: boolean = false): string {
-    if (isIdentity)
-      return `${environment.config?.apiUrlIdentity}/api/v${environment.config?.apiConfig?.apiVersion}/${uri}`;
-
-    console.log("route")
-    return `${environment.config?.apiConfig?.apiUrl}/api/v${environment.config?.apiConfig?.apiVersion}/${uri}`;
-
+  getFullUrl(uri: string): string {
+    return `${environment.config?.apiConfig?.apiUrl}/api/${uri}`;
   }
 
   objectToFormData(obj: any, rootName?: any, ignoreList?: any) {
@@ -191,9 +163,9 @@ export class HttpService {
 
     function ignore(root: any) {
       return Array.isArray(ignoreList)
-          && ignoreList.some(function (x) {
-            return x === root;
-          });
+        && ignoreList.some(function (x) {
+          return x === root;
+        });
     }
 
     appendFormData(obj, rootName);
@@ -215,13 +187,13 @@ export class HttpService {
     let httpParams: HttpParams = new HttpParams();
 
     let keyValues: IQueryParamater[] = Object.keys(queryParameters)
-        .map(key => {
-          return {
-            key: key,
-            value: queryParameters[key as keyof object]
-          }
-        })
-        .filter(x => x.value != null);
+      .map(key => {
+        return {
+          key: key,
+          value: queryParameters[key as keyof object]
+        }
+      })
+      .filter(x => x.value != null);
     console.log("keyValues", keyValues);
 
     keyValues.forEach(keyValue => {
