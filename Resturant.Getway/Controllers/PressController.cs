@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Resturant.Core.Common;
 using Resturant.Core.Interfaces;
-using Resturant.Data.DbModels.BusinessSchema;
 using Resturant.DTO.Business.Press;
 using Resturant.Services.Press;
-using Resturant.Services.Settings;
 
 namespace Resturant.Getway.Controllers
 {

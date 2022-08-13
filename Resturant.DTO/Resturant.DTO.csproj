@@ -7,11 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Lookup\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\Resturant.Core\Resturant.Core.csproj" />
+		<ProjectReference Include="..\Resturant.Core\Resturant.Core.csproj" />
 	</ItemGroup>
 
 </Project>

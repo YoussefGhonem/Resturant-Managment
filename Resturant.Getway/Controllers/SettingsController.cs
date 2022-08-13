@@ -1,14 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Resturant.Core.Common;
 using Resturant.Core.Interfaces;
-using Resturant.Data.DbModels.BusinessSchema;
-using Resturant.DTO.Business.Press;
 using Resturant.DTO.Business.Settings;
 using Resturant.Services.Settings;
 
 namespace Resturant.Getway.Controllers
 {
-    [Route("api/press")]
+    [Route("api/settings")]
     public class SettingsController : BaseController
     {
         private readonly ISettingsService _pressServicee;
