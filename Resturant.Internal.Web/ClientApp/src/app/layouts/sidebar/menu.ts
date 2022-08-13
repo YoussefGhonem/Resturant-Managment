@@ -55,25 +55,12 @@ export const MENU: MenuItem[] = [
     id: 2,
     label: 'Settings',
     isTitle: true,
-
   },
   {
     id: 3,
     label: 'Settings',
     icon: ' ri-settings-2-line',
-    link: ''
-  },
-  {
-    id: 4,
-    label: 'Countries',
-    icon: 'ri-map-pin-line',
-    link: '/settings/countries',
-  },
-  {
-    id: 5,
-    label: 'Event Types',
-    icon: 'ri-pushpin-fill',
-    link: '/events/event-types'
+    link: '/settings'
   },
   {
     id: 3,
@@ -81,27 +68,10 @@ export const MENU: MenuItem[] = [
     icon: ' ri-settings-2-line',
     link: '/users'
   },
-
-
   {
     id: 11,
     label: 'Members',
     icon: 'ri-team-fill',
     link: ''
   },
-
-  {
-    id: 12,
-    label: 'Events',
-    icon: 'ri-pushpin-fill',
-    link: ''
-  },
-
-  {
-    id: 13,
-    label: 'Orders',
-    icon: 'ri-money-dollar-circle-line',
-    link: ''
-  },
-
 ];

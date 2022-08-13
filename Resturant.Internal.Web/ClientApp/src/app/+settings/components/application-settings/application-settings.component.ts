@@ -17,10 +17,9 @@ export class ApplicationSettingsComponent extends BaseComponent {
   uploadedFileSubmit: boolean = false;
   verificationFileForm!: UntypedFormGroup;
 
-
   constructor(
-      public override injector: Injector,
-      private _formBuilder: UntypedFormBuilder
+    public override injector: Injector,
+    private _formBuilder: UntypedFormBuilder
   ) {
     super(injector);
   }
@@ -28,8 +27,8 @@ export class ApplicationSettingsComponent extends BaseComponent {
   ngOnInit(): void {
 
     this.breadCrumbItems = [
-      {label: 'Home'},
-      {label: 'Settings', active: true}
+      { label: 'Home' },
+      { label: 'Settings', active: true }
     ];
 
     this.verificationFileForm = this._formBuilder.group({

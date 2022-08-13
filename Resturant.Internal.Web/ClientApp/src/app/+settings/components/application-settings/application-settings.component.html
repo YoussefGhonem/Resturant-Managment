@@ -8,34 +8,25 @@
       <ul ngbNav #nav="ngbNav" [activeId]="1" class="nav nav-tabs nav-tabs-custom nav-success mb-3">
         <li [ngbNavItem]="1">
           <a ngbNavLink>
-            <i class=" ri-settings-4-line me-1 align-buttom"></i> Update Settings
+            <i class=" ri-settings-4-line me-1 align-buttom"></i> Update About Us
           </a>
           <ng-template ngbNavContent>
-            <div class="row">
-              <div class="col-md-6 col-sm-12">
-                <configuration-update></configuration-update>
-              </div>
-              <div class="col-md-6 col-sm-12">
-                <app-verification-file></app-verification-file>
-              </div>
-            </div>
-
+            <about-us></about-us>
           </ng-template>
         </li>
         <li [ngbNavItem]="2">
           <a ngbNavLink>
-            <i class=" ri-account-box-line me-1 align-bottom"></i> Terms & Conditions (Vendors)
+            <i class=" ri-account-box-line me-1 align-bottom"></i> Private Dining
           </a>
           <ng-template ngbNavContent>
-            <vendors-terms-and-conditions></vendors-terms-and-conditions>
+            <private-dining></private-dining>
           </ng-template>
         </li>
         <li [ngbNavItem]="3">
           <a ngbNavLink>
-            <i class="ri-account-box-fill me-1 align-bottom"></i> Terms & Conditions (Users)
+            <i class="ri-account-box-fill me-1 align-bottom"></i> Gallery
           </a>
           <ng-template ngbNavContent>
-            <app-user-terms-and-conditions></app-user-terms-and-conditions>
           </ng-template>
         </li>
       </ul>

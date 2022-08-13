@@ -23,12 +23,17 @@ import { NgxMaskModule } from "ngx-mask";
 import { SharedDirectivesModule } from "@shared/directives/shared-directives.module";
 import { SharedComponentsModule } from '@shared/components/shared-components.module';
 import { SharedPipesModule } from '@shared/pipes/pipes.module';
+import { ApplicationSettingsComponent } from './components/application-settings/application-settings.component';
+import { AboutUsComponent } from './components/application-settings/about-us/about-us.component';
+import { PrivateDiningComponent } from './components/application-settings/private-dining/private-dining.component';
+import { ReactiveValidationModule } from 'angular-reactive-validation';
 // Components
-import { CountriesComponent } from './components/countries/countries.component';
 
 @NgModule({
   declarations: [
-    CountriesComponent
+    ApplicationSettingsComponent,
+    AboutUsComponent,
+    PrivateDiningComponent
   ],
   imports: [
     SettingsRoutingModule,
@@ -44,6 +49,7 @@ import { CountriesComponent } from './components/countries/countries.component';
     NgbTooltipModule,
     NgxSliderModule,
     SimplebarAngularModule,
+    ReactiveValidationModule,
     SwiperModule,
     CKEditorModule,
     DropzoneModule,

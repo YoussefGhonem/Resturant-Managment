@@ -1,4 +1,5 @@
 export const SettingsController = {
-  getCountriesDropdown: 'settings/countries/dropdown',
-  getVerificationDocument: 'settings'
+  UpdateAboutUsSettings: 'settings/about-us-Settings',
+  getVerificationDocument: 'settings',
+  Details: 'settings'
 }
