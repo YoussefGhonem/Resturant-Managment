@@ -3,7 +3,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { defineLordIconElement } from 'lord-icon-element';
 
 import { CommonModule } from "@angular/common";
-import { EventsRoutingModule } from "app/+events/events-routing.module";
 import { WidgetModule } from "app/shared/widget/widget.module";
 import { SharedModule } from "app/shared/shared.module";
 import { FlatpickrModule } from "angularx-flatpickr";
@@ -57,7 +56,6 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     WidgetModule,
     NgbProgressbarModule,
     LightboxModule,
-    EventsRoutingModule,
     DashboardRoutingModule
   ],
   providers: [

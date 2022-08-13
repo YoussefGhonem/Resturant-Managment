@@ -8,7 +8,6 @@ import { NgxMaskModule } from "ngx-mask";
 import { SharedDirectivesModule } from "@shared/directives/shared-directives.module";
 // Components
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SignupComponent } from "app/+auth/components/signup/signup.component";
 import { LoginComponent } from "app/+auth/components/login/login.component";
 import { ForgotPasswordComponent } from "app/+auth/components/forgot-password/forgot-password.component";
 import { ResetPasswordComponent } from "app/+auth/components/reset-password/reset-password.component";
@@ -27,7 +26,6 @@ import { ValidationPasswordOptionsComponent } from './components/validation-pass
 @NgModule({
   declarations: [
     LoginComponent,
-    SignupComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
     Page401Component,
