@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Resturant.Core.Common;
 using Resturant.Core.Interfaces;
+using Resturant.Services.AboutAndCommunity;
 using Resturant.Services.EventType;
 using Resturant.Services.Identity;
 using Resturant.Services.Manue;
@@ -25,6 +26,7 @@ namespace Resturant.Services
             services.AddScoped<IPrivateDiningService, PrivateDiningService>();
             services.AddScoped<IPrivateDiningImageService, PrivateDiningImageService>();
             services.AddScoped<IManuesService, ManueService>();
+            services.AddScoped<IAboutAndComunity, AboutAndCommunityService>();
             return services;
         }
     }
