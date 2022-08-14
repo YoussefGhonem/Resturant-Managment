@@ -35,7 +35,8 @@ namespace Resturant.Services.Manue
         Task<IResponseDTO> CreateSubcategory(CreateAndUpdateSubcategory crreatecategoryDto);
         Task<IResponseDTO> DeletSubcategory(Guid Id,Guid categoryId);
         Task<IResponseDTO> UpdateSubcategory(Guid Id, CreateAndUpdateSubcategory updatecategoryDto);
-        Task<SubcategoryforreturnDto> GetallSubcategory();
+        Task<IEnumerable<SubcategoryforreturnDto>> GetallSubcategory();
+        Task<IEnumerable<SubcategoryforreturnDto>> GetSubCategoryByCategoryId(Guid CategoryId);
 
     }
 }

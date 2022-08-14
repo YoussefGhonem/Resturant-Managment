@@ -11,6 +11,6 @@ namespace Resturant.DTO.Business.Manue
     {
         public new Guid Id { get; set; }
         public string? Name { get; set; }
-        public categoryforreturnDto? Categorys { get; set; }
+        public IEnumerable<categoryforreturnDto>? Categorys { get; set; }
     }
 }
