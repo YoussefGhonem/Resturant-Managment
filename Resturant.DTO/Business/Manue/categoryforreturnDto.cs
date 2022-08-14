@@ -10,6 +10,6 @@ namespace Resturant.DTO.Business.Manue
     {
         public string? Name { get; set; }
         public Guid? manueId { get; set; }
-        public SubcategoryforreturnDto? Subcategory { get; set; }
+        public IEnumerable<SubcategoryforreturnDto>? Subcategory { get; set; }
     }
 }
