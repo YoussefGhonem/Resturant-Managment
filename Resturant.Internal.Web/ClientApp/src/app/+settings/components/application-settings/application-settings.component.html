@@ -11,7 +11,7 @@
             <i class=" ri-settings-4-line me-1 align-buttom"></i> Update About Us
           </a>
           <ng-template ngbNavContent>
-            <about-us></about-us>
+            <about-us [settings]="settings"></about-us>
           </ng-template>
         </li>
         <li [ngbNavItem]="2">
@@ -19,7 +19,7 @@
             <i class=" ri-account-box-line me-1 align-bottom"></i> Private Dining
           </a>
           <ng-template ngbNavContent>
-            <private-dining></private-dining>
+            <private-dining [settings]="settings"> </private-dining>
           </ng-template>
         </li>
         <li [ngbNavItem]="3">

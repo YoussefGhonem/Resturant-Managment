@@ -27,14 +27,14 @@ namespace Resturant.Getway.Controllers
         }
 
         [HttpPost]
-        public async Task<IResponseDTO> CreatePress([FromForm] CreatePrivateDiningImageDto options)
+        public async Task<IResponseDTO> Create([FromForm] CreatePrivateDiningImageDto options)
         {
             _response = await _servicee.Create(options);
             return _response;
         }
 
         [HttpDelete("{id}")]
-        public async Task<IResponseDTO> RemovePress([FromRoute] Guid id)
+        public async Task<IResponseDTO> Remove([FromRoute] Guid id)
         {
             _response = await _servicee.Remove(id);
             return _response;

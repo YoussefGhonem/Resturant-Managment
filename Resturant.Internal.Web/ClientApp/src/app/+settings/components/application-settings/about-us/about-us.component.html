@@ -2,8 +2,7 @@
     <div class="row">
 
         <div class="mb-3 form-group col-6">
-            <label for="customername-field1" class="form-label">Email Service <small style="color : rgb(179, 62, 62);">
-                    &nbsp;&nbsp;*</small></label>
+            <label for="customername-field1" class="form-label">Email Service</label>
             <input [ngClass]="{ 'is-invalid': isInvalid('emailService') }" type="text" id="customername-field1"
                 class="form-control" placeholder="Enter email Service" formControlName="emailService" />
             <arv-validation-messages for="emailService">
@@ -11,8 +10,7 @@
         </div>
 
         <div class="mb-3 form-group col-6">
-            <label for="customername-field1" class="form-label">Number Service <small style="color : rgb(179, 62, 62);">
-                    &nbsp;&nbsp;*</small></label>
+            <label for="customername-field1" class="form-label">Number Service </label>
             <input [ngClass]="{ 'is-invalid': isInvalid('numberService') }" type="text" id="customername-field1"
                 class="form-control" placeholder="Enter Number Service" mask="(000)000-0000"
                 formControlName="numberService" />

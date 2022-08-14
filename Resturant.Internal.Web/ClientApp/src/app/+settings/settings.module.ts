@@ -27,13 +27,15 @@ import { ApplicationSettingsComponent } from './components/application-settings/
 import { AboutUsComponent } from './components/application-settings/about-us/about-us.component';
 import { PrivateDiningComponent } from './components/application-settings/private-dining/private-dining.component';
 import { ReactiveValidationModule } from 'angular-reactive-validation';
+import { PressComponent } from './components/press/press.component';
 // Components
 
 @NgModule({
   declarations: [
     ApplicationSettingsComponent,
     AboutUsComponent,
-    PrivateDiningComponent
+    PrivateDiningComponent,
+    PressComponent
   ],
   imports: [
     SettingsRoutingModule,

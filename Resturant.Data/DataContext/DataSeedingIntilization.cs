@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Resturant.Core.Enums;
+using Resturant.Data.DbModels.BusinessSchema;
 using Resturant.Data.DbModels.SecuritySchema;
 using Resturant.Data.Extensions;
 
@@ -23,11 +24,27 @@ namespace Resturant.Data.DataContext
 
             // call functions
             SeedApplicationRoles();
+            SeedSettings();
             await SeedApplicationAdministrative();
             // save to the database
             _appDbContext.SaveChanges();
         }
 
+        private static void SeedSettings()
+        {
+            var obj = _appDbContext.Settings.FirstOrDefault();
+            if (obj != null) return;
+
+            var settings = new Settings()
+            {
+                AboutUs = "about your organization.",
+                EmailService = "this email will be show in customer to contact with your organization.",
+                NumberService = "000-00-0000",
+                WorkWithUsDescription = "this description will show when customer want to apply in a job.",
+                PrivateDiningDescription= "this description will show in Private Dining Page."
+            };
+            _appDbContext.Settings.Add(settings);
+        }
         private static void SeedApplicationRoles()
         {
             var items = _appDbContext.Roles.ToList();

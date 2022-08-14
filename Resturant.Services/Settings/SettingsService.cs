@@ -72,18 +72,22 @@ namespace Resturant.Services.Settings
         {
             try
             {
+                var settings = await _context.Settings.FirstOrDefaultAsync();
+                if (options.Document != null)
+                {
                 Random rnd = new Random();
                 var path = $"\\Uploads\\PrivateDining\\PrivateDining_{DateTime.Now}_{rnd.Next(9000)}";
-                var attachmentPath = $"{path}\\{options.Image?.FileName}";
+                var attachmentPath = $"{path}\\{options.Document?.FileName}";
 
-                var settings = await _context.Settings.FirstOrDefaultAsync();
-                settings.PrivateDiningDescription = options.PrivateDiningDescription;
                 settings.PrivateDiningAttachmentPath = attachmentPath;
-                settings.PrivateDiningAttachmentName = options.Image?.FileName;
+                settings.PrivateDiningAttachmentName = options.Document?.FileName;
+                await _uploadFilesService.UploadFile(path, options.Document);
 
+                }
+
+                settings.PrivateDiningDescription = options.PrivateDiningDescription;
                 _context.Settings.Attach(settings);
                 await _context.SaveChangesAsync();
-                await _uploadFilesService.UploadFile(path, options.Image);
 
                 _response.IsPassed = true;
                 return _response;

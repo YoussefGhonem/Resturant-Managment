@@ -11,7 +11,7 @@ namespace Resturant.DTO.Business.Settings
         public string? WorkWithUsDescription { get; set; }
 
         // Update Private Dining
-        public IFormFile? Image { get; set; }
+        public IFormFile? Document { get; set; }
         public string? PrivateDiningDescription { get; set; }
     }
     public class SettingsDetailsDto

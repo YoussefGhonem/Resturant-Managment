@@ -1,3 +1,5 @@
+import { takeUntil } from 'rxjs/operators';
+import { SettingsController } from '../../../+users/controllers/SettingsController';
 import { BaseComponent } from '@shared/base/base.component';
 import { Component, Injector } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
@@ -8,14 +10,10 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
   templateUrl: './application-settings.component.html',
   styleUrls: ['./application-settings.component.css']
 })
-
-
 export class ApplicationSettingsComponent extends BaseComponent {
-
+  settings: any;
   // bread crumb items
   breadCrumbItems!: Array<{}>;
-  uploadedFileSubmit: boolean = false;
-  verificationFileForm!: UntypedFormGroup;
 
   constructor(
     public override injector: Injector,
@@ -31,15 +29,16 @@ export class ApplicationSettingsComponent extends BaseComponent {
       { label: 'Settings', active: true }
     ];
 
-    this.verificationFileForm = this._formBuilder.group({
-      uploadedFile: ['', Validators.required]
-    });
-
+    this.getDetails();
   }
 
-  get form() {
-    return this.verificationFileForm.controls;
+  getDetails() {
+    this.httpService.GET(SettingsController.Details)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(res => {
+        this.settings = res;
+        console.log(this.settings);
+      });
   }
-
 
 }
