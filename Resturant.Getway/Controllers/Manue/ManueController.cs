@@ -27,6 +27,7 @@ namespace Resturant.Getway.Controllers.Manue
         public async Task<IResponseDTO> UpdateManue(CreateAndUpdateManueDto createAndUpdateManueDto,Guid id)
         {
             _response = await _iManueService.UpdateManue(id,createAndUpdateManueDto);
+
             return _response;
         }
         [HttpDelete("{id}")]
