@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Resturant.Data.DataContext;
 using Resturant.Data.DbModels.BusinessSchema;
+using Resturant.Data.DbModels.BusinessSchema.About;
 using Resturant.Data.DbModels.BusinessSchema.manue;
 using Resturant.Data.DbModels.LookupSchema;
 using Resturant.Data.DbModels.SecuritySchema;
@@ -38,6 +39,9 @@ namespace Resturant.Data
         public DbSet<Category> Categorys { get; set; }
         public DbSet<Subcategory> Subcategorys { get; set; }
         public DbSet<EventType> EventTypes { get; set; }
+        public DbSet<AboutUs> AboutUss { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<Community> Communitys { get; set; }
 
     }
 }
