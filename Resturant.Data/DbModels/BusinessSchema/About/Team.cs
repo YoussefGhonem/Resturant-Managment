@@ -17,7 +17,7 @@ namespace Resturant.Data.DbModels.BusinessSchema.About
         public string? JopTitle { get; set; }
         public string? Description { get; set; }
         public string? ImageUrl { get; set; }
-        public AboutUs? About { get; set; }
-        public Guid? AboutId { get; set; }
+        //public AboutUs? About { get; set; }
+        //public Guid? AboutId { get; set; }
     }
 }

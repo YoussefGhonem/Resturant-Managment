@@ -17,20 +17,20 @@ namespace Resturant.Getway.Controllers.Manue
         }
 
         [HttpPost]
-        public async Task<IResponseDTO> CreateSubCategoryManue(CreateAndUpdateSubcategory createAndUpdateSubcategory)
+        public async Task<IResponseDTO> CreateSubCategoryManue([FromBody] CreateAndUpdateSubcategory createAndUpdateSubcategory)
         {
             _response = await _iManueService.CreateSubcategory(createAndUpdateSubcategory);
             return _response;
         }
 
         [HttpPut("{id}")]
-        public async Task<IResponseDTO> UpdateSubCategoryManue(CreateAndUpdateSubcategory createAndUpdateSubcategory, Guid id)
+        public async Task<IResponseDTO> UpdateSubCategoryManue([FromBody] CreateAndUpdateSubcategory createAndUpdateSubcategory, [FromRoute] Guid id)
         {
             _response = await _iManueService.UpdateSubcategory(id, createAndUpdateSubcategory);
             return _response;
         }
         [HttpDelete("{id}/{categoryId}")]
-        public async Task<IResponseDTO> DeleteSubCategoryManue(Guid id, Guid categoryId)
+        public async Task<IResponseDTO> DeleteSubCategoryManue([FromRoute] Guid id, [FromRoute] Guid categoryId)
         {
             _response = await _iManueService.DeletSubcategory(id,categoryId);
             return _response;
