@@ -10,6 +10,6 @@ namespace Resturant.DTO.Business.AboutAndCommuniry
     {
         public string? Name { get; set; }
         public string? DecriptionAbout { get; set; }
-        public bool? IsMain { get; set; }
+
     }
 }
