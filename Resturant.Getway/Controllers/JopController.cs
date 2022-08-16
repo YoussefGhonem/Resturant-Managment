@@ -15,7 +15,6 @@ namespace Resturant.Getway.Controllers
     public class JopController : BaseController
     {
         private readonly IJopService _services;
-        private readonly IResponseDTO _response;
 
         public JopController(
            IJopService service,
