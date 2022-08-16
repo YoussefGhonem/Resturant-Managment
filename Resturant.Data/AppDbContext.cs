@@ -41,6 +41,9 @@ namespace Resturant.Data
         public DbSet<EventType> EventTypes { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Community> Communitys { get; set; }
+        public DbSet<Gallery> Gallerys { get; set; }
+        public DbSet<Jop> Jops { get; set; }
+        public DbSet<ConntactUs> ConntactUss { get; set; }
 
     }
 }

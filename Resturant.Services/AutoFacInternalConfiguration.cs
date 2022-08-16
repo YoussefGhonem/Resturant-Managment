@@ -2,8 +2,11 @@
 using Resturant.Core.Common;
 using Resturant.Core.Interfaces;
 using Resturant.Services.AboutAndCommunity;
+using Resturant.Services.ContectUs;
 using Resturant.Services.EventType;
+using Resturant.Services.Gallery;
 using Resturant.Services.Identity;
+using Resturant.Services.Jop;
 using Resturant.Services.Manue;
 using Resturant.Services.PrivateDining;
 using Resturant.Services.PrivateDiningImage;
@@ -27,6 +30,9 @@ namespace Resturant.Services
             services.AddScoped<IPrivateDiningImageService, PrivateDiningImageService>();
             services.AddScoped<IManuesService, ManueService>();
             services.AddScoped<IAboutAndComunity, AboutAndCommunityService>();
+            services.AddScoped<IGalleryService, GalleryService>();
+            services.AddScoped<IJopService, JopService>();
+            services.AddScoped<IContactUs, ContactUsService>();
             return services;
         }
     }
