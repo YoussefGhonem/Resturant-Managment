@@ -22,38 +22,6 @@ namespace Resturant.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Resturant.Data.DbModels.BusinessSchema.About.AboutUs", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DecriptionAbout")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("IsMain")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AboutUs", "Business");
-                });
-
             modelBuilder.Entity("Resturant.Data.DbModels.BusinessSchema.About.Community", b =>
                 {
                     b.Property<Guid>("Id")
@@ -75,9 +43,6 @@ namespace Resturant.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("IsMain")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
@@ -93,9 +58,6 @@ namespace Resturant.Data.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("AboutId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedOn")
@@ -123,8 +85,6 @@ namespace Resturant.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AboutId");
 
                     b.ToTable("Team", "Business");
                 });
@@ -659,16 +619,6 @@ namespace Resturant.Data.Migrations
                     b.ToTable("UserTokens", "Security");
                 });
 
-            modelBuilder.Entity("Resturant.Data.DbModels.BusinessSchema.About.Team", b =>
-                {
-                    b.HasOne("Resturant.Data.DbModels.BusinessSchema.About.AboutUs", "About")
-                        .WithMany("Teams")
-                        .HasForeignKey("AboutId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("About");
-                });
-
             modelBuilder.Entity("Resturant.Data.DbModels.BusinessSchema.manue.Category", b =>
                 {
                     b.HasOne("Resturant.Data.DbModels.BusinessSchema.manue.Manue", "manue")
@@ -750,11 +700,6 @@ namespace Resturant.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Resturant.Data.DbModels.BusinessSchema.About.AboutUs", b =>
-                {
-                    b.Navigation("Teams");
                 });
 
             modelBuilder.Entity("Resturant.Data.DbModels.BusinessSchema.manue.Category", b =>

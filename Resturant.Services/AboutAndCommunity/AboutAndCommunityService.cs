@@ -28,156 +28,156 @@ namespace Resturant.Services.AboutAndCommunity
             _response = response;
             _uploadFilesService = uploadFilesService;
         }
-        public async Task<IResponseDTO> CreateAbout(CreateAndUpdateAboutDto createAboutDto)
-        {
-            try
-            {
-                var About = new Data.DbModels.BusinessSchema.About.AboutUs()
-                {
-                    Name = createAboutDto.Name,
-                    DecriptionAbout = createAboutDto.DecriptionAbout
-                };
+        //public async Task<IResponseDTO> CreateAbout(CreateAndUpdateAboutDto createAboutDto)
+        //{
+        //    try
+        //    {
+        //        var About = new Data.DbModels.BusinessSchema.About.AboutUs()
+        //        {
+        //            Name = createAboutDto.Name,
+        //            DecriptionAbout = createAboutDto.DecriptionAbout
+        //        };
 
-                await _context.AboutUss.AddAsync(About);
-                await _context.SaveChangesAsync();
-                _response.IsPassed = true;
-                return _response;
-            }
-            catch (Exception ex)
-            {
-                _response.Data = null;
-                _response.IsPassed = false;
-                _response.Errors.Add($"Error: {ex.Message}");
-            }
+        //        await _context.AboutUss.AddAsync(About);
+        //        await _context.SaveChangesAsync();
+        //        _response.IsPassed = true;
+        //        return _response;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _response.Data = null;
+        //        _response.IsPassed = false;
+        //        _response.Errors.Add($"Error: {ex.Message}");
+        //    }
 
-            if (_response.Errors.Count > 0)
-            {
-                _response.Errors = _response.Errors.Distinct().ToList();
-                _response.IsPassed = false;
-                _response.Data = null;
-                return _response;
-            }
-            return _response;
-        }
-        public async Task<IResponseDTO> DeleteAbout(Guid Id)
-        {
-            try
-            {
-                var About = await _context.AboutUss.FindAsync(Id);
-                if (About == null)
-                {
-                    _response.IsPassed = false;
-                    _response.Message = "Invalid object Id";
-                    return _response;
+        //    if (_response.Errors.Count > 0)
+        //    {
+        //        _response.Errors = _response.Errors.Distinct().ToList();
+        //        _response.IsPassed = false;
+        //        _response.Data = null;
+        //        return _response;
+        //    }
+        //    return _response;
+        //}
+        //public async Task<IResponseDTO> DeleteAbout(Guid Id)
+        //{
+        //    try
+        //    {
+        //        var About = await _context.AboutUss.FindAsync(Id);
+        //        if (About == null)
+        //        {
+        //            _response.IsPassed = false;
+        //            _response.Message = "Invalid object Id";
+        //            return _response;
                     
-                }
-                About.IsDeleted = true;
-                About.UpdatedOn = DateTime.Now;
-                // save to the database
-                _context.AboutUss.Attach(About);
-                await _context.SaveChangesAsync();
+        //        }
+        //        About.IsDeleted = true;
+        //        About.UpdatedOn = DateTime.Now;
+        //        // save to the database
+        //        _context.AboutUss.Attach(About);
+        //        await _context.SaveChangesAsync();
 
-            }
-            catch (Exception ex)
-            {
-                _response.Data = null;
-                _response.IsPassed = false;
-                _response.Errors.Add($"Error: {ex.Message}");
-            }
-            if (_response.Errors.Count > 0)
-            {
-                _response.Errors = _response.Errors.Distinct().ToList();
-                _response.IsPassed = false;
-                _response.Data = null;
-                return _response;
-            }
-            return _response;
-        }
-        public async Task<IEnumerable<ReturnAboutDto>> GetAllAbout()
-        {
-            var AllAbout = await _context.AboutUss.Where(A => A.IsDeleted == false).Include(A=>A.Teams.Where(T=>T.IsDeleted== false)).ToListAsync();
-            var AboutToReturn = AllAbout.Adapt<IEnumerable<ReturnAboutDto>>();
-            return AboutToReturn;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _response.Data = null;
+        //        _response.IsPassed = false;
+        //        _response.Errors.Add($"Error: {ex.Message}");
+        //    }
+        //    if (_response.Errors.Count > 0)
+        //    {
+        //        _response.Errors = _response.Errors.Distinct().ToList();
+        //        _response.IsPassed = false;
+        //        _response.Data = null;
+        //        return _response;
+        //    }
+        //    return _response;
+        //}
+        //public async Task<IEnumerable<ReturnAboutDto>> GetAllAbout()
+        //{
+        //    var AllAbout = await _context.AboutUss.Where(A => A.IsDeleted == false).Include(A=>A.Teams.Where(T=>T.IsDeleted== false)).ToListAsync();
+        //    var AboutToReturn = AllAbout.Adapt<IEnumerable<ReturnAboutDto>>();
+        //    return AboutToReturn;
 
-        }
-        public async Task<IEnumerable<ReturnAboutDto>> GetMainAbout()
-        {
-            var AllAbout = await _context.AboutUss.Where(A => A.IsMain == true && A.IsDeleted== false).Include(A=>A.Teams.Where(T=>T.IsDeleted== false)).ToListAsync();
-            var AboutToReturn = AllAbout.Adapt<IEnumerable<ReturnAboutDto>>();
-            return AboutToReturn;
-        }
-        public async Task<IResponseDTO> UpdateAbout(Guid Id,CreateAndUpdateAboutDto createAboutDto)
-        {
-            try
-            {
-                var About = await _context.AboutUss.FindAsync(Id);
-                if (About == null)
-                {
-                    _response.IsPassed = false;
-                    _response.Message = "Invalid object Id";
-                    return _response;
-                }
+        //}
+        //public async Task<IEnumerable<ReturnAboutDto>> GetMainAbout()
+        //{
+        //    var AllAbout = await _context.AboutUss.Where(A => A.IsMain == true && A.IsDeleted== false).Include(A=>A.Teams.Where(T=>T.IsDeleted== false)).ToListAsync();
+        //    var AboutToReturn = AllAbout.Adapt<IEnumerable<ReturnAboutDto>>();
+        //    return AboutToReturn;
+        //}
+        //public async Task<IResponseDTO> UpdateAbout(Guid Id,CreateAndUpdateAboutDto createAboutDto)
+        //{
+        //    try
+        //    {
+        //        var About = await _context.AboutUss.FindAsync(Id);
+        //        if (About == null)
+        //        {
+        //            _response.IsPassed = false;
+        //            _response.Message = "Invalid object Id";
+        //            return _response;
+        //        }
 
-                About.Name = createAboutDto.Name;
-                About.DecriptionAbout = createAboutDto.DecriptionAbout;
+        //        About.Name = createAboutDto.Name;
+        //        About.DecriptionAbout = createAboutDto.DecriptionAbout;
 
-                // save to the database
-                _context.AboutUss.Attach(About);
-                await _context.SaveChangesAsync();
+        //        // save to the database
+        //        _context.AboutUss.Attach(About);
+        //        await _context.SaveChangesAsync();
 
-            }
-            catch (Exception ex)
-            {
-                _response.Data = null;
-                _response.IsPassed = false;
-                _response.Errors.Add($"Error: {ex.Message}");
-            }
-            if (_response.Errors.Count > 0)
-            {
-                _response.Errors = _response.Errors.Distinct().ToList();
-                _response.IsPassed = false;
-                _response.Data = null;
-                return _response;
-            }
-            return _response;
-        }
-        public  async Task<IResponseDTO> SetMainAbout(Guid Id)
-        {
-            try
-            {
-                var MainAbout = await _context.AboutUss.Where(A => A.IsMain == true).ToListAsync();
-                var MainAboutNeedToSet = await _context.AboutUss.FindAsync(Id);
-                if (MainAbout == null && MainAboutNeedToSet == null)
-                {
-                    _response.IsPassed = false;
-                    _response.Message = "Invalid object Id";
-                    return _response;                  
-                }
-                foreach (var A in MainAbout)
-                {
-                    A.IsMain = false;
-                    _context.AboutUss.Attach(A);
-                }
-                MainAboutNeedToSet.IsMain = true;
-                _context.AboutUss.Attach(MainAboutNeedToSet);
-                await _context.SaveChangesAsync();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _response.Data = null;
+        //        _response.IsPassed = false;
+        //        _response.Errors.Add($"Error: {ex.Message}");
+        //    }
+        //    if (_response.Errors.Count > 0)
+        //    {
+        //        _response.Errors = _response.Errors.Distinct().ToList();
+        //        _response.IsPassed = false;
+        //        _response.Data = null;
+        //        return _response;
+        //    }
+        //    return _response;
+        //}
+        //public  async Task<IResponseDTO> SetMainAbout(Guid Id)
+        //{
+        //    try
+        //    {
+        //        var MainAbout = await _context.AboutUss.Where(A => A.IsMain == true).ToListAsync();
+        //        var MainAboutNeedToSet = await _context.AboutUss.FindAsync(Id);
+        //        if (MainAbout == null && MainAboutNeedToSet == null)
+        //        {
+        //            _response.IsPassed = false;
+        //            _response.Message = "Invalid object Id";
+        //            return _response;                  
+        //        }
+        //        foreach (var A in MainAbout)
+        //        {
+        //            A.IsMain = false;
+        //            _context.AboutUss.Attach(A);
+        //        }
+        //        MainAboutNeedToSet.IsMain = true;
+        //        _context.AboutUss.Attach(MainAboutNeedToSet);
+        //        await _context.SaveChangesAsync();
 
-            }
-            catch (Exception ex)
-            {
-                _response.Data = null;
-                _response.IsPassed = false;
-                _response.Errors.Add($"Error: {ex.Message}");
-            }
-            if (_response.Errors.Count > 0)
-            {
-                _response.Errors = _response.Errors.Distinct().ToList();
-                _response.IsPassed = false;
-                _response.Data = null;
-                return _response;
-            }
-            return _response;
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _response.Data = null;
+        //        _response.IsPassed = false;
+        //        _response.Errors.Add($"Error: {ex.Message}");
+        //    }
+        //    if (_response.Errors.Count > 0)
+        //    {
+        //        _response.Errors = _response.Errors.Distinct().ToList();
+        //        _response.IsPassed = false;
+        //        _response.Data = null;
+        //        return _response;
+        //    }
+        //    return _response;
+        //}
 
 
         // Team Started impemtation
@@ -196,7 +196,6 @@ namespace Resturant.Services.AboutAndCommunity
                         Name = createAndUpdateTeams?.Name,
                         ImageUrl= attachmentPath,
                         JopTitle= createAndUpdateTeams?.JopTitle,
-                        AboutId=createAndUpdateTeams?.AboutId,
                         Description=createAndUpdateTeams?.Description
                     };
 
@@ -224,11 +223,11 @@ namespace Resturant.Services.AboutAndCommunity
             }
             return _response;
         }
-        public async Task<IResponseDTO> UpdateTeamMember(Guid TeamId, Guid AboutId, CreateAndUpdateTeams createAndUpdateTeams)
+        public async Task<IResponseDTO> UpdateTeamMember(Guid TeamId, CreateAndUpdateTeams createAndUpdateTeams)
         {
             try
             {
-                var OneMemberTeam = await _context.Teams.Where(T => T.AboutId == AboutId && T.Id == TeamId).ToListAsync();
+                var OneMemberTeam = await _context.Teams.FindAsync(TeamId);
                 if (OneMemberTeam == null)
                 {
                     _response.IsPassed = false;
@@ -241,16 +240,13 @@ namespace Resturant.Services.AboutAndCommunity
                     var path = $"\\Uploads\\Team\\Team{DateTime.Now}_{rnd.Next(9000)}";
                     var attachmentPath = $"{path}\\{image?.FileName}";
 
-                    var obj = new Data.DbModels.BusinessSchema.About.Team()
-                    {
-                        Name = createAndUpdateTeams?.Name,
-                        ImageUrl = attachmentPath,
-                        JopTitle = createAndUpdateTeams?.JopTitle,
-                        AboutId = createAndUpdateTeams?.AboutId,
-                        Description = createAndUpdateTeams?.Description
-                    };
 
-                    await _context.Teams.AddAsync(obj);
+                    OneMemberTeam.Name = createAndUpdateTeams?.Name;
+                    OneMemberTeam.ImageUrl = attachmentPath;
+                    OneMemberTeam.JopTitle = createAndUpdateTeams?.JopTitle;
+                    OneMemberTeam.Description = createAndUpdateTeams?.Description;
+
+                    _context.Teams.Attach(OneMemberTeam);
                     await _context.SaveChangesAsync();
                     await _uploadFilesService.UploadFile(path, image);
                 }
@@ -274,11 +270,11 @@ namespace Resturant.Services.AboutAndCommunity
             }
             return _response;
         }
-        public async Task<IResponseDTO> DeleteTeamMember(Guid TeamId, Guid AboutId)
+        public async Task<IResponseDTO> DeleteTeamMember(Guid TeamId)
         {
             try
             {
-                var DeleteMember = await _context.Teams.Where(T => T.Id == TeamId && T.AboutId == AboutId).FirstOrDefaultAsync();
+                var DeleteMember = await _context.Teams.FindAsync(TeamId);
                 if (DeleteMember == null)
                 {
                     _response.IsPassed = false;
@@ -290,6 +286,8 @@ namespace Resturant.Services.AboutAndCommunity
                 // save to the database
                 _context.Teams.Attach(DeleteMember);
                 await _context.SaveChangesAsync();
+                _response.IsPassed = true;
+                
             }
             catch (Exception ex)
             {
@@ -306,9 +304,9 @@ namespace Resturant.Services.AboutAndCommunity
             }
             return _response;
         }
-        public async Task<IEnumerable<ReturnTeamForAboutDto>> GetAllTeamMembersForOneAbout(Guid AboutId)
+        public async Task<IEnumerable<ReturnTeamForAboutDto>> GetAllTeamMembersForOneAbout()
         {
-           var TeamsMember = await _context.Teams.Where(T => T.AboutId == AboutId && T.IsDeleted == false).ToListAsync();
+           var TeamsMember = await _context.Teams.Where(T=>T.IsDeleted == false).ToListAsync();
            var TeamsForReturn = TeamsMember.Adapt<IEnumerable<ReturnTeamForAboutDto>>();
            return TeamsForReturn;
         }
@@ -322,7 +320,7 @@ namespace Resturant.Services.AboutAndCommunity
                 foreach (var image in createAndUpdateCommunity.Images)
                 {
                     Random rnd = new Random();
-                    var path = $"\\Uploads\\Team\\Team{DateTime.Now}_{rnd.Next(9000)}";
+                    var path = $"\\Uploads\\Communtiy\\Communtiy{DateTime.Now}_{rnd.Next(9000)}";
                     var attachmentPath = $"{path}\\{image?.FileName}";
 
                     var obj = new Data.DbModels.BusinessSchema.About.Community()
@@ -373,14 +371,12 @@ namespace Resturant.Services.AboutAndCommunity
                     var path = $"\\Uploads\\Team\\Team{DateTime.Now}_{rnd.Next(9000)}";
                     var attachmentPath = $"{path}\\{image?.FileName}";
 
-                    var obj = new Data.DbModels.BusinessSchema.About.Community()
-                    {
-                        name = createAndUpdateCommunity?.name,
-                        ImageUrl = attachmentPath,
-                        Desciption = createAndUpdateCommunity?.Desciption
-                    };
+                    OnlyOneCommunity.name = createAndUpdateCommunity?.name;
+                    OnlyOneCommunity.ImageUrl = attachmentPath;
+                    OnlyOneCommunity.Desciption = createAndUpdateCommunity?.Desciption;
+                    
 
-                    await _context.Communitys.AddAsync(obj);
+                     _context.Communitys.Attach(OnlyOneCommunity);
                     await _context.SaveChangesAsync();
                     await _uploadFilesService.UploadFile(path, image);
                 }
@@ -421,44 +417,7 @@ namespace Resturant.Services.AboutAndCommunity
                 // save to the database
                 _context.Communitys.Attach(Community);
                 await _context.SaveChangesAsync();
-
-            }
-            catch (Exception ex)
-            {
-                _response.Data = null;
-                _response.IsPassed = false;
-                _response.Errors.Add($"Error: {ex.Message}");
-            }
-            if (_response.Errors.Count > 0)
-            {
-                _response.Errors = _response.Errors.Distinct().ToList();
-                _response.IsPassed = false;
-                _response.Data = null;
-                return _response;
-            }
-            return _response;
-        }
-        public async Task<IResponseDTO> SetMainCommuntiy(Guid CommunityId)
-        {
-            try
-            {
-                var Communtiy = await _context.Communitys.Where(A => A.IsMain == true).ToListAsync();
-                var MainCommunityNeedToSet = await _context.Communitys.FindAsync(CommunityId);
-                if (Communtiy == null && MainCommunityNeedToSet == null)
-                {
-                    _response.IsPassed = false;
-                    _response.Message = "Invalid object Id";
-                    return _response;
-                }
-                foreach (var A in Communtiy)
-                {
-                    A.IsMain = false;
-                    _context.Communitys.Attach(A);
-                }
-                MainCommunityNeedToSet.IsMain = true;
-                _context.Communitys.Attach(MainCommunityNeedToSet);
-                await _context.SaveChangesAsync();
-
+                _response.IsPassed = true;
             }
             catch (Exception ex)
             {
@@ -477,7 +436,7 @@ namespace Resturant.Services.AboutAndCommunity
         }
         public async Task<IEnumerable<ReturnCommunityDto>> GetMainCommunity()
         {
-            var AllAbout = await _context.Communitys.Where(A => A.IsMain == true && A.IsDeleted == false).ToListAsync();
+            var AllAbout = await _context.Communitys.Where(A=>A.IsDeleted == false).ToListAsync();
             var AboutToReturn = AllAbout.Adapt<IEnumerable<ReturnCommunityDto>>();
             return AboutToReturn;
         }

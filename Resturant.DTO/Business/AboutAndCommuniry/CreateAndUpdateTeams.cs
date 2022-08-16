@@ -14,6 +14,6 @@ namespace Resturant.DTO.Business.AboutAndCommuniry
         public string? JopTitle { get; set; }
         public string? Description { get; set; }
         public List<IFormFile>? Images { get; set; }
-        public Guid? AboutId { get; set; }
+        //public Guid? AboutId { get; set; }
     }
 }

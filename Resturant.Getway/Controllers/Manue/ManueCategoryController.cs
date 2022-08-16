@@ -17,20 +17,20 @@ namespace Resturant.Getway.Controllers.Manue
         }
 
         [HttpPost]
-        public async Task<IResponseDTO> CreateCategoryManue(createandUpdateCatgoryDto createandUpdateCatgoryDto)
+        public async Task<IResponseDTO> CreateCategoryManue([FromBody] createandUpdateCatgoryDto createandUpdateCatgoryDto)
         {
             _response = await _iManueService.CreateCategoryManue(createandUpdateCatgoryDto);
             return _response;
         }
 
         [HttpPut("{id}")]
-        public async Task<IResponseDTO> UpdateCategoryManue(createandUpdateCatgoryDto createandUpdateCatgoryDto, Guid id)
+        public async Task<IResponseDTO> UpdateCategoryManue([FromBody] createandUpdateCatgoryDto createandUpdateCatgoryDto, [FromRoute] Guid id)
         {
             _response = await _iManueService.UpdateCatgory(id, createandUpdateCatgoryDto);
             return _response;
         }
         [HttpDelete("{id}/{Manuid}")]
-        public async Task<IResponseDTO> DeleteCategoryManue(Guid id,Guid Manuid)
+        public async Task<IResponseDTO> DeleteCategoryManue([FromRoute] Guid id, [FromRoute] Guid Manuid)
         {
             _response = await _iManueService.Deletcatgory(id, Manuid);
             return _response;
@@ -42,7 +42,7 @@ namespace Resturant.Getway.Controllers.Manue
             return AllManue;
         }
         [HttpGet("{id}")]
-        public async Task<IEnumerable<categoryforreturnDto>> GetManueById(Guid id)
+        public async Task<IEnumerable<categoryforreturnDto>> GetManueById([FromRoute] Guid id)
         {
             var Manue = await _iManueService.GetCategoryManuerByid(id);
             return Manue;
