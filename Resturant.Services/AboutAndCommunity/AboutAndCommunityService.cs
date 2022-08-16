@@ -286,6 +286,7 @@ namespace Resturant.Services.AboutAndCommunity
                 // save to the database
                 _context.Teams.Attach(DeleteMember);
                 await _context.SaveChangesAsync();
+                await _uploadFilesService.DeleteFile(DeleteMember?.ImageUrl);
                 _response.IsPassed = true;
                 
             }
@@ -417,6 +418,7 @@ namespace Resturant.Services.AboutAndCommunity
                 // save to the database
                 _context.Communitys.Attach(Community);
                 await _context.SaveChangesAsync();
+                await _uploadFilesService.DeleteFile(Community?.ImageUrl);
                 _response.IsPassed = true;
             }
             catch (Exception ex)
