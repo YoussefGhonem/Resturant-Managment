@@ -70,8 +70,8 @@ export const MENU: MenuItem[] = [
   },
   {
     id: 11,
-    label: 'Members',
+    label: 'Press',
     icon: 'ri-team-fill',
-    link: ''
+    link: '/settings/press-list'
   },
 ];

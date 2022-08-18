@@ -5,6 +5,7 @@ import { SettingsRoutingModule } from "./settings-routing.module";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   NgbAccordionModule,
+  NgbActiveModal,
   NgbDropdownModule, NgbNavModule,
   NgbPaginationModule,
   NgbRatingModule, NgbTooltipModule,
@@ -28,6 +29,7 @@ import { AboutUsComponent } from './components/application-settings/about-us/abo
 import { PrivateDiningComponent } from './components/application-settings/private-dining/private-dining.component';
 import { ReactiveValidationModule } from 'angular-reactive-validation';
 import { PressComponent } from './components/press/press.component';
+import { AddEditPressComponent } from './components/press/add-edit-press/add-edit-press.component';
 // Components
 
 @NgModule({
@@ -35,7 +37,8 @@ import { PressComponent } from './components/press/press.component';
     ApplicationSettingsComponent,
     AboutUsComponent,
     PrivateDiningComponent,
-    PressComponent
+    PressComponent,
+    AddEditPressComponent
   ],
   imports: [
     SettingsRoutingModule,
@@ -63,7 +66,10 @@ import { PressComponent } from './components/press/press.component';
     SharedDirectivesModule,
     SharedComponentsModule,
     SharedPipesModule
-  ]
+  ],
+  providers: [
+    NgbActiveModal
+  ],
 })
 export class SettingsModule {
 }
