@@ -7,6 +7,6 @@ namespace Resturant.DTO.Business.Location
         public Guid Id { get; set; }
         public string? Adress { get; set; }
         public string? GpsLink { get; set; }
-        public virtual ICollection<Meal>? Meals { get; set; }
+        public virtual ICollection<MealDto>? Meals { get; set; }
     }
 }

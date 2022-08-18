@@ -50,13 +50,12 @@ namespace Resturant.Services.Location
 
         public PaginationResult<LocationListDto> GetAll(BaseFilterDto filterDto)
         {
-            var paginationResult = _context.Locations.AsNoTracking().Paginate(filterDto.PageSize, filterDto.PageNumber);
+            var paginationResult = _context.Locations.Include(x=>x.Meals).ThenInclude(x=>x.Appointments).AsNoTracking().Paginate(filterDto.PageSize, filterDto.PageNumber);
 
             var dataList = paginationResult.list.Adapt<List<LocationListDto>>();
 
             return new PaginationResult<LocationListDto>(dataList, paginationResult.total);
         }
-
         public async Task<IResponseDTO> Remove(Guid id)
         {
             try
