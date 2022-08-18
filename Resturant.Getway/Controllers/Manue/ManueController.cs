@@ -17,20 +17,21 @@ namespace Resturant.Getway.Controllers.Manue
             _iManueService = service;
         }
         [HttpPost]
-        public async Task<IResponseDTO> CreateManue(CreateAndUpdateManueDto createAndUpdateManueDto)
+        public async Task<IResponseDTO> CreateManue([FromBody] CreateAndUpdateManueDto createAndUpdateManueDto)
         {
             _response = await _iManueService.CreateManue(createAndUpdateManueDto);
             return _response;
         }
 
         [HttpPut("{id}")]
-        public async Task<IResponseDTO> UpdateManue(CreateAndUpdateManueDto createAndUpdateManueDto,Guid id)
+        public async Task<IResponseDTO> UpdateManue([FromBody] CreateAndUpdateManueDto createAndUpdateManueDto, [FromRoute] Guid id)
         {
             _response = await _iManueService.UpdateManue(id,createAndUpdateManueDto);
+
             return _response;
         }
         [HttpDelete("{id}")]
-         public async Task<IResponseDTO> DeleteManue(Guid id)
+         public async Task<IResponseDTO> DeleteManue([FromRoute] Guid id)
         {
             _response = await _iManueService.DeletManue(id);
             return _response;
@@ -42,7 +43,7 @@ namespace Resturant.Getway.Controllers.Manue
             return AllManue;
         }
         [HttpGet("{id}")]
-        public async Task<IEnumerable<manuetoreturnDto>> GetManueById(Guid id)
+        public async Task<IEnumerable<manuetoreturnDto>> GetManueById([FromRoute] Guid id)
         {
             var Manue = await _iManueService.GetManuerByid(id);
             return Manue;

@@ -7,6 +7,7 @@ using Resturant.Data.DbModels.BusinessSchema;
 using Microsoft.EntityFrameworkCore;
 using Resturant.Data.DbModels.BusinessSchema.manue;
 using Nest;
+using NPOI.SS.Formula.Functions;
 
 namespace Resturant.Services.Manue
 {
@@ -119,14 +120,16 @@ namespace Resturant.Services.Manue
         }
         public async Task<IEnumerable<manuetoreturnDto>> GetallManue()
         {
-            var manue = await _context.Manues.Include(m => m.Categorys).ThenInclude(c => c.subCatogry).Where(m=>m.IsDeleted == false).ToListAsync();
+            var manue = await _context.Manues.Where(m => m.IsDeleted == false).Include(m => m.Categorys.Where(c=>c.IsDeleted == false))
+                .ThenInclude(c => c.subCatogry.Where(s=>s.IsDeleted==false)).ToListAsync();
             var manuesreturn = manue.Adapt<IEnumerable<manuetoreturnDto>>();
             return manuesreturn;
         }
         public async Task<IEnumerable<manuetoreturnDto>> GetManuerByid(Guid id)
         {
-            var OneManue = await _context.Manues.Include(c => c.Categorys).Where(c => c.Categorys.Any(c => c.manueId.Equals(id))).Where(m=>m.IsDeleted== false).ToListAsync();
-            var manuesreturn = OneManue.Adapt<IEnumerable<manuetoreturnDto>>();
+            var manue = await _context.Manues.Where(m => m.IsDeleted == false && m.Id==id).Include(m => m.Categorys.Where(c => c.IsDeleted == false))
+                .ThenInclude(c => c.subCatogry.Where(s => s.IsDeleted == false)).ToListAsync();
+            var manuesreturn = manue.Adapt<IEnumerable<manuetoreturnDto>>();
             return manuesreturn;
         }
 
@@ -232,13 +235,13 @@ namespace Resturant.Services.Manue
         }
         public async Task<IEnumerable<categoryforreturnDto>> GetAllCategory()
         {
-            var manue = await _context.Categorys.Include(m => m.subCatogry).Where(m=>m.IsDeleted == false).ToListAsync();
+            var manue = await _context.Categorys.Where(m => m.IsDeleted == false).Include(m => m.subCatogry.Where(m=>m.IsDeleted==false)).ToListAsync();
             var manuetoReturn = manue.Adapt<IEnumerable<categoryforreturnDto>>();
             return manuetoReturn;
         }
         public async Task<IEnumerable<categoryforreturnDto>> GetCategoryManuerByid(Guid manueid)
         {
-            var manue = await _context.Categorys.Include(m => m.subCatogry).Where(m => m.IsDeleted == false && m.manueId == manueid).ToListAsync();
+            var manue = await _context.Categorys.Where(m => m.IsDeleted == false && m.manueId == manueid).Include(m => m.subCatogry.Where(s=>s.IsDeleted== false)).ToListAsync();
             var manuetoReturn = manue.Adapt<IEnumerable<categoryforreturnDto>>();
             return manuetoReturn;
         }
@@ -351,11 +354,17 @@ namespace Resturant.Services.Manue
             }
             return _response;
         }
-        public async Task<SubcategoryforreturnDto> GetallSubcategory()
+        public async Task<IEnumerable<SubcategoryforreturnDto>> GetallSubcategory()
         {
             var subcateory = await _context.Subcategorys.ToListAsync();
-            var subcateorytoreturn = subcateory.Adapt<SubcategoryforreturnDto>();
+            var subcateorytoreturn = subcateory.Adapt<IEnumerable<SubcategoryforreturnDto>>();
             return subcateorytoreturn;
+        }
+        public async Task<IEnumerable<SubcategoryforreturnDto>> GetSubCategoryByCategoryId(Guid CategoryId)
+        {
+            var manue = await _context.Subcategorys.Where(m => m.IsDeleted == false && m.categoryId == CategoryId).ToListAsync();
+            var manuetoReturn = manue.Adapt<IEnumerable<SubcategoryforreturnDto>>();
+            return manuetoReturn;
         }
     }
 }

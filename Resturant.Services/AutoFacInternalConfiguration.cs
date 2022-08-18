@@ -1,9 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Resturant.Core.Common;
 using Resturant.Core.Interfaces;
+using Resturant.Services.AboutAndCommunity;
+using Resturant.Services.ContectUs;
 using Resturant.Services.EventType;
+using Resturant.Services.Gallery;
 using Resturant.Services.Identity;
 using Resturant.Services.Location;
+using Resturant.Services.Jop;
 using Resturant.Services.Manue;
 using Resturant.Services.Press;
 using Resturant.Services.PrivateDining;
@@ -29,6 +33,10 @@ namespace Resturant.Services
             services.AddScoped<IManuesService, ManueService>();
             services.AddScoped<IPressService, PressService>();
             services.AddScoped<ILocationService, LocationService>();
+            services.AddScoped<IAboutAndComunity, AboutAndCommunityService>();
+            services.AddScoped<IGalleryService, GalleryService>();
+            services.AddScoped<IJopService, JopService>();
+            services.AddScoped<IContactUs, ContactUsService>();
             return services;
         }
     }
