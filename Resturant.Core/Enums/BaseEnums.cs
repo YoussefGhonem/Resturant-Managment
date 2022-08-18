@@ -11,6 +11,26 @@
         LHD = 1,
         RHD = 2
     }
+    public enum MealEnum
+    {
+        Breakfast = 1,
+        Brunch = 2,
+        Elevenses = 3,
+        Lunch = 4,
+        Tea = 5,
+        Supper = 6,
+        Dinner = 7,
+    }
+    public enum DaysEnum
+    {
+        Monday = 1,
+        Tuesday = 2,
+        Wednesday = 3,
+        Thursday = 4,
+        Friday = 5,
+        Saturday = 6,
+        Sunday = 7,
+    }
     public enum FrequencySettingEnum
     {
         Hourly = 1,
