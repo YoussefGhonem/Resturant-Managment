@@ -3,7 +3,9 @@ using Resturant.Core.Common;
 using Resturant.Core.Interfaces;
 using Resturant.Services.EventType;
 using Resturant.Services.Identity;
+using Resturant.Services.Location;
 using Resturant.Services.Manue;
+using Resturant.Services.Press;
 using Resturant.Services.PrivateDining;
 using Resturant.Services.PrivateDiningImage;
 using Resturant.Services.SendingEmail;
@@ -25,6 +27,8 @@ namespace Resturant.Services
             services.AddScoped<IPrivateDiningService, PrivateDiningService>();
             services.AddScoped<IPrivateDiningImageService, PrivateDiningImageService>();
             services.AddScoped<IManuesService, ManueService>();
+            services.AddScoped<IPressService, PressService>();
+            services.AddScoped<ILocationService, LocationService>();
             return services;
         }
     }

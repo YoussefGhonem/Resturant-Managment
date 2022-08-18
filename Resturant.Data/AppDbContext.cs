@@ -38,6 +38,9 @@ namespace Resturant.Data
         public DbSet<Category> Categorys { get; set; }
         public DbSet<Subcategory> Subcategorys { get; set; }
         public DbSet<EventType> EventTypes { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Meal> Meals { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
 
     }
 }

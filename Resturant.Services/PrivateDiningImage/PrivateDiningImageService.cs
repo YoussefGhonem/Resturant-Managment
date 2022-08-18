@@ -27,7 +27,7 @@ namespace Resturant.Services.PrivateDiningImage
                 foreach (var image in options.Images)
                 {
                     Random rnd = new Random();
-                    var path = $"\\Uploads\\PrivateDining\\PrivateDining_{DateTime.Now}_{rnd.Next(9000)}";
+                    var path = $"\\Uploads\\PrivateDining\\PrivateDining_{DateTime.Now.Year}_{DateTime.Now.Month}_{DateTime.Now.Day}_{DateTime.Now.Second}_{rnd.Next(9000)}";
                     var attachmentPath = $"{path}\\{image?.FileName}";
 
                     var obj = new Data.DbModels.BusinessSchema.PrivateDiningImage()

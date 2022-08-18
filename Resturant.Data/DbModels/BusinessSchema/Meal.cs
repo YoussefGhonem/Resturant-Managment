@@ -10,7 +10,7 @@ namespace Resturant.Data.DbModels.BusinessSchema
     {
         public Guid Id { get; set; }
         public MealEnum? MealName { get; set; }
-        public virtual ICollection<Appointments>? Appointments { get; set; }
+        public virtual ICollection<Appointment>? Appointments { get; set; }
 
         public virtual Location? Location { get; set; }
     }

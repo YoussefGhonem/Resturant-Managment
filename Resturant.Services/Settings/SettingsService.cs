@@ -76,7 +76,7 @@ namespace Resturant.Services.Settings
                 if (options.Document != null)
                 {
                 Random rnd = new Random();
-                var path = $"\\Uploads\\PrivateDining\\PrivateDining_{DateTime.Now}_{rnd.Next(9000)}";
+                var path = $"\\Uploads\\PrivateDining\\PrivateDining_{DateTime.Now.Year}_{DateTime.Now.Month}_{DateTime.Now.Day}_{DateTime.Now.Second}_{rnd.Next(9000)}";
                 var attachmentPath = $"{path}\\{options.Document?.FileName}";
 
                 settings.PrivateDiningAttachmentPath = attachmentPath;

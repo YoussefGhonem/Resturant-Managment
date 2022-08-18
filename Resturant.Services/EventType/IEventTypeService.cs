@@ -6,6 +6,7 @@ namespace Resturant.Services.EventType
 {
     public interface IEventTypeService
     {
+
         PaginationResult<EventTypeListDto> GetAll(BaseFilterDto filterDto);
         Task<List<LookupDto>> GetAsDropdwon();
         Task<IResponseDTO> Remove(Guid id);

@@ -27,7 +27,7 @@ namespace Resturant.Services.Press
             try
             {
                 Random rnd = new Random();
-                var path = $"\\Uploads\\Press\\Press_{DateTime.Now}_{rnd.Next(9000)}";
+                var path = $"\\Uploads\\Press\\Press_{DateTime.Now.Year}_{DateTime.Now.Month}_{DateTime.Now.Day}_{DateTime.Now.Second}_{rnd.Next(9000)}";
                 var attachmentPath = $"{path}\\{options.Image?.FileName}";
 
                 var press = new Data.DbModels.BusinessSchema.Press()
@@ -169,7 +169,7 @@ namespace Resturant.Services.Press
             try
             {
                 Random rnd = new Random();
-                var path = $"\\Uploads\\Press\\Press_{DateTime.Now}_{rnd.Next(9000)}";
+                var path = $"\\Uploads\\Press\\Press_{DateTime.Now.Year}_{DateTime.Now.Month}_{DateTime.Now.Day}_{DateTime.Now.Second}_{rnd.Next(9000)}";
                 var attachmentPath = $"{path}\\{image?.FileName}";
 
                 var press = await _context.Press.FindAsync(id);
